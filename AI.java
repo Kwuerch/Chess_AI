@@ -15,12 +15,16 @@ public class AI implements Player{
     *
     * @throws InvalidArgumentException
     */
-   public void move(Cell cur, Cell fin);
+   public void move(Cell start, Cell end){
+
+   }
 
    /**
     * getName
     *
     * @return the name of the player
     */
-   public String getName();
+   public String getName(){
+      return null;
+   }
 }
