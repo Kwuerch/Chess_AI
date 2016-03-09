@@ -20,7 +20,6 @@ public class Pawn extends ChessPiece{
 	public Pawn(Board board, boolean madeMove, boolean white) {
 		super(white);
 		
-		//DONT FORGET TO UPDATE THIS IN MOVE
       this.board = board;
 		this.madeMove = madeMove;
       
@@ -34,11 +33,20 @@ public class Pawn extends ChessPiece{
    public List<Move> getMoves(){
       return moves;
    }
-	
-	public void Move() {
-		madeMove = true;
-	}
 
+   /**
+    * getValue
+    * @return the value of the piece
+    */
+   public int getValue(){
+      return 1;
+   }
+
+   /**
+    * toString
+    * @return a String representation of the piece
+    */
+   @Override
    public String toString(){
       return " P ";
    }

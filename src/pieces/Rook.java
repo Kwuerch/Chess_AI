@@ -34,6 +34,19 @@ public class Rook extends ChessPiece{
    public void determineMoves(ChessPiece[][] board, int row, int col){
    }
 
+   /**
+    * getValue
+    * @return the value of the piece
+    */
+   public int getValue(){
+      return 5;
+   }
+
+   /**
+    * toString
+    * @return a String representation of the piece
+    */
+   @Override
    public String toString(){
       return " R ";
    }

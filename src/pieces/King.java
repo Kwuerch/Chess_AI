@@ -33,6 +33,19 @@ public class King extends ChessPiece{
       return moves;
    }
 
+   /**
+    * getValue
+    * @return the value of the piece
+    */
+   public int getValue(){
+      return Integer.MAX_VALUE;
+   }
+
+   /**
+    * toString
+    * @return a String representation of the piece
+    */
+   @Override
    public String toString(){
       return " K ";
    }

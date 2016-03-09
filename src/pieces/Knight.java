@@ -37,6 +37,19 @@ public class Knight extends ChessPiece {
 
    }
 
+   /**
+    * getValue
+    * @return the value of the piece
+    */
+   public int getValue(){
+      return 3;
+   }
+
+   /**
+    * toString
+    * @return a String representation of the piece
+    */
+   @Override
    public String toString(){
       return " N ";
    }

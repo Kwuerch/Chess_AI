@@ -9,13 +9,11 @@ package ai;
  *  @version Program 7
  */
 
-public class PieceValue implements Value{
+public abstract class PieceValue implements Value{
    /**
     * getValue
     *
     * @return the value of the Piece 
     */
-   public int getValue(){
-      return -1;
-   }
+   public abstract int getValue();
 }

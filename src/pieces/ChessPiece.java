@@ -2,7 +2,9 @@ package pieces;
 
 import board.Board;
 import board.Move;
+import ai.PieceValue;
 import java.util.List;
+
 /**
  * ChessPiece Class
  * 
@@ -10,8 +12,7 @@ import java.util.List;
  * @version Program 7
  */
 
-
-public abstract class ChessPiece {
+public abstract class ChessPiece extends PieceValue{
 	private boolean white;
 	
 	public ChessPiece(boolean white) {
@@ -19,12 +20,8 @@ public abstract class ChessPiece {
 	}
 
    public abstract List<Move> getMoves();
-   
-   //public abstract void determineMoves(ChessPiece[][] board, int row, int col);
-	
-	//public abstract void updateMoves(Board board);
-	
-	//public abstract void updateAoE(Board board);
+
+   public abstract int getValue();
 
    /*
    public String debugString(){
@@ -59,5 +56,4 @@ public abstract class ChessPiece {
       return result;
    }
    */
-	
 }
