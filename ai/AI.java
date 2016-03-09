@@ -1,7 +1,6 @@
 package ai;
 
-import gui.ArtificialPlayer;
-
+import core.ArtificialPlayer;
 /**
  *  ** AI Class **
  *
@@ -10,17 +9,12 @@ import gui.ArtificialPlayer;
  *  @author Kyle Wuerch an Sean Wallace
  *  @version Program 7
  */
-public class AI extends ArtificalPlayer{
-   Board board;
+public class AI implements ArtificialPlayer{
+   public AI(){
 
-   /**
-    * Constructor
-    * Sets super values to their asigned values
-    */
-   public AI(String name, int white){
-      super("The Best", white);
-      board = new Board();
+
    }
+
 
    /**
     * updateWith 
@@ -39,12 +33,11 @@ public class AI extends ArtificalPlayer{
    
    /**
     * Runs at the end of the turn
+    * endTurnProtected 
     */
-   protected void startTurnProtected(){
+   public void endTurnProtected(){
 
    }
-
-
 
    /**
     * getName
