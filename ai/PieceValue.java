@@ -1,3 +1,5 @@
+package ai;
+
 /**
  *  ** PieceValue Class ** 
  *
@@ -6,6 +8,7 @@
  *  @author Kyle Wuerch and Sean Wallace
  *  @version Program 7
  */
+
 public class PieceValue implements Value{
    /**
     * getValue

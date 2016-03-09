@@ -1,6 +1,8 @@
 package ai;
 
 import core.ArtificialPlayer;
+import board.Board;
+
 /**
  *  ** AI Class **
  *
@@ -9,10 +11,12 @@ import core.ArtificialPlayer;
  *  @author Kyle Wuerch an Sean Wallace
  *  @version Program 7
  */
-public class AI implements ArtificialPlayer{
+public class AI extends ArtificialPlayer{
+   private Board board;
+
    public AI(){
-
-
+      super("The Best", something, something);
+      board = new Board();
    }
 
 

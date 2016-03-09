@@ -1,3 +1,5 @@
+package ai;
+
 /**
  *  ** BoardValue ** 
  *
@@ -6,13 +8,11 @@
  *  @author Kyle Wuerch and Sean Wallace
  *  @version Program 7
  */
-public interface Value{
+public abstract class BoardValue implements Value{
    /**
     * getValue
     *
     * @return the value of the board 
     */
-   public int getValue(){
-      return -1;
-   }
+   public abstract int getValue();
 }
