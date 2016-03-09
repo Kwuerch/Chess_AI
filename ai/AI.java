@@ -27,7 +27,7 @@ public class AI extends ArtificalPlayer{
     * updates the AI's representation of the board
     */
    public void updateWith(Move m){
-
+      board.update(m);
    }
    
    /**
