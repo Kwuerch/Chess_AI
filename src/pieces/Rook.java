@@ -27,10 +27,6 @@ public class Rook extends ChessPiece{
    }
 
    public void determineMoves(ChessPiece[][] board, int row, int col){
-      Option.multiUp(board, moves, row, col);
-      Option.multiDown(board, moves, row, col);
-      Option.multiRight(board, moves, row, col);
-      Option.multiLeft(board, moves, row, col);
    }
 
    public String toString(){

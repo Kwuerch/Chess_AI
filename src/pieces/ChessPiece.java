@@ -15,15 +15,10 @@ public abstract class ChessPiece {
 		this.white = white;
 	}
 
-   /**
-   public abstract boolean[][] AoE(){
-      return AoE;
-   }
-   */
 
    public abstract boolean[][] getMoves();
    
-   public abstract void determineMoves(ChessPiece[][] board, int row, int col);
+   //public abstract void determineMoves(ChessPiece[][] board, int row, int col);
 	
 	//public abstract void updateMoves(Board board);
 	

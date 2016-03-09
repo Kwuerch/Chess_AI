@@ -1,6 +1,5 @@
 package pieces;
 
-import core.Move;
 import java.util.ArrayList;
 
 /**
@@ -10,9 +9,8 @@ import java.util.ArrayList;
  * @version Program 7
  */
 public class Bishop extends ChessPiece{
-   Board board;
-   ArrayList<Move> moves;
-
+   ChessPiece[][] board;
+   boolean moves[][];
    /**
     * Constructor
     * Initialize moves and setup reference to board
@@ -21,7 +19,7 @@ public class Bishop extends ChessPiece{
 		super(white);
       this.board = board;
 
-      moves = new ArrayList<Move>();;
+      moves = new boolean[8][8];
 	}
 
    /**

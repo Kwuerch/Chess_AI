@@ -12,11 +12,11 @@ import board.Board;
  *  @version Program 7
  */
 public class AI extends ArtificialPlayer{
-   private Board board;
+   //private Board board;
 
    public AI(){
-      super("The Best", something, something);
-      board = new Board();
+      super("The Best");//, something, something);
+      //board = new Board();
    }
 
 

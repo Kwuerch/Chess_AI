@@ -1,4 +1,4 @@
-package ai;
+package board;
 import java.lang.UnsupportedOperationException;
 import java.util.NoSuchElementException;
 import java.lang.Iterable;
