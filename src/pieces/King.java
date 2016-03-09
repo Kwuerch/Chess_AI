@@ -1,5 +1,11 @@
 package pieces;
 
+
+import board.Board;
+import board.Move;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * King Class
  * 
@@ -8,21 +14,22 @@ package pieces;
  */
 
 public class King extends ChessPiece{
-   ChessPiece[][] board;
-   boolean[][] moves;
+   Board board; 
+   List<Move> moves;
+
 	
-	public King(ChessPiece[][] board, boolean white) {
+	public King(Board board, boolean white) {
 		super(white);
       this.board = board;
 
-      moves = new boolean[8][8];
+      moves = new ArrayList<Move>();
 	}
 
    /**
     * getMoves
     * @return the boolean representation of the possible moves
     */
-   public boolean[][] getMoves(){
+   public List<Move> getMoves(){
       return moves;
    }
 

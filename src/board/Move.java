@@ -1,5 +1,7 @@
 package board;
 
+import pieces.ChessPiece;
+
 /**
  * Move Class
  *
@@ -24,8 +26,9 @@ public class Move{
 
    public String toString(){
       String result = "Move From: " + start + " To: " + end +
-         " of Type moveType";
+         " of Type " + moveType;
 
+      return result;
    }
 
 }

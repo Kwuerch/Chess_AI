@@ -1,7 +1,7 @@
 package ai;
 
-import core.ArtificialPlayer;
 import board.Board;
+import board.Move;
 
 /**
  *  ** AI Class **
@@ -11,12 +11,12 @@ import board.Board;
  *  @author Kyle Wuerch an Sean Wallace
  *  @version Program 7
  */
-public class AI extends ArtificialPlayer{
-   //private Board board;
+public class AI{
+   private Board board;
 
-   public AI(){
-      super("The Best");//, something, something);
-      //board = new Board();
+   public AI(int color){
+      board = new Board();
+
    }
 
 
@@ -25,7 +25,7 @@ public class AI extends ArtificialPlayer{
     * updates the AI's representation of the board
     */
    public void updateWith(Move m){
-      board.update(m);
+      //board.update(m);
    }
    
    /**

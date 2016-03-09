@@ -1,10 +1,12 @@
 package board;
+
 import java.lang.UnsupportedOperationException;
 import java.util.NoSuchElementException;
 import java.lang.Iterable;
 import java.util.Iterator;
 import pieces.ChessPiece;
 import ai.BoardValue;
+
 /**
  * ** Board Class **
  * Represents the chess board, implements iterator and finds ChessPieces.
@@ -22,6 +24,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
    public static int DOWN_LEFT = 6;
    public static int LEFT = 7;
    public ChessPiece[] board;
+
    /**
     * Constructor for Board
     */
@@ -30,9 +33,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
    }
 
    /**
-    *
-    *
-    *
+    * @return the value of the board
     */
     public int getValue(){ //TODO: Implement getValue from Abstract Class
       return -1;
@@ -50,10 +51,11 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
       return new BoardIterator(3,0);
    }
    private class BoardIterator implements Iterator<ChessPiece>{
-      private int buffer;
-      private int minIndex;
-      private int maxIndex;
-      private int index;
+      public int buffer;
+      public int minIndex;
+      public int maxIndex;
+      public int index;
+
       public BoardIterator(int direction, int index){
          //this.direction = direction;
          if (direction == 0){
@@ -112,6 +114,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
             buffer = 1;
             break;
       }*/
+
       /**
        * Determines whether there is another spot in the direction specified
        * @return boolean true if there is a next element
@@ -139,9 +142,15 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
          if (!hasNext()){
             throw new NoSuchElementException();
          }
+
          index += buffer;
          return board[index];
       }
+      
+      /**
+       * Removes and item from the iterator
+       * @throws UnsupportedOperationException
+       */
       public void remove(){
          throw new UnsupportedOperationException();
       }

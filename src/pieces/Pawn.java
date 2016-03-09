@@ -1,5 +1,10 @@
 package pieces;
 
+import board.Board;
+import board.Move;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Pawn Class
  * 
@@ -9,24 +14,24 @@ package pieces;
 
 public class Pawn extends ChessPiece{
 	boolean madeMove;
-   ChessPiece[][] board;
-   boolean[][] moves;
+   List<Move> moves;
+   Board board;
 	
-	public Pawn(ChessPiece[][] board, boolean madeMove, boolean white) {
+	public Pawn(Board board, boolean madeMove, boolean white) {
 		super(white);
 		
 		//DONT FORGET TO UPDATE THIS IN MOVE
       this.board = board;
 		this.madeMove = madeMove;
-
-      moves = new boolean[8][8];
+      
+      moves = new ArrayList<Move>();
 	}
 
    /**
     * getMoves
     * @return the boolean representation of possible moves
     */
-   public boolean[][] getMoves(){
+   public List<Move> getMoves(){
       return moves;
    }
 	

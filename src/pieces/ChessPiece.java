@@ -1,5 +1,8 @@
 package pieces;
 
+import board.Board;
+import board.Move;
+import java.util.List;
 /**
  * ChessPiece Class
  * 
@@ -15,8 +18,7 @@ public abstract class ChessPiece {
 		this.white = white;
 	}
 
-
-   public abstract boolean[][] getMoves();
+   public abstract List<Move> getMoves();
    
    //public abstract void determineMoves(ChessPiece[][] board, int row, int col);
 	

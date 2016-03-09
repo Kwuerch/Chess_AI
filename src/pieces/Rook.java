@@ -1,5 +1,10 @@
 package pieces;
 
+import board.Board;
+import board.Move;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Rook Class
  * 
@@ -7,22 +12,22 @@ package pieces;
  * @version Program 7
  */
 public class Rook extends ChessPiece{
-   ChessPiece[][] board;
-   boolean moves[][];
+   Board board;
+   List<Move> moves;
 
-
-	public Rook(ChessPiece[][] board, boolean white) {
+	public Rook(Board board, boolean white) {
 		super(white);
       this.board = board;
 
-      moves = new boolean[8][8];
+      moves = new ArrayList<Move>();
 	}
+
 
    /**
     * getMoves
     * @return the boolean representation of possible moves
     */
-   public boolean[][] getMoves(){
+   public List<Move> getMoves(){
       return moves;
    }
 

@@ -1,3 +1,5 @@
+package ai;
+
 /**
  * ** IntermediateAI Class*
  * Beats a RandomAI
@@ -6,6 +8,9 @@
  * @version Program 7
  */
 public class IntermediateAI extends AI{
+   public IntermediateAI(int color){
+      super(color);
+   }
    public void DetermineMove(){
 
    }
