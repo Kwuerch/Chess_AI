@@ -1,3 +1,8 @@
+package pieces;
+
+import core.Move;
+import java.util.ArrayList;
+
 /**
  * Bishop Class
  * 
@@ -5,8 +10,8 @@
  * @version Program 7
  */
 public class Bishop extends ChessPiece{
-   ChessPiece[][] board;
-   boolean[][] moves;
+   Board board;
+   ArrayList<Move> moves;
 
    /**
     * Constructor
@@ -16,7 +21,7 @@ public class Bishop extends ChessPiece{
 		super(white);
       this.board = board;
 
-      moves = new boolean[8][8];
+      moves = new ArrayList<Move>();;
 	}
 
    /**
@@ -24,6 +29,7 @@ public class Bishop extends ChessPiece{
     * @return the boolean representation of possible moves 
     */
    public boolean[][] getMoves(){
+
       return moves;
    }
 

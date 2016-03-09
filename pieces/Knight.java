@@ -1,3 +1,5 @@
+package pieces;
+
 /**
  * Knight Class
  * @author Kyle Wuerch

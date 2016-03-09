@@ -1,3 +1,5 @@
+package pieces;
+
 /**
  * Pawn Class
  * 

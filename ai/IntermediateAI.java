@@ -9,7 +9,4 @@ public class IntermediateAI extends AI{
    public void DetermineMove(){
 
    }
-   public int BoardValue{
-      return -1;
-   }
 }

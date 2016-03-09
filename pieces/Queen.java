@@ -1,3 +1,5 @@
+package pieces;
+
 /**
  * Queen Class
  * 
