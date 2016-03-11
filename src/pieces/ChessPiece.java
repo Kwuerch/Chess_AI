@@ -3,7 +3,6 @@ package pieces;
 import board.Board;
 import board.BoardIterator;
 import board.Move;
-import ai.PieceValue;
 import java.util.List;
 
 /**
