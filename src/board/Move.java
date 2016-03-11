@@ -44,6 +44,12 @@ public class Move{
       return start;
    }
 
+
+   /**
+    * toString
+    * @return a String representation of the object
+    */
+   @Override
    public String toString(){
       String result = "Move From: " + start + " To: " + end +
          " of Type " + moveType;

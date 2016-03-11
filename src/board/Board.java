@@ -40,8 +40,8 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     * Add the correct pieces to the board
     */
    private void setupBoard(){
-      board[0] = new Bishop(this, true);
-      board[1] = new Bishop(this, true);
+      board[0] = new Rook(this, true);
+      board[1] = new Rook(this, true);
    }
 
    /**
@@ -85,7 +85,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
       return new MyIterator(direction, index);
    }
 
-   public Iterator<ChessPiece> iterator(){
+   public BoardIterator<ChessPiece> iterator(){
       return new MyIterator(3,0);
    }
 

@@ -27,21 +27,33 @@ public abstract class ChessPiece extends PieceValue{
     * ** Multi is defined to mean a moves that goes more than one space
     */
    public void movesGen(List<Move> moves, BoardIterator<ChessPiece> it, int index, boolean multi){
-      boolean hitPiece = false;
+      boolean hitPiece;
+
       if(multi){
          while(it.hasNext()){
+            hitPiece = false;
+            ChessPiece p = it.next();
             if(it.next() != null){
                hitPiece = true;
             }
-            moves.add(new Move(index, it.index(), Move.QUIET)); 
+
+            // Stop Iteration if run into piece
             if(hitPiece){
+               // Only add a move if the piece is a different color
+               if(p.white != white){
+                  moves.add(new Move(index, it.index(), Move.QUIET)); 
+               }
                break;
             }
+            moves.add(new Move(index, it.index(), Move.QUIET)); 
          }
       }else{
          if(it.hasNext()){
-            it.next();
-            moves.add(new Move(index, it.index(), Move.QUIET)); 
+            ChessPiece p = it.next();
+            // Only add a move if the piece is a different color
+            if(p.white != white){
+               moves.add(new Move(index, it.index(), Move.QUIET)); 
+            }
          }
       }
    }
