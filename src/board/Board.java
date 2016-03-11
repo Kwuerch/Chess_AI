@@ -23,7 +23,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
    public static final int DOWN = 5;
    public static final int DOWN_LEFT = 6;
    public static final int LEFT = 7;
-   public static final int DEFAULT = 1024;
 
    public ChessPiece[] board;
    private int currentValue;
@@ -189,17 +188,85 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
                return false;
             }
          }
+			int[] diag1 = {48, 57};
+			int[] diag2 = {40, 49, 58};
+			int[] diag3 = {32, 41, 50, 59};
+			int[] diag4 = {24, 33, 42, 51, 60};
+			int[] diag5 = {16, 25, 34, 43, 52, 61};
+			int[] diag6 = {8, 17, 26, 35, 44, 53, 62};
+			int[] diag7 = {0, 9, 18, 27, 36, 45, 54, 63};
+			int[] diag8 = {1, 10, 19, 28, 37, 46, 55};
+			int[] diag9 = {2, 11, 20, 29, 38, 47};
+			int[] diag10 = {3, 12, 21, 30, 39};
+			int[] diag11 = {4, 13, 22, 31};
+			int[] diag12 = {5, 14, 23};
+			int[] diag13 = {6, 15};
+			private boolean containsNum(int num, int[]array){
+				for (int i = 0; i < array.length; i++){
+						if (num == array[i]){
+						return true;
+						}
+					}
+					return false;
+				}
+			}
+			// UP RIGHT
+			if (buffer == 2){
+				if (containsNum(index, diag1){
+					
+				}
+					
+			
+			}
+			// DOWN LEFT
+			if (buffer == 6){
+				if (
+			}
 
+			// UP_LEFT, LEFT_UP, DOWN_LEFT
+			if (buffer == 7 || buffer == 0 || buffer == 6){
+				if (index < index + (index%8)*buffer){
+					return true;
+				}
+			}
+			if (buffer == 1){
+				if (index < index%8 + 7*buffer){
+					return true;
+				}
+			}
+			if (buffer == 2){
+				if (index < index + buffer*(8 - index%8){
+					return true;
+				}
+			}
+			if (buffer == 3){
+				if (index < index + 7*buffer - index%8){
+					return true;
+				}
+			}
+			if (buffer == 4){
+				if (index > ){
+					return true;
+				}
+			}
+			if (buffer == 5){
+				if(index > index%8){
+					return true;
+				}
+			}
 
+			/*
          if (buffer < 0){ //buffer is negative
             if (index <= index + 8*buffer - 8*(index%buffer)){
                return true;
             }
+			if (k=
          }else{ //Buffer is positive (buffer is never 0)
             if (index > buffer){
                return true;
             }
          }
+			*/
          // Temporary:if (index <= 8*buffer && index >= 0)TODO: index >= 0 will not work
          return false;
       }
