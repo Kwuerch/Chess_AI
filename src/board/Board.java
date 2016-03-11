@@ -150,7 +150,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
       /**
       * Default BoardIterator constructor
       */
-      public BoardIterator(){
+      public MyIterator(){
          buffer = 3;
          index = 0;
       }
