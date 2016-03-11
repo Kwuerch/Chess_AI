@@ -4,8 +4,8 @@ import java.lang.UnsupportedOperationException;
 import java.util.NoSuchElementException;
 import java.lang.Iterable;
 import java.util.Iterator;
-import pieces.ChessPiece;
-import ai.BoardValue;
+//import pieces.ChessPiece;
+import board.BoardValue;
 
 /**
  * ** Board Class **
@@ -24,6 +24,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
    public static int DOWN_LEFT = 6;
    public static int LEFT = 7;
    public ChessPiece[] board;
+   private int currentValue;
 
    /**
     * Constructor for Board
@@ -36,7 +37,11 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     * @return the value of the board
     */
     public int getValue(){ //TODO: Implement getValue from Abstract Class
-      return -1;
+      for (int i = 0; i < board.length; i++){
+         if (board[i] != null){
+            currentValue+= board[i].getValue();
+         }
+      }
     }
 
    /**
