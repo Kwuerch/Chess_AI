@@ -2,6 +2,8 @@ package board;
 
 import ai.BoardValue;
 import pieces.*;
+import java.util.List;
+import java.util.ArrayList;
 import java.lang.UnsupportedOperationException;
 import java.util.NoSuchElementException;
 import java.lang.Iterable;
@@ -25,7 +27,8 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
    public static final int LEFT = 7;
    public static final int DEFAULT = 1024;
 
-   public ChessPiece[] board;
+   private ChessPiece[] board;
+   private List<Move> moves;
    private int currentValue;
 
    /**
@@ -33,7 +36,9 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     */
    public Board(){
       board = new ChessPiece[64];
+      moves = new ArrayList<Move>();
       setupBoard();
+      findMoves();
    }
 
    /**
@@ -43,6 +48,20 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
    private void setupBoard(){
       board[0] = new Rook(this, true);
       board[1] = new Rook(this, true);
+   }
+
+   /**
+    * findMoves
+    * Adds the moves of all pieces of the current board 
+    */
+   private void findMoves(){
+      for(int i = 0; i < board.length; i++){
+         ChessPiece p = board[i];
+         if(p != null){
+            p.determineMoves(i);
+            moves.addAll(p.getMoves());
+         }
+      }
    }
 
    /**
@@ -61,20 +80,68 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
 
 
    /**
-    * @return the value of the board
+    * getValue
+    * @return the value of the white player's pieces
     */
-    public int getValue(){
+   public int getValue(){
+      return getValue(true);
+   }
+
+   /**
+    * getValue
+    * @param : Which Player to Calculate for 
+    * @return the value of all the pieces of a certain color 
+    * TODO: Improve and Test
+    */
+    public int getValue(boolean isWhite){
       int currentValue = 0;
 
       for (int i = 0; i < board.length; i++){
-         if (board[i] != null){
-            currentValue += board[i].getValue();
+         // Kings have infinite value, do no consider in pointage
+         if(board[i] != null && !board[i].getClass().toString().equals("King")){
+            if(board[i].isWhite() == isWhite){
+               currentValue += board[i].getValue();
+            }
          }
       }
+
       return currentValue;
     }
 
-    public boolean isCheckmate(boolean white){
+   /**
+    * getMoves
+    * @return all the possible moves for the current board
+    */
+    public List<Move> getMoves(){
+       return moves;
+    }
+
+   /**
+    * @return if the player with a specific color is in checkmate
+    * TODO: Improve and test
+    */
+    public boolean isCheckmate(boolean isWhite){
+       // If Current Player King has moves: Not Checkmate
+       for(Move m: moves){
+          ChessPiece p = board[m.getStart()];
+          if(p.getClass().toString().equals("King")){
+             if(p.isWhite() == isWhite){
+                return false;
+             }
+          }
+       }
+       // Therefore King has no moves
+
+       // If Opponent end move is King: Checkmate
+       for(Move m: moves){
+          ChessPiece p = board[m.getEnd()];
+          if(p.getClass().toString().equals("King")){
+             if(p.isWhite() != isWhite){
+                return true;
+             }
+          }
+       }
+
        return false;
     }
 

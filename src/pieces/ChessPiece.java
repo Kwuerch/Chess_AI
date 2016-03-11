@@ -64,6 +64,10 @@ public abstract class ChessPiece extends PieceValue{
 
    public abstract int getValue();
 
+   public boolean isWhite(){
+      return white;
+   }
+
    /*
    public String debugString(){
       String result = "Moves " + getClass().getName();
