@@ -2,6 +2,7 @@ package pieces;
 
 import board.Board;
 import board.Move;
+import board.BoardIterator;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,25 @@ public class Bishop extends ChessPiece{
    }
 
    /**
+    * determineMoves
+    * Go through the board and determine the possible moves
+    * @param : The current index of the piece
+    */
+   public void determineMoves(int index){ 
+      BoardIterator<ChessPiece> it = board.boardIterator(Board.UP_LEFT, index); 
+      super.movesGen(moves, it, index, true);
+
+      it = board.boardIterator(Board.UP_RIGHT, index);
+      super.movesGen(moves, it, index, true);
+
+      it = board.boardIterator(Board.DOWN_RIGHT, index);
+      super.movesGen(moves, it, index, true);
+
+      it = board.boardIterator(Board.DOWN_LEFT, index);
+      super.movesGen(moves, it, index, true);
+   }
+
+   /**
     * getValue
     * @return the value of the piece
     */
@@ -47,7 +67,7 @@ public class Bishop extends ChessPiece{
     */
    @Override
    public String toString(){
-      return " B ";
+      return "B";
    }
 	
 }

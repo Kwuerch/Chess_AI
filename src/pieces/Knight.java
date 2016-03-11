@@ -31,10 +31,10 @@ public class Knight extends ChessPiece {
 
    /**
     * determineMoves
-    * Determines the all the possible moves for this piece
+    * Add the possible moves to the List of Moves
     */
-   public void determineMoves(){
-
+   public void determineMoves(int index){
+      //TODO
    }
 
    /**
@@ -51,6 +51,6 @@ public class Knight extends ChessPiece {
     */
    @Override
    public String toString(){
-      return " N ";
+      return "N";
    }
 }

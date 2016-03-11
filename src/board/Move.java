@@ -9,19 +9,39 @@ import pieces.ChessPiece;
  * @version Program 7
  */
 public class Move{
-   private static int QUIET = 0;
-   private static int PAWN_DBL = 1;
-   private static int EN_PASSANT = 2;
-   private static int CASTLE = 3;
-   private static int PROMOTION = 4;
+   public static int QUIET = 0;
+   public static int PAWN_DBL = 1;
+   public static int EN_PASSANT = 2;
+   public static int CASTLE = 3;
+   public static int PROMOTION = 4;
 
    private ChessPiece cp;
    private int start;
    private int end;
    private int moveType;
 
-   public Move(ChessPiece cp, int start, int end, int moveType){
+   /**
+    * Move Constructor
+    * Sets the instance variables to the arguments sent in
+    */
+   public Move(int start, int end, int moveType){
+      this.start = start;
+      this.end = end;
+      this.moveType = moveType;
+   }
 
+   /**
+    * @return the index for the piece to go
+    */
+   public int getEnd(){
+      return end;
+   }
+
+   /**
+    * @return the index of the piece to move
+    */
+   public int getStart(){
+      return start;
    }
 
    public String toString(){

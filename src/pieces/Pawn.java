@@ -35,6 +35,14 @@ public class Pawn extends ChessPiece{
    }
 
    /**
+    * determineMoves
+    * Add the possible moves to the List of Moves
+    */
+   public void determineMoves(int index){
+      //TODO
+   }
+
+   /**
     * getValue
     * @return the value of the piece
     */
@@ -48,7 +56,6 @@ public class Pawn extends ChessPiece{
     */
    @Override
    public String toString(){
-      return " P ";
+      return "P"; 
    }
-	
 }

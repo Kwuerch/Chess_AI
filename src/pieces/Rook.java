@@ -31,7 +31,12 @@ public class Rook extends ChessPiece{
       return moves;
    }
 
-   public void determineMoves(ChessPiece[][] board, int row, int col){
+   /**
+    * determineMoves
+    * Add the possible moves to the List of Moves
+    */
+   public void determineMoves(int index){
+      //TODO
    }
 
    /**
@@ -48,6 +53,6 @@ public class Rook extends ChessPiece{
     */
    @Override
    public String toString(){
-      return " R ";
+      return "R";
    }
 }

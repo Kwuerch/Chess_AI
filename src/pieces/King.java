@@ -34,6 +34,14 @@ public class King extends ChessPiece{
    }
 
    /**
+    * determineMoves
+    * Add the possible moves to the List of Moves
+    */
+   public void determineMoves(int index){
+      //TODO
+   }
+
+   /**
     * getValue
     * @return the value of the piece
     */
@@ -47,7 +55,7 @@ public class King extends ChessPiece{
     */
    @Override
    public String toString(){
-      return " K ";
+      return "K";
    }
    
 }

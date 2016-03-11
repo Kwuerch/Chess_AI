@@ -1,11 +1,11 @@
 package board;
 
+import ai.BoardValue;
+import pieces.*;
 import java.lang.UnsupportedOperationException;
 import java.util.NoSuchElementException;
 import java.lang.Iterable;
 import java.util.Iterator;
-import pieces.ChessPiece;
-import ai.BoardValue;
 
 /**
  * ** Board Class **
@@ -30,7 +30,32 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     */
    public Board(){
       board = new ChessPiece[64];
+      setupBoard();
    }
+
+   /**
+    * setupBoard
+    * Add the correct pieces to the board
+    */
+   private void setupBoard(){
+      board[0] = new Bishop(this, true);
+      board[1] = new Bishop(this, true);
+   }
+
+   /**
+    * Move
+    *
+    * Puts the piece on the designated end spot and sets
+    * the start spot to null
+    *
+    * @param Move object denoting where to move the object
+    */
+   public void move(Move move){
+      ChessPiece p = board[move.getStart()];
+      board[move.getEnd()] = p;
+      board[move.getStart()] = null;
+   }
+
 
    /**
     * @return the value of the board
@@ -39,24 +64,52 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
       return -1;
     }
 
+    public boolean isCheckmate(boolean white){
+       return false;
+    }
+
    /**
     * @param int the desired direction of iteration
     * @return a board iterator that iterates through the direction specified
     */
-   public Iterator<ChessPiece> boardIterator(int direction, int index){
-      return new BoardIterator(direction, index);
+   public BoardIterator<ChessPiece> boardIterator(int direction, int index){
+      return new MyIterator(direction, index);
    }
+
    public Iterator<ChessPiece> iterator(){
       //return new Iterator(3, 0);
-      return new BoardIterator(3,0);
+      return new MyIterator(3,0);
    }
-   private class BoardIterator implements Iterator<ChessPiece>{
+
+   /**
+    * toString
+    * @return a String representation of the Board
+    */
+   public String toString(){
+      String result = "";
+
+      int min = 56;
+      while(min > -1){
+         for(int i = min; i < min + 8; i++){
+            if(board[i] == null){
+               result += " O";
+            }else{
+               result += " " +  board[i].toString();
+            }
+         }
+         result += "\n";
+         min -= 8;
+      }
+      return result;   
+   }
+
+   private class MyIterator extends BoardIterator<ChessPiece>{
       public int buffer;
       public int minIndex;
       public int maxIndex;
       public int index;
 
-      public BoardIterator(int direction, int index){
+      public MyIterator(int direction, int index){
          //this.direction = direction;
          if (direction == 0){
             buffer = 7;
@@ -84,36 +137,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
          }
          this.index = index;
       }
-      /*
-      switch(direction){
-         case 0:
-            buffer = 7;
-            break;
-         case 1:
-            buffer = 8;
-            break;
-         case 2:
-            buffer = 9;
-            break;
-         case 3:
-            buffer = 1;
-            break;
-         case 4:
-            buffer = -7;
-            break;
-         case 5:
-            buffer = -8;
-            break;
-         case 6:
-            buffer = -9;
-            break;
-         case 7:
-            buffer = -1;
-            break;
-         default:
-            buffer = 1;
-            break;
-      }*/
 
       /**
        * Determines whether there is another spot in the direction specified
@@ -145,6 +168,14 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
 
          index += buffer;
          return board[index];
+      }
+
+      /**
+       * getIndex
+       * @return the current index of the iterator
+       */
+      public int index(){
+         return index;
       }
       
       /**
