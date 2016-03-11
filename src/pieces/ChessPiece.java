@@ -33,7 +33,6 @@ public abstract class ChessPiece extends PieceValue{
          while(it.hasNext()){
             hitPiece = false;
             p = it.next();
-            System.out.println(p);
 
             if(p != null){
                hitPiece = true;
