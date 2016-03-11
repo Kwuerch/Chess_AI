@@ -15,14 +15,15 @@ import java.util.Iterator;
  * @version Program 7
  */
 public class Board extends BoardValue implements Iterable<ChessPiece>{
-   public static int UP_LEFT = 0;
-   public static int UP = 1;
-   public static int UP_RIGHT = 2;
-   public static int RIGHT = 3;
-   public static int DOWN_RIGHT = 4;
-   public static int DOWN = 5;
-   public static int DOWN_LEFT = 6;
-   public static int LEFT = 7;
+   public static final int UP_LEFT = 0;
+   public static final int UP = 1;
+   public static final int UP_RIGHT = 2;
+   public static final int RIGHT = 3;
+   public static final int DOWN_RIGHT = 4;
+   public static final int DOWN = 5;
+   public static final int DOWN_LEFT = 6;
+   public static final int LEFT = 7;
+   public static final int DEFAULT = 1024;
 
    public ChessPiece[] board;
    private int currentValue;
@@ -82,11 +83,18 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     * @return a board iterator that iterates through the direction specified
     */
    public BoardIterator<ChessPiece> boardIterator(int direction, int index){
+      System.out.println("Hell");
       return new MyIterator(direction, index);
    }
 
+
+   /**
+    * iterator
+    * @return a default iterator to go through each space
+    */
    public BoardIterator<ChessPiece> iterator(){
-      return new MyIterator(3,0);
+      System.out.println("E");
+      return new MyIterator();
    }
 
    /**
@@ -116,6 +124,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
       public int minIndex;
       public int maxIndex;
       public int index;
+      public boolean normal; // True if a normal iterator
 
       /**
        * Constructor of BoardIterator taking parameters for direction and index
@@ -123,29 +132,34 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
        * @param int the desired starting index of the iterator
        */
       public MyIterator(int direction, int index){
-         if (direction == 0){
-            buffer = 7;
-         }
-         else if (direction == 1){
-            buffer = 8;
-         }
-         else if (direction == 2){
-            buffer = 9;
-         }
-         else if (direction == 3){
-            buffer = 1;
-         }
-         else if (direction == 4){
-            buffer = -7;
-         }
-         else if (direction == 5){
-            buffer = -8;
-         }
-         else if (direction == 6){
-            buffer = -9;
-         }
-         else{ //direction == 7
-            buffer = -1;
+         normal = false;
+         switch(direction){
+            case UP_LEFT:
+               buffer = 7;
+               break;
+            case UP:
+               buffer = 8;
+               break;
+            case UP_RIGHT:
+               buffer = 9;
+               break;
+            case RIGHT:
+               buffer = 1;
+               break;
+            case DOWN_RIGHT:
+               buffer = -7;
+               break;
+            case DOWN:
+               buffer = -8;
+               break;
+            case DOWN_LEFT:
+               buffer = -9;
+               break;
+            case LEFT:
+               buffer = -1;
+               break;
+            default:
+               break;
          }
 
          this.index = index;
@@ -155,7 +169,9 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
       * Default BoardIterator constructor
       */
       public MyIterator(){
-         buffer = 3;
+         buffer = 1;
+         normal = true;
+         maxIndex = 63;
          index = 0;
       }
 
@@ -164,12 +180,22 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
        * @return boolean true if there is a next element
        */
       public boolean hasNext(){
+         if(normal){
+            System.out.println(index);
+            // If normal then index will only increase by one
+            if(index <= maxIndex){
+               return true;
+            }else{
+               return false;
+            }
+         }
+
+
          if (buffer < 0){ //buffer is negative
             if (index <= index + 8*buffer - 8*(index%buffer)){
                return true;
             }
-         }
-         else{ //Buffer is positive (buffer is never 0)
+         }else{ //Buffer is positive (buffer is never 0)
             if (index > buffer){
                return true;
             }
@@ -186,8 +212,10 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
          if (!hasNext()){
             throw new NoSuchElementException();
          }
+         
+         // Return the element we are currently on
          index += buffer;
-         return board[index];
+         return board[index - buffer];
       }
 
       /**

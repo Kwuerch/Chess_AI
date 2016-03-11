@@ -10,9 +10,11 @@ public class Driver{
       BoardIterator<ChessPiece> it = b.iterator();
       while(it.hasNext()){
          ChessPiece p = it.next();
-         p.determineMoves(it.index());
-         for(Move m: p.getMoves()){
-            System.out.println(m);
+         if(p != null){
+            p.determineMoves(it.index());
+            for(Move m: p.getMoves()){
+               System.out.println(m);
+            }
          }
       }
       System.out.println(b);
