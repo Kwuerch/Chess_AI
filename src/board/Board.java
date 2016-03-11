@@ -24,6 +24,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
    public static int DOWN_LEFT = 6;
    public static int LEFT = 7;
    public ChessPiece[] board;
+   private int currentValue;
 
    /**
     * Constructor for Board
@@ -60,8 +61,12 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
    /**
     * @return the value of the board
     */
-    public int getValue(){ //TODO: Implement getValue from Abstract Class
-      return -1;
+    public int getValue(){
+      for (int i = 0; i < board.length; i++){
+         if (board[i] != null){
+            currentValue+= board[i].getValue();
+         }
+      }
     }
 
     public boolean isCheckmate(boolean white){
@@ -77,7 +82,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
    }
 
    public Iterator<ChessPiece> iterator(){
-      //return new Iterator(3, 0);
       return new MyIterator(3,0);
    }
 
@@ -109,8 +113,12 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
       public int maxIndex;
       public int index;
 
+      /**
+       * Constructor of BoardIterator taking parameters for direction and index
+       * @param int the desired direction of iteration
+       * @param int the desired starting index of the iterator
+       */
       public MyIterator(int direction, int index){
-         //this.direction = direction;
          if (direction == 0){
             buffer = 7;
          }
@@ -135,7 +143,16 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
          else{ //direction == 7
             buffer = -1;
          }
+
          this.index = index;
+      }
+
+      /**
+      * Default BoardIterator constructor
+      */
+      public BoardIterator(){
+         buffer = 3;
+         index = 0;
       }
 
       /**
@@ -165,7 +182,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
          if (!hasNext()){
             throw new NoSuchElementException();
          }
-
          index += buffer;
          return board[index];
       }
