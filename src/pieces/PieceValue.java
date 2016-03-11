@@ -1,4 +1,6 @@
-package ai;
+package pieces;
+
+import ai.Value;
 
 /**
  *  ** PieceValue Class ** 

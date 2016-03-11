@@ -1,4 +1,6 @@
-package ai;
+package board;
+
+import ai.Value;
 
 /**
  *  ** BoardValue ** 
@@ -13,6 +15,13 @@ public abstract class BoardValue implements Value{
     * getValue
     *
     * @return the value of the board 
+    * @param : which player is current
+    */
+   public abstract int getValue(boolean isWhite);
+
+   /**
+    * getValue
+    * @return the value of the board for the white player
     */
    public abstract int getValue();
 }
