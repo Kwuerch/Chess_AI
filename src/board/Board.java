@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 import java.lang.Iterable;
 import java.util.Iterator;
 //import pieces.ChessPiece;
-import board.BoardValue;
+import ai.BoardValue;
 
 /**
  * ** Board Class **
@@ -36,7 +36,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
    /**
     * @return the value of the board
     */
-    public int getValue(){ //TODO: Implement getValue from Abstract Class
+    public int getValue(){
       for (int i = 0; i < board.length; i++){
          if (board[i] != null){
             currentValue+= board[i].getValue();
@@ -53,16 +53,19 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
    }
    public Iterator<ChessPiece> iterator(){
       //return new Iterator(3, 0);
-      return new BoardIterator(3,0);
+      return new BoardIterator();
    }
    private class BoardIterator implements Iterator<ChessPiece>{
       public int buffer;
       public int minIndex;
       public int maxIndex;
       public int index;
+      public BoardIterator(){ //Default BoardIterator
+         buffer = 3;
+         index = 0;
+      }
 
       public BoardIterator(int direction, int index){
-         //this.direction = direction;
          if (direction == 0){
             buffer = 7;
          }
@@ -87,10 +90,8 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
          else{ //direction == 7
             buffer = -1;
          }
-         this.index = index;
-      }
-      /*
-      switch(direction){
+         /*
+         switch(direction){
          case 0:
             buffer = 7;
             break;
@@ -119,6 +120,8 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
             buffer = 1;
             break;
       }*/
+         this.index = index;
+      }
 
       /**
        * Determines whether there is another spot in the direction specified
@@ -147,11 +150,10 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
          if (!hasNext()){
             throw new NoSuchElementException();
          }
-
          index += buffer;
          return board[index];
       }
-      
+
       /**
        * Removes and item from the iterator
        * @throws UnsupportedOperationException
