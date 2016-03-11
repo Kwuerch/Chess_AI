@@ -10,7 +10,7 @@ import java.util.Iterator;
  * @version Program 7
  */
 
-public abstract class BoardIterator<E> implements Iterator{
+public abstract class BoardIterator<E> implements Iterator<E>{
       /**
        * Determines whether there is another spot in the direction specified
        * @return boolean true if there is a next element

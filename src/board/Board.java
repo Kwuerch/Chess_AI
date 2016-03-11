@@ -23,6 +23,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
    public static int DOWN = 5;
    public static int DOWN_LEFT = 6;
    public static int LEFT = 7;
+
    public ChessPiece[] board;
    private int currentValue;
 
@@ -62,11 +63,14 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     * @return the value of the board
     */
     public int getValue(){
+      int currentValue = 0;
+
       for (int i = 0; i < board.length; i++){
          if (board[i] != null){
-            currentValue+= board[i].getValue();
+            currentValue += board[i].getValue();
          }
       }
+      return currentValue;
     }
 
     public boolean isCheckmate(boolean white){
