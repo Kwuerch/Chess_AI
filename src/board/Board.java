@@ -60,11 +60,19 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
       public int minIndex;
       public int maxIndex;
       public int index;
-      public BoardIterator(){ //Default BoardIterator
+
+      /**
+      * Default BoardIterator constructor
+      */
+      public BoardIterator(){
          buffer = 3;
          index = 0;
       }
-
+      /**
+       * Constructor of BoardIterator taking parameters for direction and index
+       * @param int the desired direction of iteration
+       * @param int the desired starting index of the iterator
+       */
       public BoardIterator(int direction, int index){
          if (direction == 0){
             buffer = 7;
