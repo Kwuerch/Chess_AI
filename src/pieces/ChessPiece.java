@@ -29,10 +29,11 @@ public abstract class ChessPiece extends PieceValue{
       boolean hitPiece;
       ChessPiece p;
 
-      if(multi){
+		if(multi){
          while(it.hasNext()){
             hitPiece = false;
             p = it.next();
+				System.out.println(p + " at " + it.index());
 
             if(p != null){
                hitPiece = true;
