@@ -74,8 +74,15 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     * Add the correct pieces to the board
     */
    private void setupBoard(){
-      board[0] = new Rook(this, true);
-      board[1] = new Rook(this, true);
+      board[0] = new Rook(this, false);
+      board[1] = new Bishop(this, false);
+      board[6] = new Bishop(this, false);
+      board[7] = new Rook(this, false);
+
+      board[56] = new Rook(this, true);
+      board[57] = new Bishop(this, true);
+      board[62] = new Bishop(this, true);
+      board[63] = new Rook(this, true);
    }
 
    /**
@@ -176,7 +183,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     * @return a board iterator that iterates through the direction specified
     */
    public BoardIterator<ChessPiece> boardIterator(int direction, int index){
-      System.out.println("Hell");
       return new MyIterator(direction, index);
    }
 
@@ -185,7 +191,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     * @return a default iterator to go through each space
     */
    public BoardIterator<ChessPiece> iterator(){
-      System.out.println("E");
       return new MyIterator();
    }
 
@@ -287,7 +292,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
        */
       public boolean hasNext(){
          if(normal){
-            System.out.println(index);
             // If normal then index will only increase by one
             if(index <= maxIndex){
                return true;
@@ -558,9 +562,10 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
             throw new NoSuchElementException();
          }
          
-         // Return the element we are currently on
+         // Return the next piece 
+         // Never returns the first item
          index += buffer;
-         return board[index - buffer];
+         return board[index];
       }
 
       /**
