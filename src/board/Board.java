@@ -74,15 +74,17 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     * Add the correct pieces to the board
     */
    private void setupBoard(){
-      board[0] = new Rook(this, false);
+      //board[0] = new Rook(this, false);
       board[1] = new Bishop(this, false);
+      board[4] = new King(this, false);
       board[6] = new Bishop(this, false);
-      board[7] = new Rook(this, false);
+      //board[7] = new Rook(this, false);
 
-      board[56] = new Rook(this, true);
+      //board[56] = new Rook(this, true);
       board[57] = new Bishop(this, true);
+      board[60] = new King(this, true);
       board[62] = new Bishop(this, true);
-      board[63] = new Rook(this, true);
+      //board[63] = new Rook(this, true);
    }
 
    /**
