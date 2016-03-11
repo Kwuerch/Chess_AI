@@ -1,6 +1,5 @@
 package board;
 
-import ai.BoardValue;
 import pieces.*;
 import java.util.List;
 import java.util.ArrayList;
