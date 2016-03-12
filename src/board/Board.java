@@ -312,7 +312,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
        * @return boolean true if there is a next element
        */
       public boolean hasNext(){
-			ChessPiece p = board[index + buffer];
+			ChessPiece p = board[index];
 
 			if (p == null){
 				return true;
