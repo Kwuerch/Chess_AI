@@ -44,7 +44,6 @@ public abstract class ChessPiece extends PieceValue{
                if(p.white != white){
                   moves.add(new Move(index, it.index(), Move.QUIET)); 
                }
-
                break;
             }
 
