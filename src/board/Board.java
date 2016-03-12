@@ -15,6 +15,15 @@ import java.util.Iterator;
  * @version Program 7
  */
 public class Board extends BoardValue implements Iterable<ChessPiece>{
+	public static final int UP_LEFT = 0;
+   public static final int UP = 1;
+   public static final int UP_RIGHT = 2;
+   public static final int RIGHT = 3;
+   public static final int DOWN_RIGHT = 4;
+   public static final int DOWN = 5;
+   public static final int DOWN_LEFT = 6;
+   public static final int LEFT = 7;
+
    private ChessPiece[] board;
    private List<Move> moves;
 	
@@ -22,7 +31,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     * Constructor for Board
     */
    public Board(){
-      board = new ChessPiece[100];
+      board = new ChessPiece[120];
       moves = new ArrayList<Move>();
       setupBoard();
       findMoves();
@@ -34,34 +43,44 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     */
    private void setupBoard(){
 		int buffer = 1;
-		for (int i = 0; i < 91; i+=10){
-			board[i] = new Invalid();
-		}
-		for (int i = 9; i < 100; i+=10){
-			board[i] = new Invalid();
-		}
+		// Invalids Left to right (bottom)
 		for (int i = 1; i < 9; i++){
 			board[i] = new Invalid();
 		}
-		for (int i = 91; i < 99; i++){
+		for (int i = 11; i < 19; i++){
+			board[i] = new Invalid();
+		}
+		// Invalids left to right (top)
+		for (int i = 101; i < 109; i++){
+			board[i] = new Invalid();
+		}
+		for (int i = 111; i < 119; i++){
+			board[i] = new Invalid();
+		}
+		// Invalids bottom to top (left)
+		for (int i = 0; i < 111; i+=10){
+			board[i] = new Invalid();
+		}
+		//Invalids bottom to top (right)
+		for (int i = 9; i < 120; i+=10){
 			board[i] = new Invalid();
 		}
       /*
-      board[11] = new Rook(this, false);
-      board[12] = new Bishop(this, false);
-      board[17] = new Bishop(this, false);
-      board[18] = new Rook(this, false);
+      board[21] = new Rook(this, false);
+      board[22] = new Bishop(this, false);
+      board[27] = new Bishop(this, false);
+      board[28] = new Rook(this, false);
 
-      board[81] = new Rook(this, true);
-      board[82] = new Bishop(this, true);
-      board[87] = new Bishop(this, true);
-      board[88] = new Rook(this, true);
+      board[91] = new Rook(this, true);
+      board[92] = new Bishop(this, true);
+      board[97] = new Bishop(this, true);
+      board[98] = new Rook(this, true);
       */
-      board[73] = new King(this, true);
-      board[75] = new King(this, false);
-      board[25] = new Queen(this, true);
-      board[62] = new Pawn(this, true);
-      board[32] = new Pawn(this, false, true);
+      board[83] = new King(this, true);
+      board[85] = new King(this, false);
+      board[35] = new Queen(this, true);
+      board[72] = new Pawn(this, true);
+      board[42] = new Pawn(this, false, true);
    }
 
    /**
@@ -205,7 +224,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
          result += "\n";
          min -= 8;
       }
-
       return result;   
    }
 }

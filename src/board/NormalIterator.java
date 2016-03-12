@@ -11,8 +11,8 @@ import java.util.NoSuchElementException;
  */
 public class NormalIterator extends BoardIterator<ChessPiece>{
 	private int index;
-	private int min = 11;
-	private int max = 88;
+	private int min = 21;
+	private int max = 98;
 	private ChessPiece[] board;
 	
 	/**
