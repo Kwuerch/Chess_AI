@@ -33,7 +33,6 @@ public abstract class ChessPiece extends PieceValue{
          while(it.hasNext()){
             hitPiece = false;
             p = it.next();
-				System.out.println(p + " at " + it.index());
 
             if(p != null){
                hitPiece = true;
@@ -71,6 +70,8 @@ public abstract class ChessPiece extends PieceValue{
    public boolean isWhite(){
       return white;
    }
+
+   public abstract String toString();
 
    /*
    public String debugString(){
