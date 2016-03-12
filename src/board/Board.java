@@ -225,7 +225,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
        * @return boolean true if there is a next element
        */
       public boolean hasNext(){
-			if (index <=  max){
+			if (index <= max){
 				return true;
 			}	
 			return false;
