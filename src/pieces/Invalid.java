@@ -52,5 +52,13 @@ public class Invalid extends ChessPiece{
    public int getValue(){
       throw new UnsupportedOperationException();
    }
+	
+	/**
+	 * toString
+	 * @return String representation of the piece
+	 */
+	public String toString(){
+		return "I";
+	}
 
 }

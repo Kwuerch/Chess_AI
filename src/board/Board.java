@@ -27,13 +27,12 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
 
    private ChessPiece[] board;
    private List<Move> moves;
-   private int currentValue;
 	
   /**
     * Constructor for Board
     */
    public Board(){
-      board = new ChessPiece[64];
+      board = new ChessPiece[100];
       moves = new ArrayList<Move>();
       setupBoard();
       findMoves();
@@ -44,15 +43,28 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     * Add the correct pieces to the board
     */
    private void setupBoard(){
-      board[0] = new Rook(this, false);
-      board[1] = new Bishop(this, false);
-      board[6] = new Bishop(this, false);
-      board[7] = new Rook(this, false);
+		int buffer = 1;
+		for (int i = 0; i < 91; i+=10){
+			board[i] = new Invalid();
+		}
+		for (int i = 9; i < 100; i+=10){
+			board[i] = new Invalid();
+		}
+		for (int i = 1; i < 9; i++){
+			board[i] = new Invalid();
+		}
+		for (int i = 91; i < 99; i++){
+			board[i] = new Invalid();
+		}
+      board[11] = new Rook(this, false);
+      board[12] = new Bishop(this, false);
+      board[17] = new Bishop(this, false);
+      board[18] = new Rook(this, false);
 
-      board[56] = new Rook(this, true);
-      board[57] = new Bishop(this, true);
-      board[62] = new Bishop(this, true);
-      board[63] = new Rook(this, true);
+      board[81] = new Rook(this, true);
+      board[82] = new Bishop(this, true);
+      board[87] = new Bishop(this, true);
+      board[88] = new Rook(this, true);
    }
 
    /**
@@ -60,19 +72,19 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     * Adds the moves of all pieces of the current board 
     */
    private void findMoves(){
-      for(int i = 0; i < board.length; i++){
-         ChessPiece p = board[i];
-         if(p != null){
-            p.determineMoves(i);
-            moves.addAll(p.getMoves());
-         }
-      }
+		BoardIterator<ChessPiece> it = iterator();
+		while (it.hasNext()){
+			ChessPiece p = it.next();
+			if(p != null){
+				p.determineMoves(it.index() - 1);
+				moves.addAll(p.getMoves());
+			}
+		}
    }
 
    /**
     * Move
     *
-
     * Puts the piece on the designated end spot and sets
     * the start spot to null
     *
@@ -162,7 +174,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     * @return a default iterator to go through each space
     */
    public BoardIterator<ChessPiece> iterator(){
-      return new MyIterator();
+      return new NormalIterator();
    }
 
    /**
@@ -170,27 +182,36 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     * @return a String representation of the Board
     */
    public String toString(){
-      String result = "";
+		String result = "";
+		int min = 56;
+		int index = 0;
 
-      int min = 56;
-      while(min > -1){
+		ChessPiece[] array = new ChessPiece[64];
+		BoardIterator<ChessPiece> it = iterator();
+
+		while (it.hasNext()){
+			array[index++] = it.next();	
+		}
+
+		while(min > -1){
          for(int i = min; i < min + 8; i++){
-            if(board[i] == null){
+            if(array[i] == null){
                result += " O";
             }else{
-               result += " " +  board[i].toString();
+               result += " " +  array[i].toString();
             }
          }
          result += "\n";
          min -= 8;
       }
+
       return result;   
    }
 
 	private class NormalIterator extends BoardIterator<ChessPiece>{
 		private int index;
-		private static int min = 11;
-		private static int max = 88;
+		private int min = 11;
+		private int max = 88;
 		
 		/**
 		 * Constructor for NormalIterator
@@ -207,22 +228,22 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
 			if (index <=  max){
 				return true;
 			}	
+			return false;
 		}
 
       /**
        * Gets the next chesspiece in the iterator and adds to iterator index
        * @return the current ChessPiece
        */
-      public E next(){
+      public ChessPiece next(){
 			if (!hasNext()){
-				return false;
+				throw new NoSuchElementException();
 			}
 			if (index%10 == 8){
-				index += 2;
-				return board[index - 2];
+				index += 3;
+				return board[index - 3];
 			}else{
-				index ++;
-				return board[index - 1];
+				return board[index++];
 			}
 		}
 
@@ -231,7 +252,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
        * @throws UnsupportedOperationException
        */
       public void remove(){
-
+			throw new UnsupportedOperationException();
 		}
 
       /**
@@ -254,7 +275,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
        * @param int the desired starting index of the iterator
        */
       public MyIterator(int direction, int index){
-         normal = false;
          switch(direction){
             case UP_LEFT:
                buffer = 9;
@@ -279,8 +299,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
                break;
             case LEFT:
                buffer = -1;
-               break;
-            default:
                break;
          }
          this.index = index;
