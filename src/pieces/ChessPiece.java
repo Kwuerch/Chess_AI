@@ -33,7 +33,6 @@ public abstract class ChessPiece extends PieceValue{
          while(it.hasNext()){
             hitPiece = false;
             p = it.next();
-				System.out.println(p + " at " + it.index());
 
             if(p != null){
                hitPiece = true;
@@ -55,7 +54,7 @@ public abstract class ChessPiece extends PieceValue{
          if(it.hasNext()){
             p = it.next();
             // Only add a move if the piece is a different color
-            if(p.white != white){
+            if(p == null || p.white != white){
                moves.add(new Move(index, it.index(), Move.QUIET)); 
             }
          }
@@ -71,6 +70,8 @@ public abstract class ChessPiece extends PieceValue{
    public boolean isWhite(){
       return white;
    }
+
+   public abstract String toString();
 
    /*
    public String debugString(){

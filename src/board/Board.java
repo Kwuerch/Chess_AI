@@ -93,6 +93,9 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
    public void move(Move move){
       ChessPiece p = board[move.getStart()];
       board[move.getEnd()] = p;
+      if(p.toString().equals("P")){ // If piece is a pawn
+         ((Pawn)p).madeMove();
+      }
       board[move.getStart()] = null;
    }
 
@@ -116,7 +119,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
 
       for (int i = 0; i < board.length; i++){
          // Kings have infinite value, do no consider in pointage
-         if(board[i] != null && !board[i].getClass().toString().equals("King")){
+         if(board[i] != null && !board[i].toString().equals("K")){ // If a King
             if(board[i].isWhite() == isWhite){
                currentValue += board[i].getValue();
             }
@@ -141,7 +144,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
        // If Current Player King has moves: Not Checkmate
        for(Move m: moves){
           ChessPiece p = board[m.getStart()];
-          if(p.getClass().toString().equals("King")){
+          if(p.toString().equals("K")){ // If a king
              if(p.isWhite() == isWhite){
                 return false;
              }
@@ -152,7 +155,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
        // If Opponent end move is King: Checkmate
        for(Move m: moves){
           ChessPiece p = board[m.getEnd()];
-          if(p.getClass().toString().equals("King")){
+          if(p.toString().equals("K")){ // If a King
              if(p.isWhite() != isWhite){
                 return true;
              }
@@ -313,9 +316,10 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
 
 			if (p == null){
 				return true;
-			}else if(!p.getClass().toString().equals("Invalid")){
+			}else if(!p.toString().equals("I")){ // If piece is not invalid
 				return true;
 			}
+
 			return false;	
       }
 
@@ -328,8 +332,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
             throw new NoSuchElementException();
          }
          
-         // Return the next piece 
-         // Never returns the first item
          index += buffer;
          return board[index];
       }
