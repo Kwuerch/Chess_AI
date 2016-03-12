@@ -94,7 +94,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
       ChessPiece p = board[move.getStart()];
       board[move.getEnd()] = p;
       if(p.getClass().toString().equals("Pawn")){
-         p.madeMove();
+         ((Pawn)p).madeMove();
       }
       board[move.getStart()] = null;
    }

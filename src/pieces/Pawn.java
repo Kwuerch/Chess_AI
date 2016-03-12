@@ -1,6 +1,7 @@
 package pieces;
 
 import board.Board;
+import board.BoardIterator;
 import board.Move;
 import java.util.ArrayList;
 import java.util.List;
