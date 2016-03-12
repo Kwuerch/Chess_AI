@@ -46,6 +46,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
 		for (int i = 91; i < 99; i++){
 			board[i] = new Invalid();
 		}
+      /*
       board[11] = new Rook(this, false);
       board[12] = new Bishop(this, false);
       board[17] = new Bishop(this, false);
@@ -55,6 +56,12 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
       board[82] = new Bishop(this, true);
       board[87] = new Bishop(this, true);
       board[88] = new Rook(this, true);
+      */
+      board[73] = new King(this, true);
+      board[75] = new King(this, false);
+      board[25] = new Queen(this, true);
+      board[62] = new Pawn(this, true);
+      board[32] = new Pawn(this, false, true);
    }
 
    /**
@@ -67,7 +74,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
 			int index = it.index();
 			ChessPiece p = it.next();
 			if(p != null){
-				System.out.println(index);
 				p.determineMoves(index);
 				moves.addAll(p.getMoves());
 			}

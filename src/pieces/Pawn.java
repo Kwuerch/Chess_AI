@@ -17,12 +17,28 @@ public class Pawn extends ChessPiece{
 	boolean madeMove;
    List<Move> moves;
    Board board;
-	
-	public Pawn(Board board, boolean madeMove, boolean white) {
+
+   /**
+    * Constructor to take in if move has been made
+    */
+	public Pawn(Board board, boolean white, boolean madeMove) {
 		super(white);
 		
       this.board = board;
 		this.madeMove = madeMove;
+      
+      moves = new ArrayList<Move>();
+	}
+
+  
+   /**
+    * Constructor to assume no move has been made
+    */
+	public Pawn(Board board, boolean white) {
+		super(white);
+		
+      this.board = board;
+		this.madeMove = false;
       
       moves = new ArrayList<Move>();
 	}
@@ -40,14 +56,27 @@ public class Pawn extends ChessPiece{
     * Add the possible moves to the List of Moves
     */
    public void determineMoves(int index){
-      BoardIterator<ChessPiece> it = board.boardIterator(Board.UP_LEFT, index); 
-      movesGen(it, index, true);
+      // If white moves go upward
+      if(isWhite()){
+         BoardIterator<ChessPiece> it = board.boardIterator(Board.UP_LEFT, index); 
+         movesGen(it, index, true);
 
-      it = board.boardIterator(Board.UP, index); 
-      movesGen(it, index, false);
+         it = board.boardIterator(Board.UP, index); 
+         movesGen(it, index, false);
 
-      it = board.boardIterator(Board.UP_RIGHT, index); 
-      movesGen(it, index, true);
+         it = board.boardIterator(Board.UP_RIGHT, index); 
+         movesGen(it, index, true);
+      }else{
+         BoardIterator<ChessPiece> it = board.boardIterator(Board.DOWN_LEFT, index); 
+         movesGen(it, index, true);
+
+         it = board.boardIterator(Board.DOWN, index); 
+         movesGen(it, index, false);
+
+         it = board.boardIterator(Board.DOWN_RIGHT, index); 
+         movesGen(it, index, true);
+
+      }
    }
 
    /**
@@ -60,64 +89,52 @@ public class Pawn extends ChessPiece{
       boolean hitPiece;
       ChessPiece p;
 
+      //TODO Add Diagonal Promotion
+      
       if(it.hasNext()){
          p = it.next();
 
          // Add Diagonal Attacks
          if(diag){
-            if(diag && p != null && p.isWhite() != isWhite()){
-               moves.add(new Move(index, it.index(), Move.QUIET)); 
-            }
-            return;
-         }
-
-
-         // Add Singal and Double Pawn Straight Moves
-         if(madeMove){
-            if(p != null){
-               if(p.isWhite() != isWhite()){
-                  moves.add(new Move(index, it.index(), Move.QUIET)); 
-               }
-            }else{
-               moves.add(new Move(index, it.index(), Move.QUIET));
-            }
-         }else{
-            if(p == null && it.hasNext()){
-               p = it.next();
-               if(p != null){
-                  if(p.isWhite() != isWhite()){
-                     moves.add(new Move(index, it.index(), Move.PAWN_DBL));
+            if(p != null && p.isWhite() != isWhite()){
+               // Check if can take piece diagonally, and possibly promote diagonally
+               if(!it.hasNext()){
+                  BoardIterator<ChessPiece> straigtIt = board.boardIterator(Board.UP, index);
+                  if(straigtIt.hasNext()){
+                     moves.add(new Move(index, it.index(), Move.PROMOTION));
                   }
                }else{
-                  moves.add(new Move(index, it.index(), Move.PAWN_DBL));
+                  moves.add(new Move(index, it.index(), Move.QUIET)); 
+               }
+            }
+            return;
+         }else{
+            // Add Promotion in Straigh Direction
+            if(p == null && !it.hasNext()){
+               moves.add(new Move(index, it.index(), Move.PROMOTION));
+               return;
+            }
+         }
+
+
+         // Add Single and Double Pawn Straight Moves
+         if(madeMove){
+            if(p == null){
+               moves.add(new Move(index, it.index(), Move.QUIET)); 
+            }
+         }else{
+            if(p == null){
+               moves.add(new Move(index, it.index(), Move.QUIET));
+               if(it.hasNext()){
+                  p = it.next();
+                  if(p == null){
+                     moves.add(new Move(index, it.index(), Move.PAWN_DBL));
+                  }
                }
             }
          }
 
       }
-
-      while(it.hasNext()){
-         hitPiece = false;
-         p = it.next();
-         System.out.println(p + " at " + it.index());
-
-         if(p != null){
-            hitPiece = true;
-         }
-
-         // Stop Iteration if run into piece
-         if(hitPiece){
-            // Only add a move if the piece is a different color
-            if(p.isWhite() != isWhite()){
-               moves.add(new Move(index, it.index(), Move.QUIET)); 
-            }
-
-            break;
-         }
-
-         moves.add(new Move(index, it.index(), Move.QUIET)); 
-      }
-
    }
    /**
     * getValue
