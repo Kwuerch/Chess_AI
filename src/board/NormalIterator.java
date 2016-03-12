@@ -1,8 +1,14 @@
 package board;
-
 import pieces.*;
 import java.lang.UnsupportedOperationException;
 import java.util.NoSuchElementException;
+/**
+ * ** Class NormalIterator **
+ * Iterates normally through the entire chess board and finds Chesspieces
+ * 
+ * @author Kyle Wuerch, Sean Wallace
+ * @version Program 7
+ */
 public class NormalIterator extends BoardIterator<ChessPiece>{
 	private int index;
 	private int min = 11;

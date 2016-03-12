@@ -4,6 +4,13 @@ import pieces.*;
 import java.lang.UnsupportedOperationException;
 import java.util.NoSuchElementException;
 
+/**
+ * ** DirectionalIterator Class **
+ * Iterates through board in direction specified and finds ChessPieces
+ *
+ * @author Kyle Wuerch, Sean Wallace
+ * @version Program 7 
+ */
 public class DirectionalIterator extends BoardIterator<ChessPiece>{
 	public static final int UP_LEFT = 0;
    public static final int UP = 1;
@@ -19,11 +26,12 @@ public class DirectionalIterator extends BoardIterator<ChessPiece>{
 	private ChessPiece[] board;
 
 	/**
-	 * Constructor of BoardIterator taking parameters for direction and index
+	 * Constructor of Directional taking parameters for board, direction and index
+	 * @param ChessPiece[] the current board to iterate over
 	 * @param int the desired direction of iteration
 	 * @param int the desired starting index of the iterator
 	 */
-	public DirectionalIterator(int direction, int index, ChessPiece[] board){
+	public DirectionalIterator(ChessPiece[] board, int direction, int index){
 		switch(direction){
 			case UP_LEFT:
 				buffer = 9;

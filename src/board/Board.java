@@ -161,7 +161,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     * @return a board iterator that iterates through the direction specified
     */
    public BoardIterator<ChessPiece> boardIterator(int direction, int index){
-      return new DirectionalIterator(direction, index, board);
+      return new DirectionalIterator(board, direction, index);
    }
 
    /**
