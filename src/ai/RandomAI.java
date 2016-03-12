@@ -16,7 +16,7 @@ public class RandomAI extends AI{
 	// While(random piece's random iterator !hasNext())
 	/**
 	 * Inefficient random movement generation methodology.
-	 * 1. Pick a random piece
+	 * 1. Get List of possible moves
 	 * 		Default Iterator, next to a random location until !null
 	 * 2. Pick a random corresponding iterator
 	 * 		Dependant on piece found, pick random directional iterator

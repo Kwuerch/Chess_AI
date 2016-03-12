@@ -3,28 +3,18 @@ package board;
 import pieces.*;
 import java.util.List;
 import java.util.ArrayList;
-import java.lang.UnsupportedOperationException;
-import java.util.NoSuchElementException;
 import java.lang.Iterable;
 import java.util.Iterator;
 
 /**
  * ** Board Class **
  * Represents the chess board, implements iterator and finds ChessPieces.
+ * Note: White is always the bottom starting at index 11.
  *
  * @author Kyle Wuerch, Sean Wallace
  * @version Program 7
  */
 public class Board extends BoardValue implements Iterable<ChessPiece>{
-   public static final int UP_LEFT = 0;
-   public static final int UP = 1;
-   public static final int UP_RIGHT = 2;
-   public static final int RIGHT = 3;
-   public static final int DOWN_RIGHT = 4;
-   public static final int DOWN = 5;
-   public static final int DOWN_LEFT = 6;
-   public static final int LEFT = 7;
-
    private ChessPiece[] board;
    private List<Move> moves;
 	
@@ -177,7 +167,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     * @return a board iterator that iterates through the direction specified
     */
    public BoardIterator<ChessPiece> boardIterator(int direction, int index){
-      return new MyIterator(direction, index);
+      return new DirectionalIterator(direction, index, board);
    }
 
    /**
@@ -185,7 +175,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     * @return a default iterator to go through each space
     */
    public BoardIterator<ChessPiece> iterator(){
-      return new NormalIterator();
+      return new NormalIterator(board);
    }
 
    /**
@@ -217,147 +207,5 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
       }
 
       return result;   
-   }
-
-	private class NormalIterator extends BoardIterator<ChessPiece>{
-		private int index;
-		private int min = 11;
-		private int max = 88;
-		
-		/**
-		 * Constructor for NormalIterator
-		 */
-		public NormalIterator(){
-			index = min;
-		}
-
-		/**
-       * Determines whether there is another spot in the direction specified
-       * @return boolean true if there is a next element
-       */
-      public boolean hasNext(){
-			if (index <= max){
-				return true;
-			}	
-			return false;
-		}
-
-      /**
-       * Gets the next chesspiece in the iterator and adds to iterator index
-       * @return the current ChessPiece
-       */
-      public ChessPiece next(){
-			if (!hasNext()){
-				throw new NoSuchElementException();
-			}
-			if (index%10 == 8){
-				index += 3;
-				return board[index - 3];
-			}else{
-				return board[index++];
-			}
-		}
-
-      /**
-       * Removes and item from the iterator
-       * @throws UnsupportedOperationException
-       */
-      public void remove(){
-			throw new UnsupportedOperationException();
-		}
-
-      /**
-       * getIndex
-       * @return the current index of the iterator
-       */
-      public int index(){
-			return index;
-		}
-
-		
-	}
-   private class MyIterator extends BoardIterator<ChessPiece>{
-      private int buffer;
-      private int index;
-
-      /**
-       * Constructor of BoardIterator taking parameters for direction and index
-       * @param int the desired direction of iteration
-       * @param int the desired starting index of the iterator
-       */
-      public MyIterator(int direction, int index){
-         switch(direction){
-            case UP_LEFT:
-               buffer = 9;
-               break;
-            case UP:
-               buffer = 10;
-               break;
-            case UP_RIGHT:
-               buffer = 11;
-               break;
-            case RIGHT:
-               buffer = 1;
-               break;
-            case DOWN_RIGHT:
-               buffer = -9;
-               break;
-            case DOWN:
-               buffer = -10;
-               break;
-            case DOWN_LEFT:
-               buffer = -11;
-               break;
-            case LEFT:
-               buffer = -1;
-               break;
-         }
-         this.index = index;
-      }
-
-      /**
-       * Determines whether there is another spot in the direction specified
-       * @return boolean true if there is a next element
-       */
-      public boolean hasNext(){
-			ChessPiece p = board[index + buffer];
-			
-			if (p == null){
-				return true;
-			}else if(!p.toString().equals("I")){ // If piece is not invalid
-				return true;
-			}
-
-			return false;	
-      }
-
-      /**
-       * Gets the next chesspiece in the iterator and adds to iterator index
-       * @return the next ChessPiece
-       */
-      public ChessPiece next(){
-         if (!hasNext()){
-            throw new NoSuchElementException();
-         }
-         
-         index += buffer;
-         return board[index];
-      }
-
-      /**
-       * getIndex
-       * @return the current index of the iterator
-       */
-      public int index(){
-         return index;
-      }
-      
-      /**
-       * Removes and item from the iterator
-       * @throws UnsupportedOperationException
-       */
-      public void remove(){
-         throw new UnsupportedOperationException();
-      }
    }
 }
