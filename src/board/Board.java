@@ -72,6 +72,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
    /**
     * Move
     *
+
     * Puts the piece on the designated end spot and sets
     * the start spot to null
     *
@@ -186,12 +187,66 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
       return result;   
    }
 
+	private class NormalIterator extends BoardIterator<ChessPiece>{
+		private int index;
+		private static int min = 11;
+		private static int max = 88;
+		
+		/**
+		 * Constructor for NormalIterator
+		 */
+		public NormalIterator(){
+			index = min;
+		}
+
+		/**
+       * Determines whether there is another spot in the direction specified
+       * @return boolean true if there is a next element
+       */
+      public boolean hasNext(){
+			if (index <=  max){
+				return true;
+			}	
+		}
+
+      /**
+       * Gets the next chesspiece in the iterator and adds to iterator index
+       * @return the current ChessPiece
+       */
+      public E next(){
+			if (!hasNext()){
+				return false;
+			}
+			if (index%10 == 8){
+				index += 2;
+				return board[index - 2];
+			}else{
+				index ++;
+				return board[index - 1];
+			}
+		}
+
+      /**
+       * Removes and item from the iterator
+       * @throws UnsupportedOperationException
+       */
+      public void remove(){
+
+		}
+
+      /**
+       * getIndex
+       * @return the current index of the iterator
+       */
+      public int index(){
+			return index;
+		}
+
+		
+	}
    private class MyIterator extends BoardIterator<ChessPiece>{
-      public int buffer;
-      public int minIndex;
-      public int maxIndex;
-      public int index;
-      public boolean normal; // True if a normal iterator
+      private int buffer;
+      private int index;
 
       /**
        * Constructor of BoardIterator taking parameters for direction and index
@@ -202,25 +257,25 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
          normal = false;
          switch(direction){
             case UP_LEFT:
-               buffer = 7;
+               buffer = 9;
                break;
             case UP:
-               buffer = 8;
+               buffer = 10;
                break;
             case UP_RIGHT:
-               buffer = 9;
+               buffer = 11;
                break;
             case RIGHT:
                buffer = 1;
                break;
             case DOWN_RIGHT:
-               buffer = -7;
+               buffer = -9;
                break;
             case DOWN:
-               buffer = -8;
+               buffer = -10;
                break;
             case DOWN_LEFT:
-               buffer = -9;
+               buffer = -11;
                break;
             case LEFT:
                buffer = -1;
@@ -232,46 +287,16 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
       }
 
       /**
-      * Default BoardIterator constructor
-      */
-      public MyIterator(){
-         buffer = 1;
-         normal = true;
-         maxIndex = 63;
-         index = 0;
-      }
-		
-		/**
-		 * Determines if an integer is contains within an array.
-		 * Used extensively within hasNext().
-		 * @param int the integer to search for
-		 * @param int[] an array that might contain the integer
-		 */
-		private boolean containsNum(int num, int[]array){
-			for (int i = 0; i < array.length; i++){
-				if (num == array[i]){
-					System.out.println("ContainsNum returned true");
-					return true;
-					}
-				}
-				return false;
-				}
-
-      /**
        * Determines whether there is another spot in the direction specified
        * @return boolean true if there is a next element
        */
       public boolean hasNext(){
-         if(normal){
-            // If normal then index will only increase by one
-            if(index <= maxIndex){
-               return true;
-            }else{
-               //return false;
-            }
-         }
-			if (){
+			ChessPiece p = board[index + buffer];
 
+			if (p == null){
+				return true;
+			}else if(!p.getClass().toString().equals("Invalid")){
+				return true;
 			}
 			return false;	
       }
