@@ -13,6 +13,11 @@ public class Driver{
          System.out.println(m);
       }
 
+<<<<<<< HEAD
       System.out.println(b);
+=======
+
+      //System.out.println(b);
+>>>>>>> 39013a98c90c31da9d5162f554417184c5590119
    }
 }
