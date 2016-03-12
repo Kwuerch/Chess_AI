@@ -74,9 +74,11 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
    private void findMoves(){
 		BoardIterator<ChessPiece> it = iterator();
 		while (it.hasNext()){
+			int index = it.index();
 			ChessPiece p = it.next();
 			if(p != null){
-				p.determineMoves(it.index() - 1);
+				System.out.println(index);
+				p.determineMoves(index);
 				moves.addAll(p.getMoves());
 			}
 		}
@@ -312,8 +314,8 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
        * @return boolean true if there is a next element
        */
       public boolean hasNext(){
-			ChessPiece p = board[index];
-
+			ChessPiece p = board[index + buffer];
+			
 			if (p == null){
 				return true;
 			}else if(!p.toString().equals("I")){ // If piece is not invalid
