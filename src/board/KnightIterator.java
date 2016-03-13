@@ -87,5 +87,4 @@ public class KnightIterator extends BoardIterator<ChessPiece>{
 	public void remove(){
 		throw new UnsupportedOperationException();
 	}
-
 }
