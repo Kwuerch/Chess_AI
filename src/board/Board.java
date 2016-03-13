@@ -37,6 +37,44 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
    }
 
    /**
+    * Constructor for new Board from previous board
+    */
+   public Board(Board oldBoard){
+      board = new ChessPiece[120];
+      moves = new ArrayList<Move>();
+      ChessPiece[] oldBoardArr = oldBoard.getBoardArray();
+      for(int i = 0; i < oldBoardArr.length; i++){
+         if(oldBoardArr[i] != null){
+            String type = oldBoardArr[i].getClass().toString();
+            if(type.equals("class pieces.Invalid")){
+               board[i] = new Invalid();
+            }else if(type.equals("class pieces.Pawn")){
+               Pawn p = (Pawn)oldBoardArr[i];
+               board[i] = new Pawn(this, p.isWhite(), p.getMadeMove());
+            }else if(type.equals("class pieces.Rook")){
+               Rook r = (Rook)oldBoardArr[i];
+               board[i] = new Rook(this, r.isWhite());
+            }else if(type.equals("class pieces.Bishop")){
+               Bishop b = (Bishop)oldBoardArr[i];
+               board[i] = new Bishop(this, b.isWhite());
+            }else if(type.equals("class pieces.Knight")){
+               Knight k = (Knight)oldBoardArr[i];
+               board[i] = new Knight(this, k.isWhite());
+            }else if(type.equals("class pieces.Queen")){
+               Queen q = (Queen)oldBoardArr[i];
+               board[i] = new Queen(this, q.isWhite());
+            }else{ // Piece is King
+               System.out.println(type);
+               King k = (King)oldBoardArr[i];
+               board[i] = new King(this, k.isWhite());
+            }
+         }else{
+            board[i] = null;
+         }
+      }
+   }
+
+   /**
     * setupBoard
     * Add the correct pieces to the board
     */
@@ -65,62 +103,41 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
 			board[i] = new Invalid();
 		}
 
+      // White 
+      board[91] = new Rook(this, true);
+      board[98] = new Rook(this, true);
 
-      // Black
-      board[91] = new Rook(this, false);
-      board[98] = new Rook(this, false);
+      board[92] = new Knight(this, true);
+      board[97] = new Knight(this, true);
 
-      board[92] = new Knight(this, false);
-      board[97] = new Knight(this, false);
+      board[93] = new Bishop(this, true);
+      board[96] = new Bishop(this, true);
 
-      board[93] = new Bishop(this, false);
-      board[96] = new Bishop(this, false);
-
-      board[94] = new Queen(this, false);
-      board[95] = new King(this, false);
+      board[94] = new Queen(this, true);
+      board[95] = new King(this, true);
 
       for(int i = 81; i < 89; i++){
-         board[i] = new Pawn(this, false);
+         board[i] = new Pawn(this, true);
       }
 
       
       // White
-      board[21] = new Rook(this, true);
-      board[28] = new Rook(this, true);
-
-      board[22] = new Knight(this, true);
-      board[27] = new Knight(this, true);
-
-      board[23] = new Bishop(this, true);
-      board[26] = new Bishop(this, true);
-
-      board[24] = new Queen(this, true);
-      board[25] = new King(this, true);
-
-      for(int i = 31; i < 39; i++){
-         board[i] = new Pawn(this, true);
-      }
-      
-      /*
       board[21] = new Rook(this, false);
-      board[22] = new Bishop(this, false);
-      board[27] = new Bishop(this, false);
       board[28] = new Rook(this, false);
 
-      board[91] = new Rook(this, true);
-      board[92] = new Bishop(this, true);
-      board[97] = new Bishop(this, true);
-      board[98] = new Rook(this, true);
-      */
-      /*
-      board[83] = new King(this, true);
-      board[85] = new King(this, false);
-      board[35] = new Queen(this, true);
-      board[72] = new Pawn(this, true);
-      board[42] = new Pawn(this, false, true);
-      board[52] = new Knight(this, true);
-      board[73] = new Knight(this, false);
-      */
+      board[22] = new Knight(this, false);
+      board[27] = new Knight(this, false);
+
+      board[23] = new Bishop(this, false);
+      board[26] = new Bishop(this, false);
+
+      board[24] = new Queen(this, false);
+      board[25] = new King(this, false);
+
+      for(int i = 31; i < 39; i++){
+         board[i] = new Pawn(this, false);
+      }
+      
    }
 
    /**
@@ -135,9 +152,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
 			ChessPiece p = it.next();
 			if(p != null && p.isWhite() == isWhite){
 				p.determineMoves(index);
-            for(Move m: p.getMoves()){
-               System.out.println(p.toString() + m);
-            }
 				moves.addAll(p.getMoves());
 			}
 		}
@@ -182,7 +196,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
 
       for (int i = 0; i < board.length; i++){
          // Kings have infinite value, do no consider in pointage
-         if(board[i] != null && !board[i].toString().equals("K")){ // If a King
+         if(board[i] != null && !board[i].getClass().toString().equals("class pieces.King")){
             if(board[i].isWhite() == isWhite){
                currentValue += board[i].getValue();
             }
@@ -208,7 +222,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
        // If Current Player King has moves: Not Checkmate
        for(Move m: moves){
           ChessPiece p = board[m.getStart()];
-          if(p.toString().equals("K")){ // If a king
+          if(p.getClass().toString().equals("class pieces.King")){
              if(p.isWhite() == isWhite){
                 return false;
              }
@@ -219,7 +233,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
        // If Opponent end move is King: Checkmate
        for(Move m: moves){
           ChessPiece p = board[m.getEnd()];
-          if(p.toString().equals("K")){ // If a King
+          if(p.getClass().toString().equals("class pieces.King")){
              if(p.isWhite() != isWhite){
                 return true;
              }
@@ -250,6 +264,16 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     */
    public BoardIterator<ChessPiece> iterator(){
       return new NormalIterator(board);
+   }
+
+   /**
+    * getBoardArray
+    *
+    * @return the board array
+    * Only to be used by the Board Constructor
+    */
+   private ChessPiece[] getBoardArray(){
+      return board;
    }
 
    /**

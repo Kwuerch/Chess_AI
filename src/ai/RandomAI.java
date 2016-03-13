@@ -42,8 +42,17 @@ public class RandomAI extends AI{
     */
    private Move determineMove(Board board){
       List<Move> moves = board.getMoves(super.isWhite());
-      int guess = (int)(Math.random() * moves.size());
-      System.out.println("Size of array: " + moves.size() + " Guess: " + guess);
-      return moves.get(guess);
+      int guess;
+      
+      while(moves.size() > 0){
+         guess = (int)(Math.random() * moves.size());
+         if(super.isCheck(board, moves.get(guess))){
+            moves.remove(guess);
+            System.out.println("Invalid Guess");
+         }else{
+            return moves.get(guess);
+         }
+      }
+      return null; //Should return checkmate or stalemate
    }
 }

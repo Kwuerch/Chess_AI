@@ -60,7 +60,7 @@ public class Pawn extends ChessPiece{
       moves.clear();
 
       // If white moves go upward
-      if(isWhite()){
+      if(!isWhite()){
          BoardIterator<ChessPiece> it = board.boardIterator(Board.UP_LEFT, index); 
          movesGen(it, index, true);
 
@@ -155,6 +155,15 @@ public class Pawn extends ChessPiece{
     */
    public void madeMove(){
       madeMove = false;
+   }
+
+   /**
+    * getMadeMove
+    * 
+    * @return if the pawn has made a move
+    */
+   public boolean getMadeMove(){
+      return madeMove;
    }
 
 
