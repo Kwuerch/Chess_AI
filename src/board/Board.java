@@ -295,7 +295,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
 		while(min > -1){
          for(int i = min; i < min + 8; i++){
             if(array[i] == null){
-               result += " O";
+               result += " ☐";
             }else{
                result += " " +  array[i].toString();
             }
