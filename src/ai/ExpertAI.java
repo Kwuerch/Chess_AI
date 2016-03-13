@@ -1,4 +1,8 @@
 package ai;
+
+import board.Board;
+import board.Move;
+
 /**
  * **ExpertAI Class*
  *
@@ -6,10 +10,19 @@ package ai;
  * @version Program 7
  */
 public class ExpertAI extends AI{
-   public ExpertAI(int color){
-      super(color);
+   public ExpertAI(String name, boolean color){
+      super(name, color);
    }
-   public void DetermineMove(){
 
+   /**
+    * makeMove
+    *
+    * make a well thought out move on the board
+    */
+   public void makeMove(Board board){
+
+   }
+
+   public void DetermineMove(){
    }
 }

@@ -38,6 +38,9 @@ public class Rook extends ChessPiece{
     * Add the possible moves to the List of Moves
     */
    public void determineMoves(int index){
+      // Remove all Moves
+      moves.clear();
+
       BoardIterator<ChessPiece> it = board.boardIterator(Board.UP, index); 
       super.movesGen(moves, it, index, true);
 
@@ -65,6 +68,10 @@ public class Rook extends ChessPiece{
     */
    @Override
    public String toString(){
-      return "R";
+      if(isWhite()){
+         return "♖";
+      }else{
+         return "♜";
+      }
    }
 }

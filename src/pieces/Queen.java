@@ -36,6 +36,9 @@ public class Queen extends ChessPiece {
     * Add the possible moves to the List of Moves
     */
    public void determineMoves(int index){
+      // Remove all moves
+      moves.clear();
+
       BoardIterator<ChessPiece> it = board.boardIterator(Board.UP, index); 
       super.movesGen(moves, it, index, true);
 
@@ -75,7 +78,11 @@ public class Queen extends ChessPiece {
     */
    @Override
    public String toString(){
-      return "Q";
+      if(isWhite()){
+         return "♕";
+      }else{
+         return "♛";
+      }
    }
 	
 }

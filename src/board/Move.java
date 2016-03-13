@@ -12,8 +12,9 @@ public class Move{
    public static int QUIET = 0;
    public static int PAWN_DBL = 1;
    public static int EN_PASSANT = 2;
-   public static int CASTLE = 3;
-   public static int PROMOTION = 4;
+   public static int ATTACK = 3;
+   public static int CASTLE = 4; 
+   public static int PROMOTION = 5;
 
    private ChessPiece cp;
    private int start;

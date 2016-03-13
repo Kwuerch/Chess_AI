@@ -11,37 +11,22 @@ import board.Move;
  *  @author Kyle Wuerch an Sean Wallace
  *  @version Program 7
  */
-public class AI{
-   private Board board;
+public abstract class AI{
+   private boolean isWhite;
+   private String name;
 
-   public AI(int color){
-      board = new Board();
-
+   public AI(String name, boolean isWhite){
+      this.isWhite = isWhite;
+      this.name = name;
    }
-
 
    /**
-    * updateWith 
-    * updates the AI's representation of the board
+    * makeMove
+    *
+    * @return the move the ai has decided to make
     */
-   public void updateWith(Move m){
-      //board.update(m);
-   }
-   
-   /**
-    * Runs at the beginning of the turn
-    */
-   protected void startTurnProtected(){
+   public abstract void makeMove(Board board);
 
-   }
-   
-   /**
-    * Runs at the end of the turn
-    * endTurnProtected 
-    */
-   public void endTurnProtected(){
-
-   }
 
    /**
     * getName
@@ -49,6 +34,16 @@ public class AI{
     * @return the name of the player
     */
    public String getName(){
-      return null;
+      return name;
+   }
+
+
+   /**
+    * isWhite
+    *
+    * @return if the player's color is white
+    */
+   public boolean isWhite(){
+      return isWhite;
    }
 }
