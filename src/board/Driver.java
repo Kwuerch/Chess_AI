@@ -8,7 +8,7 @@ import java.util.Iterator;
 public class Driver{
    public static void main(String[] args){
       Board b = new Board();
-      List<Move> moves = b.getMoves(true);
+      List<Move> moves = b.getMoves(false);
       for(Move m: moves){
          System.out.println(m);
       }
