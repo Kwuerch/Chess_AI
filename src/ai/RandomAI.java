@@ -1,5 +1,10 @@
 package ai;
-import java.util.Random;
+
+import board.Board;
+import board.Move;
+
+import java.util.List;
+
 /**
  * **RandomAI Class*
  *
@@ -8,12 +13,19 @@ import java.util.Random;
  * @version Program 7
  */
 public class RandomAI extends AI{
-   public RandomAI(int color){
-      super(color);
-		Random random = new Random();
+   public RandomAI(String name, boolean color){
+      super(name, color);
    }
-   public void DetermineMove(){
-	// While(random piece's random iterator !hasNext())
+
+   /**
+    * makeMove
+    *
+    * Makes a random move on the board
+    */
+   public void makeMove(Board board){
+      board.move(determineMove(board));
+   }
+
 	/**
 	 * Inefficient random movement generation methodology.
 	 * 1. Get List of possible moves
@@ -23,6 +35,15 @@ public class RandomAI extends AI{
 	 * 3. If the iterator !hasNext(), reset to step 1
 	 * 4. Make the move (iterator hasNext())
 	 */
-
+   /**
+    * determineMove
+    *
+    * @return a random move to be played
+    */
+   private Move determineMove(Board board){
+      List<Move> moves = board.getMoves(super.isWhite());
+      int guess = (int)(Math.random() * moves.size());
+      System.out.println("Size of array: " + moves.size() + " Guess: " + guess);
+      return moves.get(guess);
    }
 }

@@ -56,6 +56,9 @@ public class Pawn extends ChessPiece{
     * Add the possible moves to the List of Moves
     */
    public void determineMoves(int index){
+      // Remove all moves
+      moves.clear();
+
       // If white moves go upward
       if(isWhite()){
          BoardIterator<ChessPiece> it = board.boardIterator(Board.UP_LEFT, index); 
@@ -102,9 +105,11 @@ public class Pawn extends ChessPiece{
                   BoardIterator<ChessPiece> straigtIt = board.boardIterator(Board.UP, index);
                   if(straigtIt.hasNext()){
                      moves.add(new Move(index, it.index(), Move.PROMOTION));
+                  }else{
+                     moves.add(new Move(index, it.index(), Move.ATTACK));
                   }
                }else{
-                  moves.add(new Move(index, it.index(), Move.QUIET)); 
+                  moves.add(new Move(index, it.index(), Move.ATTACK)); 
                }
             }
             return;
@@ -159,6 +164,10 @@ public class Pawn extends ChessPiece{
     */
    @Override
    public String toString(){
-      return "P"; 
+      if(isWhite()){
+         return "♙";
+      }else{
+         return "♟";
+      }
    }
 }

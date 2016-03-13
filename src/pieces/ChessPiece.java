@@ -42,7 +42,7 @@ public abstract class ChessPiece extends PieceValue{
             if(hitPiece){
                // Only add a move if the piece is a different color
                if(p.white != white){
-                  moves.add(new Move(index, it.index(), Move.QUIET)); 
+                  moves.add(new Move(index, it.index(), Move.ATTACK)); 
                }
                break;
             }
@@ -53,8 +53,10 @@ public abstract class ChessPiece extends PieceValue{
          if(it.hasNext()){
             p = it.next();
             // Only add a move if the piece is a different color
-            if(p == null || p.white != white){
+            if(p == null){
                moves.add(new Move(index, it.index(), Move.QUIET)); 
+            }else if(p.white != white){
+               moves.add(new Move(index, it.index(), Move.ATTACK)); 
             }
          }
       }

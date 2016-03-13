@@ -1,6 +1,8 @@
 package pieces;
 
 import board.Board;
+import board.BoardIterator;
+import board.KnightIterator;
 import board.Move;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +36,20 @@ public class Knight extends ChessPiece {
     * Add the possible moves to the List of Moves
     */
    public void determineMoves(int index){
-      //TODO
+      // Remove all moves
+      moves.clear();
+
+      BoardIterator<ChessPiece> it = board.knightIterator(Board.UP_RIGHT, index); 
+      super.movesGen(moves, it, index, false);
+
+      it = board.knightIterator(Board.UP_LEFT, index);
+      super.movesGen(moves, it, index, false);
+
+      it = board.knightIterator(Board.DOWN_RIGHT, index);
+      super.movesGen(moves, it, index, false);
+
+      it = board.knightIterator(Board.DOWN_LEFT, index);
+      super.movesGen(moves, it, index, false);
    }
 
    /**
@@ -51,6 +66,10 @@ public class Knight extends ChessPiece {
     */
    @Override
    public String toString(){
-      return "N";
+      if(isWhite()){
+         return "♘";
+      }else{
+         return "♞";
+      }
    }
 }

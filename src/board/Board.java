@@ -34,7 +34,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
       board = new ChessPiece[120];
       moves = new ArrayList<Move>();
       setupBoard();
-      findMoves();
    }
 
    /**
@@ -65,6 +64,43 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
 		for (int i = 9; i < 120; i+=10){
 			board[i] = new Invalid();
 		}
+
+
+      // Black
+      board[91] = new Rook(this, false);
+      board[98] = new Rook(this, false);
+
+      board[92] = new Knight(this, false);
+      board[97] = new Knight(this, false);
+
+      board[93] = new Bishop(this, false);
+      board[96] = new Bishop(this, false);
+
+      board[94] = new Queen(this, false);
+      board[95] = new King(this, false);
+
+      for(int i = 81; i < 89; i++){
+         board[i] = new Pawn(this, false);
+      }
+
+      
+      // White
+      board[21] = new Rook(this, true);
+      board[28] = new Rook(this, true);
+
+      board[22] = new Knight(this, true);
+      board[27] = new Knight(this, true);
+
+      board[23] = new Bishop(this, true);
+      board[26] = new Bishop(this, true);
+
+      board[24] = new Queen(this, true);
+      board[25] = new King(this, true);
+
+      for(int i = 31; i < 39; i++){
+         board[i] = new Pawn(this, true);
+      }
+      
       /*
       board[21] = new Rook(this, false);
       board[22] = new Bishop(this, false);
@@ -76,24 +112,32 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
       board[97] = new Bishop(this, true);
       board[98] = new Rook(this, true);
       */
+      /*
       board[83] = new King(this, true);
       board[85] = new King(this, false);
       board[35] = new Queen(this, true);
       board[72] = new Pawn(this, true);
       board[42] = new Pawn(this, false, true);
+      board[52] = new Knight(this, true);
+      board[73] = new Knight(this, false);
+      */
    }
 
    /**
     * findMoves
     * Adds the moves of all pieces of the current board 
     */
-   private void findMoves(){
+   private void findMoves(boolean isWhite){
+      moves.clear();
 		BoardIterator<ChessPiece> it = iterator();
 		while (it.hasNext()){
 			int index = it.index();
 			ChessPiece p = it.next();
-			if(p != null){
+			if(p != null && p.isWhite() == isWhite){
 				p.determineMoves(index);
+            for(Move m: p.getMoves()){
+               System.out.println(p.toString() + m);
+            }
 				moves.addAll(p.getMoves());
 			}
 		}
@@ -110,9 +154,11 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
    public void move(Move move){
       ChessPiece p = board[move.getStart()];
       board[move.getEnd()] = p;
+
       if(p.toString().equals("P")){ // If piece is a pawn
          ((Pawn)p).madeMove();
       }
+
       board[move.getStart()] = null;
    }
 
@@ -149,7 +195,8 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     * getMoves
     * @return all the possible moves for the current board
     */
-    public List<Move> getMoves(){
+    public List<Move> getMoves(boolean isWhite){
+       findMoves(isWhite);
        return moves;
     }
 
@@ -189,6 +236,14 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
       return new DirectionalIterator(board, direction, index);
    }
 
+   /**
+    * iterator
+    * @return a default iterator to go through each space
+    */
+   public BoardIterator<ChessPiece> knightIterator(int direction, int index){
+      return new KnightIterator(board, direction, index);
+   }
+   
    /**
     * iterator
     * @return a default iterator to go through each space

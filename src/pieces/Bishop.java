@@ -40,6 +40,9 @@ public class Bishop extends ChessPiece{
     * @param : The current index of the piece
     */
    public void determineMoves(int index){ 
+      // Remove all moves
+      moves.clear();
+      
       BoardIterator<ChessPiece> it = board.boardIterator(Board.UP_LEFT, index); 
       super.movesGen(moves, it, index, true);
 
@@ -67,7 +70,11 @@ public class Bishop extends ChessPiece{
     */
    @Override
    public String toString(){
-      return "B";
+      if(isWhite()){
+         return "♗";
+      }else{
+         return "♝";
+      }
    }
 	
 }

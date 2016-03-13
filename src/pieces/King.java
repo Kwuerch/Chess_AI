@@ -39,6 +39,9 @@ public class King extends ChessPiece{
     * Add the possible moves to the List of Moves
     */
    public void determineMoves(int index){
+      // Remove all moves
+      moves.clear();
+      
       BoardIterator<ChessPiece> it = board.boardIterator(Board.UP, index); 
       super.movesGen(moves, it, index, false);
 
@@ -78,7 +81,11 @@ public class King extends ChessPiece{
     */
    @Override
    public String toString(){
-      return "K";
+      if(isWhite()){
+         return "♔";
+      }else{
+         return "♚";
+      }
    }
    
 }

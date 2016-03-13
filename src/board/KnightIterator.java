@@ -11,11 +11,6 @@ import java.util.NoSuchElementException;
  * @version Program 7
  */
 public class KnightIterator extends BoardIterator<ChessPiece>{
-	public static final int UP_LEFT = 0;
-	public static final int UP_RIGHT = 1;
-	public static final int DOWN_LEFT = 2;
-	public static final int DOWN_RIGHT = 3;
-	
 	private int buffer;
 	private int index;
 	private ChessPiece[] board;
@@ -28,16 +23,16 @@ public class KnightIterator extends BoardIterator<ChessPiece>{
 	 */
 	public KnightIterator(ChessPiece[] board, int direction, int index){
 		switch(direction){
-			case UP_LEFT:
+			case Board.UP_LEFT:
 				buffer = 19;
 				break;
-			case UP_RIGHT:
+			case Board.UP_RIGHT:
 				buffer = 21;
 				break;
-			case DOWN_LEFT:
+			case Board.DOWN_LEFT:
 				buffer = -21;
 				break;
-			case DOWN_RIGHT:
+			case Board.DOWN_RIGHT:
 				buffer = -19;
 				break;
 		}
@@ -52,12 +47,10 @@ public class KnightIterator extends BoardIterator<ChessPiece>{
 	public boolean hasNext(){
 		ChessPiece p = board[index + buffer];
 
-		if (p == null){
-			return true;
-		}else if(!p.toString().equals("I")){
-			return true;
+		if(p != null && p.toString().equals("I")){
+         return false;
 		}
-		return false;
+      return true;
 	}
 
 	/**
