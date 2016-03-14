@@ -49,7 +49,7 @@ public class Invalid extends ChessPiece {
     * Added to make the super happy
     * @throws UnsupportedOperationException
     */
-   public int getValue() {
+   public double getValue() {
       throw new UnsupportedOperationException();
    }
 	

@@ -65,7 +65,7 @@ public abstract class ChessPiece extends PieceValue {
 
    public abstract void determineMoves(int index);
 
-   public abstract int getValue();
+   public abstract double getValue();
 
    public boolean isWhite() {
       return white;

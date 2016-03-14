@@ -55,7 +55,7 @@ public class Knight extends ChessPiece {
     * getValue
     * @return the value of the piece
     */
-   public int getValue() {
+   public double getValue() {
       return 3;
    }
 

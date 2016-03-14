@@ -17,5 +17,5 @@ public abstract class PieceValue implements Value {
     *
     * @return the value of the Piece 
     */
-   public abstract int getValue();
+   public abstract double getValue();
 }

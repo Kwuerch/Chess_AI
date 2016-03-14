@@ -17,11 +17,11 @@ public abstract class BoardValue implements Value {
     * @return the value of the board 
     * @param : which player is current
     */
-   public abstract int getValue(boolean isWhite);
+   public abstract double getValue(boolean isWhite);
 
    /**
     * getValue
     * @return the value of the board for the white player
     */
-   public abstract int getValue();
+   public abstract double getValue();
 }

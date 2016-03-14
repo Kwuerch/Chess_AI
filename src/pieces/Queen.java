@@ -68,8 +68,8 @@ public class Queen extends ChessPiece {
     * getValue
     * @return the value of the piece
     */
-   public int getValue() {
-      return 9;
+   public double getValue() {
+      return 6;
    }
 
    /**

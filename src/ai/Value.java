@@ -15,5 +15,5 @@ public interface Value {
     *
     * @return the value of the object 
     */
-   public int getValue();
+   public double getValue();
 }

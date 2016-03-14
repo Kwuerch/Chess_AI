@@ -183,7 +183,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
     * getValue
     * @return the value of the white player's pieces
     */
-   public int getValue() {
+   public double getValue() {
       return getValue(true);
    }
 
@@ -193,8 +193,8 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
     * @return the value of all the pieces of a certain color 
     * TODO: Improve and Test
     */
-    public int getValue(boolean isWhite) {
-      int currentValue = 0;
+    public double getValue(boolean isWhite) {
+      double currentValue = 0;
 		BoardIterator<ChessPiece> it = iterator();
 		while(it.hasNext()){
          // Kingsjhave infinite value, do no consider in pointage
