@@ -32,7 +32,7 @@ public class DirectionalIterator extends BoardIterator<ChessPiece> {
 	 * @param int the desired starting index of the iterator
 	 */
 	public DirectionalIterator(ChessPiece[] board, int direction, int index) {
-		switch(direction){
+		switch (direction) {
 			case UP_LEFT:
 				buffer = 9;
 				break;

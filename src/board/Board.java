@@ -43,10 +43,10 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
       board = new ChessPiece[120];
       moves = new ArrayList<Move>();
       ChessPiece[] oldBoardArr = oldBoard.getBoardArray();
-      for(int i = 0; i < oldBoardArr.length; i++) {
-         if(oldBoardArr[i] != null){
+      for (int i = 0; i < oldBoardArr.length; i++) {
+         if (oldBoardArr[i] != null) {
             String type = oldBoardArr[i].getClass().toString();
-            if(type.equals("class pieces.Invalid")) {
+            if (type.equals("class pieces.Invalid")) {
                board[i] = new Invalid();
             } else if (type.equals("class pieces.Pawn")) {
                Pawn p = (Pawn)oldBoardArr[i];
@@ -116,7 +116,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
       board[94] = new Queen(this, true);
       board[95] = new King(this, true);
 
-      for(int i = 81; i < 89; i++) {
+      for (int i = 81; i < 89; i++) {
          board[i] = new Pawn(this, true);
       }
 
@@ -133,7 +133,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
       board[24] = new Queen(this, false);
       board[25] = new King(this, false);
 
-      for(int i = 31; i < 39; i++) {
+      for (int i = 31; i < 39; i++) {
          board[i] = new Pawn(this, false);
       }
    }
@@ -148,7 +148,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
 		while (it.hasNext()) {
 			int index = it.index();
 			ChessPiece p = it.next();
-			if(p != null && p.isWhite() == isWhite) {
+			if (p != null && p.isWhite() == isWhite) {
 				p.determineMoves(index);
 				moves.addAll(p.getMoves());
 			}
@@ -167,7 +167,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
       ChessPiece p = board[move.getStart()];
       board[move.getEnd()] = p;
 
-      if(p.toString().equals("P")) { // If piece is a pawn
+      if (p.toString().equals("P")) { // If piece is a pawn
          ((Pawn)p).madeMove();
       }
 
@@ -193,8 +193,8 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
 
       for (int i = 0; i < board.length; i++) {
          // Kings have infinite value, do no consider in pointage
-         if(board[i] != null && !board[i].getClass().toString().equals("class pieces.King")) {
-            if(board[i].isWhite() == isWhite) {
+         if (board[i] != null && !board[i].getClass().toString().equals("class pieces.King")) {
+            if (board[i].isWhite() == isWhite) {
                currentValue += board[i].getValue();
             }
          }
@@ -289,9 +289,9 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
 			array[index++] = it.next();	
 		}
 
-		while(min > -1) {
-         for(int i = min; i < min + 8; i++) {
-            if(array[i] == null){
+		while (min > -1) {
+         for (int i = min; i < min + 8; i++) {
+            if (array[i] == null) {
                result += " ☐";
             } else {
                result += " " +  array[i].toString();

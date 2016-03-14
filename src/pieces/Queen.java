@@ -27,7 +27,7 @@ public class Queen extends ChessPiece {
     * getMoves
     * @return the boolean representation of possible moves
     */
-   public List<Move> getMoves(){
+   public List<Move> getMoves() {
       return moves;
    }
 
@@ -35,7 +35,7 @@ public class Queen extends ChessPiece {
     * determineMoves
     * Add the possible moves to the List of Moves
     */
-   public void determineMoves(int index){
+   public void determineMoves(int index) {
       // Remove all moves
       moves.clear();
 
@@ -68,7 +68,7 @@ public class Queen extends ChessPiece {
     * getValue
     * @return the value of the piece
     */
-   public int getValue(){
+   public int getValue() {
       return 9;
    }
 
@@ -77,12 +77,11 @@ public class Queen extends ChessPiece {
     * @return a String representation of the piece
     */
    @Override
-   public String toString(){
-      if(isWhite()){
+   public String toString() {
+      if (isWhite()) {
          return "♕";
-      }else{
+      } else {
          return "♛";
       }
    }
-	
 }

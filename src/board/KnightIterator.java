@@ -22,7 +22,7 @@ public class KnightIterator extends BoardIterator<ChessPiece> {
 	 * @param int the desired starting index of the iterator
 	 */
 	public KnightIterator(ChessPiece[] board, int direction, int index) {
-		switch(direction) {
+		switch (direction) {
 			case Board.UP_LEFT:
 				buffer = 19;
 				break;
@@ -47,7 +47,7 @@ public class KnightIterator extends BoardIterator<ChessPiece> {
 	public boolean hasNext() {
 		ChessPiece p = board[index + buffer];
 
-		if(p != null && p.toString().equals("I")) {
+		if (p != null && p.toString().equals("I")) {
          return false;
 		}
       return true;

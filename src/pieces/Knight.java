@@ -19,7 +19,6 @@ public class Knight extends ChessPiece {
 	public Knight(Board board, boolean white) {
 		super(white);
       this.board = board;
-      
       moves = new ArrayList<Move>();
 	}
 
@@ -27,7 +26,7 @@ public class Knight extends ChessPiece {
     * getMoves
     * @return the boolean representation of possible moves
     */
-   public List<Move> getMoves(){
+   public List<Move> getMoves() {
       return moves;
    }
 
@@ -35,7 +34,7 @@ public class Knight extends ChessPiece {
     * determineMoves
     * Add the possible moves to the List of Moves
     */
-   public void determineMoves(int index){
+   public void determineMoves(int index) {
       // Remove all moves
       moves.clear();
 
@@ -56,7 +55,7 @@ public class Knight extends ChessPiece {
     * getValue
     * @return the value of the piece
     */
-   public int getValue(){
+   public int getValue() {
       return 3;
    }
 
@@ -65,11 +64,11 @@ public class Knight extends ChessPiece {
     * @return a String representation of the piece
     */
    @Override
-   public String toString(){
-      if(isWhite()){
+   public String toString() {
+      if (isWhite()) {
          return "♘";
-      }else{
-         return "♞";
+      } else {
+      	return "♞";
       }
    }
 }

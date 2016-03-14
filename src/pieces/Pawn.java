@@ -13,7 +13,7 @@ import java.util.List;
  * Copyright 2015
  */
 
-public class Pawn extends ChessPiece{
+public class Pawn extends ChessPiece {
 	boolean madeMove;
    List<Move> moves;
    Board board;
@@ -26,10 +26,8 @@ public class Pawn extends ChessPiece{
 		
       this.board = board;
 		this.madeMove = madeMove;
-      
       moves = new ArrayList<Move>();
 	}
-
   
    /**
     * Constructor to assume no move has been made
@@ -47,7 +45,7 @@ public class Pawn extends ChessPiece{
     * getMoves
     * @return the boolean representation of possible moves
     */
-   public List<Move> getMoves(){
+   public List<Move> getMoves() {
       return moves;
    }
 
@@ -55,12 +53,12 @@ public class Pawn extends ChessPiece{
     * determineMoves
     * Add the possible moves to the List of Moves
     */
-   public void determineMoves(int index){
+   public void determineMoves(int index) {
       // Remove all moves
       moves.clear();
 
       // If white moves go upward
-      if(!isWhite()){
+      if (!isWhite()) {
          BoardIterator<ChessPiece> it = board.boardIterator(Board.UP_LEFT, index); 
          movesGen(it, index, true);
 
@@ -69,7 +67,7 @@ public class Pawn extends ChessPiece{
 
          it = board.boardIterator(Board.UP_RIGHT, index); 
          movesGen(it, index, true);
-      }else{
+      } else {
          BoardIterator<ChessPiece> it = board.boardIterator(Board.DOWN_LEFT, index); 
          movesGen(it, index, true);
 
@@ -94,45 +92,44 @@ public class Pawn extends ChessPiece{
 
       //TODO Add Diagonal Promotion
       
-      if(it.hasNext()){
+      if (it.hasNext()) {
          p = it.next();
 
          // Add Diagonal Attacks
-         if(diag){
-            if(p != null && p.isWhite() != isWhite()){
+         if (diag) {
+            if (p != null && p.isWhite() != isWhite()) {
                // Check if can take piece diagonally, and possibly promote diagonally
-               if(!it.hasNext()){
+               if (!it.hasNext()) {
                   BoardIterator<ChessPiece> straigtIt = board.boardIterator(Board.UP, index);
-                  if(straigtIt.hasNext()){
+                  if (straigtIt.hasNext()) {
                      moves.add(new Move(index, it.index(), Move.PROMOTION));
-                  }else{
+                  } else {
                      moves.add(new Move(index, it.index(), Move.ATTACK));
                   }
-               }else{
+               } else {
                   moves.add(new Move(index, it.index(), Move.ATTACK)); 
                }
             }
             return;
-         }else{
+         } else {
             // Add Promotion in Straigh Direction
-            if(p == null && !it.hasNext()){
+            if (p == null && !it.hasNext()) {
                moves.add(new Move(index, it.index(), Move.PROMOTION));
                return;
             }
          }
 
-
          // Add Single and Double Pawn Straight Moves
-         if(madeMove){
-            if(p == null){
+         if (madeMove) {
+            if (p == null) {
                moves.add(new Move(index, it.index(), Move.QUIET)); 
             }
-         }else{
-            if(p == null){
+         } else {
+            if (p == null) {
                moves.add(new Move(index, it.index(), Move.QUIET));
-               if(it.hasNext()){
+               if (it.hasNext()) {
                   p = it.next();
-                  if(p == null){
+                  if (p == null) {
                      moves.add(new Move(index, it.index(), Move.PAWN_DBL));
                   }
                }
@@ -145,7 +142,7 @@ public class Pawn extends ChessPiece{
     * getValue
     * @return the value of the piece
     */
-   public int getValue(){
+   public int getValue() {
       return 1;
    }
 
@@ -153,7 +150,7 @@ public class Pawn extends ChessPiece{
     * madeMove
     * Call when piece is moved
     */
-   public void madeMove(){
+   public void madeMove() {
       madeMove = false;
    }
 
@@ -162,7 +159,7 @@ public class Pawn extends ChessPiece{
     * 
     * @return if the pawn has made a move
     */
-   public boolean getMadeMove(){
+   public boolean getMadeMove() {
       return madeMove;
    }
 
@@ -172,10 +169,10 @@ public class Pawn extends ChessPiece{
     * @return a String representation of the piece
     */
    @Override
-   public String toString(){
-      if(isWhite()){
+   public String toString() {
+      if (isWhite()) {
          return "♙";
-      }else{
+      } else {
          return "♟";
       }
    }

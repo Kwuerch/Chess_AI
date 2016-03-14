@@ -12,7 +12,7 @@ import java.util.List;
  * @author Kyle Wuerch
  * @version Program 7
  */
-public class Bishop extends ChessPiece{
+public class Bishop extends ChessPiece {
    Board board;
    List<Move> moves;
    /**
@@ -30,7 +30,7 @@ public class Bishop extends ChessPiece{
     * getMoves
     * @return the boolean representation of possible moves 
     */
-   public List<Move> getMoves(){
+   public List<Move> getMoves() {
       return moves;
    }
 
@@ -39,7 +39,7 @@ public class Bishop extends ChessPiece{
     * Go through the board and determine the possible moves
     * @param : The current index of the piece
     */
-   public void determineMoves(int index){ 
+   public void determineMoves(int index) {
       // Remove all moves
       moves.clear();
       
@@ -60,7 +60,7 @@ public class Bishop extends ChessPiece{
     * getValue
     * @return the value of the piece
     */
-   public int getValue(){
+   public int getValue() {
       return 3;
    }
 
@@ -69,12 +69,11 @@ public class Bishop extends ChessPiece{
     * @return string representation of Bishop
     */
    @Override
-   public String toString(){
-      if(isWhite()){
+   public String toString() {
+      if(isWhite()) {
          return "♗";
-      }else{
+      } else {
          return "♝";
       }
    }
-	
 }
