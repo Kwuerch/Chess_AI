@@ -8,7 +8,7 @@ package ai;
  *  @author Kyle Wuerch and Sean Wallace
  *  @version Program 7
  */
-public interface Value{
+public interface Value {
 
    /**
     * getValue

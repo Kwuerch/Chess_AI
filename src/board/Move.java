@@ -8,7 +8,7 @@ import pieces.ChessPiece;
  * @author Kyle Wuerch, Sean Wallace
  * @version Program 7
  */
-public class Move{
+public class Move {
    public static int QUIET = 0;
    public static int PAWN_DBL = 1;
    public static int EN_PASSANT = 2;
@@ -24,7 +24,7 @@ public class Move{
     * Move Constructor
     * Sets the instance variables to the arguments sent in
     */
-   public Move(int start, int end, int moveType){
+   public Move(int start, int end, int moveType) {
       this.start = start;
       this.end = end;
       this.moveType = moveType;
@@ -33,14 +33,14 @@ public class Move{
    /**
     * @return the index for the piece to go
     */
-   public int getEnd(){
+   public int getEnd() {
       return end;
    }
 
    /**
     * @return the index of the piece to move
     */
-   public int getStart(){
+   public int getStart() {
       return start;
    }
 
@@ -59,11 +59,10 @@ public class Move{
     * @return a String representation of the object
     */
    @Override
-   public String toString(){
+   public String toString() {
       String result = "Move From: " + start + " To: " + end +
          " of Type " + moveType;
 
       return result;
    }
-
 }

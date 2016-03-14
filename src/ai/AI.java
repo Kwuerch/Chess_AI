@@ -16,11 +16,11 @@ import java.util.List;
  *  @author Kyle Wuerch an Sean Wallace
  *  @version Program 7
  */
-public abstract class AI{
+public abstract class AI {
    private boolean isWhite;
    private String name;
 
-   public AI(String name, boolean isWhite){
+   public AI(String name, boolean isWhite) {
       this.isWhite = isWhite;
       this.name = name;
    }
@@ -37,13 +37,14 @@ public abstract class AI{
     *
     * @return whether or not a specific move puts or leaves the king in check of the current AI
     */
-   public boolean isCheck(Board board, Move move){
+   public boolean isCheck(Board board, Move move) {
       Board newBoard = new Board(board);
 
       // There should always be a king
       BoardIterator<ChessPiece> it = newBoard.iterator();
       ChessPiece p;
       int index = -1;
+
       // Find the index of the king
       while(it.hasNext()){
          index = it.index();
@@ -58,12 +59,12 @@ public abstract class AI{
 
       // return true if a move of the opponent is set to end on the king
       List<Move> moves = newBoard.getMoves(!isWhite);
+
       for(Move m: moves){
          if(m.getEnd() == index){
             return true;
          }
       }
-
       return false;
    }
 
@@ -72,7 +73,7 @@ public abstract class AI{
     *
     * @return the name of the player
     */
-   public String getName(){
+   public String getName() {
       return name;
    }
 
@@ -81,7 +82,7 @@ public abstract class AI{
     *
     * @return if the player's color is white
     */
-   public boolean isWhite(){
+   public boolean isWhite() {
       return isWhite;
    }
 }

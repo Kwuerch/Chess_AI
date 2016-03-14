@@ -5,11 +5,11 @@ import pieces.ChessPiece;
 import java.util.List;
 import java.util.Iterator;
 
-public class Driver{
-   public static void main(String[] args){
+public class Driver {
+   public static void main(String[] args) {
       Board b = new Board();
       List<Move> moves = b.getMoves(false);
-      for(Move m: moves){
+      for(Move m: moves) {
          System.out.println(m);
       }
 

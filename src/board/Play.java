@@ -14,8 +14,8 @@ import java.util.List;
  * @author Kyle Wuerch and Sean Wallace
  * @version Program 7
  */
-public class Play{
-   public static void main(String[] args){
+public class Play {
+   public static void main(String[] args) {
       Board board = new Board();
 
       AI playerW = new RandomAI("Shrek", true);
@@ -24,14 +24,14 @@ public class Play{
       playGame(playerW, playerB, board);
    }
 
-   private static void playGame(AI playerW, AI playerB, Board board){
+   private static void playGame(AI playerW, AI playerB, Board board) {
       boolean whiteTurn = true;
-      while(true){
-         if(whiteTurn){
+      while (true) {
+         if (whiteTurn) {
             playerW.makeMove(board);
             System.out.println(board);
             whiteTurn = !whiteTurn;
-         }else{
+         } else {
             playerB.makeMove(board);
             System.out.println(board);
             whiteTurn = !whiteTurn;

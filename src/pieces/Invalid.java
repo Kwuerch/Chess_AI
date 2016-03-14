@@ -13,11 +13,11 @@ import java.util.List;
  * @author Kyle Wuerch and Sean Wallace
  * @version Program 7
  */
-public class Invalid extends ChessPiece{
+public class Invalid extends ChessPiece {
    /**
     * Default Constructor
     */
-   public Invalid(){
+   public Invalid() {
       super(true);
    }
 
@@ -25,7 +25,7 @@ public class Invalid extends ChessPiece{
     * Added to make the super happy
     * @throws UnsupportedOperationException
     */
-   public void determineMoves(){
+   public void determineMoves() {
       throw new UnsupportedOperationException();
    }
 
@@ -33,7 +33,7 @@ public class Invalid extends ChessPiece{
     * Added to make the super happy
     * @throws UnsupportedOperationException
     */
-   public List<Move> getMoves(){
+   public List<Move> getMoves() {
       throw new UnsupportedOperationException();
    }
 
@@ -41,7 +41,7 @@ public class Invalid extends ChessPiece{
     * Added to make the super happy
     * @throws UnsupportedOperationException
     */
-   public void determineMoves(int index){
+   public void determineMoves(int index) {
       throw new UnsupportedOperationException();
    }
 
@@ -49,7 +49,7 @@ public class Invalid extends ChessPiece{
     * Added to make the super happy
     * @throws UnsupportedOperationException
     */
-   public int getValue(){
+   public int getValue() {
       throw new UnsupportedOperationException();
    }
 	
@@ -57,8 +57,7 @@ public class Invalid extends ChessPiece{
 	 * toString
 	 * @return String representation of the piece
 	 */
-	public String toString(){
+	public String toString() {
 		return "I";
 	}
-
 }
