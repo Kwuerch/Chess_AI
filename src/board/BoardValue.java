@@ -10,7 +10,7 @@ import ai.Value;
  *  @author Kyle Wuerch and Sean Wallace
  *  @version Program 7
  */
-public abstract class BoardValue implements Value{
+public abstract class BoardValue implements Value {
    /**
     * getValue
     *

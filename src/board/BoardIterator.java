@@ -10,28 +10,28 @@ import java.util.Iterator;
  * @version Program 7
  */
 
-public abstract class BoardIterator<E> implements Iterator<E>{
-      /**
-       * Determines whether there is another spot in the direction specified
-       * @return boolean true if there is a next element
-       */
-      public  abstract boolean hasNext();
+public abstract class BoardIterator<E> implements Iterator<E> {
+	/**
+	 * Determines whether there is another spot in the direction specified
+	 * @return boolean true if there is a next element
+	 */
+	public  abstract boolean hasNext();
 
-      /**
-       * Gets the next chesspiece in the iterator and adds to iterator index
-       * @return the next ChessPiece
-       */
-      public abstract E next();
+	/**
+	 * Gets the next chesspiece in the iterator and adds to iterator index
+	 * @return the next ChessPiece
+	 */
+	public abstract E next();
 
-      /**
-       * Removes and item from the iterator
-       * @throws UnsupportedOperationException
-       */
-      public abstract void remove();
+	/**
+	 * Removes and item from the iterator
+	 * @throws UnsupportedOperationException
+	 */
+	public abstract void remove();
 
-      /**
-       * getIndex
-       * @return the current index of the iterator
-       */
-      public abstract int index();
+	/**
+	 * getIndex
+	 * @return the current index of the iterator
+	 */
+	public abstract int index();
 }

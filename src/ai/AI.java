@@ -16,11 +16,11 @@ import java.util.List;
  *  @author Kyle Wuerch an Sean Wallace
  *  @version Program 7
  */
-public abstract class AI{
+public abstract class AI {
    private boolean isWhite;
    private String name;
 
-   public AI(String name, boolean isWhite){
+   public AI(String name, boolean isWhite) {
       this.isWhite = isWhite;
       this.name = name;
    }
@@ -37,22 +37,56 @@ public abstract class AI{
     *
     * @return whether or not a specific move puts or leaves the king in check of the current AI
     */
-   public boolean isCheck(Board board, Move move){
+   public boolean isCheck(Board board, Move move) {
       Board newBoard = new Board(board);
       newBoard.move(move);
-      System.out.println("New Board: \n" + newBoard.toString());
 
       // There should always be a king
       BoardIterator<ChessPiece> it = newBoard.iterator();
       ChessPiece p;
       int index = -1;
+
       // Find the index of the king
       while(it.hasNext()){
+         index = it.index();
          p = it.next();      
          if(p != null && p.getClass().toString().equals("class pieces.King") && 
                p.isWhite() == isWhite){
-            index = it.index();
-            System.out.println("King is at index: " + index);
+            break;
+         }
+      }
+
+		// return true if a move of the opponent is set to end on the king
+      List<Move> moves = newBoard.getMoves(!isWhite);
+
+      for(Move m: moves){
+         if(m.getEnd() == index){
+            return true;
+         }
+      }
+      return false;
+
+	}
+
+  	/**
+    * inCheck
+    *
+    * @return whether or not a specific move puts or leaves the king in check of the current AI
+    */
+   public boolean isCheck(Board board, Move move, boolean isWhite) {
+      Board newBoard = new Board(board);
+
+      // There should always be a king
+      BoardIterator<ChessPiece> it = newBoard.iterator();
+      ChessPiece p;
+      int index = -1;
+
+      // Find the index of the king
+      while(it.hasNext()){
+         index = it.index();
+         p = it.next();      
+         if(p != null && p.getClass().toString().equals("class pieces.King") && 
+               p.isWhite() == isWhite){
             break;
          }
       }
@@ -60,13 +94,10 @@ public abstract class AI{
       // return true if a move of the opponent is set to end on the king
       List<Move> moves = newBoard.getMoves(!isWhite);
       for(Move m: moves){
-         System.out.println(m);
          if(m.getEnd() == index){
-            System.out.println("White: " + isWhite + " King is in check");
             return true;
          }
       }
-
       return false;
    }
 
@@ -75,7 +106,7 @@ public abstract class AI{
     *
     * @return the name of the player
     */
-   public String getName(){
+   public String getName() {
       return name;
    }
 
@@ -84,7 +115,7 @@ public abstract class AI{
     *
     * @return if the player's color is white
     */
-   public boolean isWhite(){
+   public boolean isWhite() {
       return isWhite;
    }
 }

@@ -12,8 +12,8 @@ import java.util.List;
  * @author Kyle Wuerch, Sean Wallace
  * @version Program 7
  */
-public class RandomAI extends AI{
-   public RandomAI(String name, boolean color){
+public class RandomAI extends AI {
+   public RandomAI(String name, boolean color) {
       super(name, color);
    }
 
@@ -22,37 +22,28 @@ public class RandomAI extends AI{
     *
     * Makes a random move on the board
     */
-   public void makeMove(Board board){
+   public void makeMove(Board board) {
       board.move(determineMove(board));
    }
 
-	/**
-	 * Inefficient random movement generation methodology.
-	 * 1. Get List of possible moves
-	 * 		Default Iterator, next to a random location until !null
-	 * 2. Pick a random corresponding iterator
-	 * 		Dependant on piece found, pick random directional iterator
-	 * 3. If the iterator !hasNext(), reset to step 1
-	 * 4. Make the move (iterator hasNext())
-	 */
    /**
     * determineMove
     *
     * @return a random move to be played
     */
-   private Move determineMove(Board board){
+   private Move determineMove(Board board) {
       List<Move> moves = board.getMoves(super.isWhite());
       int guess;
       
-      while(moves.size() > 0){
+      while (moves.size() > 0) {
          guess = (int)(Math.random() * moves.size());
-         if(super.isCheck(board, moves.get(guess))){
+         if (super.isCheck(board, moves.get(guess))) {
             moves.remove(guess);
-            System.out.println("Invalid Guess");
          }else{
             return moves.get(guess);
          }
       }
+
       return null; //Should return checkmate or stalemate
    }
 }

@@ -14,11 +14,10 @@ import java.util.List;
  * @version Program 7
  */
 
-public class King extends ChessPiece{
+public class King extends ChessPiece {
    Board board; 
    List<Move> moves;
 
-	
 	public King(Board board, boolean white) {
 		super(white);
       this.board = board;
@@ -30,7 +29,7 @@ public class King extends ChessPiece{
     * getMoves
     * @return the boolean representation of the possible moves
     */
-   public List<Move> getMoves(){
+   public List<Move> getMoves() {
       return moves;
    }
 
@@ -38,7 +37,7 @@ public class King extends ChessPiece{
     * determineMoves
     * Add the possible moves to the List of Moves
     */
-   public void determineMoves(int index){
+   public void determineMoves(int index) {
       // Remove all moves
       moves.clear();
       
@@ -71,7 +70,7 @@ public class King extends ChessPiece{
     * getValue
     * @return the value of the piece
     */
-   public int getValue(){
+   public int getValue() {
       return Integer.MAX_VALUE;
    }
 
@@ -80,12 +79,11 @@ public class King extends ChessPiece{
     * @return a String representation of the piece
     */
    @Override
-   public String toString(){
-      if(isWhite()){
+   public String toString() {
+      if (!isWhite()) {
          return "♔";
-      }else{
+      } else {
          return "♚";
       }
    }
-   
 }

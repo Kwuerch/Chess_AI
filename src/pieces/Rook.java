@@ -13,7 +13,7 @@ import java.util.List;
  * @author Kyle Wuerch
  * @version Program 7
  */
-public class Rook extends ChessPiece{
+public class Rook extends ChessPiece {
    Board board;
    List<Move> moves;
 
@@ -24,12 +24,11 @@ public class Rook extends ChessPiece{
       moves = new ArrayList<Move>();
 	}
 
-
    /**
     * getMoves
     * @return the boolean representation of possible moves
     */
-   public List<Move> getMoves(){
+   public List<Move> getMoves() {
       return moves;
    }
 
@@ -37,7 +36,7 @@ public class Rook extends ChessPiece{
     * determineMoves
     * Add the possible moves to the List of Moves
     */
-   public void determineMoves(int index){
+   public void determineMoves(int index) {
       // Remove all Moves
       moves.clear();
 
@@ -58,7 +57,7 @@ public class Rook extends ChessPiece{
     * getValue
     * @return the value of the piece
     */
-   public int getValue(){
+   public int getValue() {
       return 5;
    }
 
@@ -67,10 +66,10 @@ public class Rook extends ChessPiece{
     * @return a String representation of the piece
     */
    @Override
-   public String toString(){
-      if(isWhite()){
+   public String toString() {
+      if (!isWhite()) {
          return "♖";
-      }else{
+      } else {
          return "♜";
       }
    }

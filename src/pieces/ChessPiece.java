@@ -12,7 +12,7 @@ import java.util.List;
  * @version Program 7
  */
 
-public abstract class ChessPiece extends PieceValue{
+public abstract class ChessPiece extends PieceValue {
 	private boolean white;
 	
 	public ChessPiece(boolean white) {
@@ -25,37 +25,36 @@ public abstract class ChessPiece extends PieceValue{
     * Will only add one move for non multi moves
     * ** Multi is defined to mean a moves that goes more than one space
     */
-   public void movesGen(List<Move> moves, BoardIterator<ChessPiece> it, int index, boolean multi){
+   public void movesGen(List<Move> moves, BoardIterator<ChessPiece> it, int index, boolean multi) {
       boolean hitPiece;
       ChessPiece p;
 
-		if(multi){
-         while(it.hasNext()){
+		if (multi) {
+         while (it.hasNext()) {
             hitPiece = false;
             p = it.next();
 
-            if(p != null){
+            if (p != null) {
                hitPiece = true;
             }
 
             // Stop Iteration if run into piece
-            if(hitPiece){
+            if (hitPiece) {
                // Only add a move if the piece is a different color
-               if(p.white != white){
+               if (p.white != white) {
                   moves.add(new Move(index, it.index(), Move.ATTACK)); 
                }
                break;
             }
-
             moves.add(new Move(index, it.index(), Move.QUIET)); 
          }
-      }else{
-         if(it.hasNext()){
+      } else {
+         if (it.hasNext()) {
             p = it.next();
             // Only add a move if the piece is a different color
-            if(p == null){
+            if (p == null) {
                moves.add(new Move(index, it.index(), Move.QUIET)); 
-            }else if(p.white != white){
+            } else if (p.white != white) {
                moves.add(new Move(index, it.index(), Move.ATTACK)); 
             }
          }
@@ -68,7 +67,7 @@ public abstract class ChessPiece extends PieceValue{
 
    public abstract int getValue();
 
-   public boolean isWhite(){
+   public boolean isWhite() {
       return white;
    }
 

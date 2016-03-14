@@ -11,7 +11,7 @@ import ai.Value;
  *  @version Program 7
  */
 
-public abstract class PieceValue implements Value{
+public abstract class PieceValue implements Value {
    /**
     * getValue
     *
