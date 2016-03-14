@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
  * @author Kyle Wuerch, Sean Wallace
  * @version Program 7 
  */
-public class DirectionalIterator extends BoardIterator<ChessPiece>{
+public class DirectionalIterator extends BoardIterator<ChessPiece> {
 	public static final int UP_LEFT = 0;
    public static final int UP = 1;
    public static final int UP_RIGHT = 2;
@@ -31,7 +31,7 @@ public class DirectionalIterator extends BoardIterator<ChessPiece>{
 	 * @param int the desired direction of iteration
 	 * @param int the desired starting index of the iterator
 	 */
-	public DirectionalIterator(ChessPiece[] board, int direction, int index){
+	public DirectionalIterator(ChessPiece[] board, int direction, int index) {
 		switch(direction){
 			case UP_LEFT:
 				buffer = 9;
@@ -66,15 +66,14 @@ public class DirectionalIterator extends BoardIterator<ChessPiece>{
 	 * Determines whether there is another spot in the direction specified
 	 * @return boolean true if there is a next element
 	 */
-	public boolean hasNext(){
+	public boolean hasNext() {
 	ChessPiece p = board[index + buffer];
 	
-		if (p == null){
+		if (p == null) {
 			return true;
-		}else if(!p.toString().equals("I")){ // If piece is not invalid
+		} else if (!p.toString().equals("I")) { // If piece is not invalid
 			return true;
 		}
-
 		return false;	
 	}
 
@@ -82,8 +81,8 @@ public class DirectionalIterator extends BoardIterator<ChessPiece>{
 	 * Gets the next chesspiece in the iterator and adds to iterator index
 	 * @return the next ChessPiece
 	 */
-	public ChessPiece next(){
-		if (!hasNext()){
+	public ChessPiece next() {
+		if (!hasNext()) {
 			throw new NoSuchElementException();
 		}
 		
@@ -95,7 +94,7 @@ public class DirectionalIterator extends BoardIterator<ChessPiece>{
 	 * getIndex
 	 * @return the current index of the iterator
 	 */
-	public int index(){
+	public int index() {
 		return index;
 	}
 	
@@ -103,7 +102,7 @@ public class DirectionalIterator extends BoardIterator<ChessPiece>{
 	 * Removes and item from the iterator
 	 * @throws UnsupportedOperationException
 	 */
-	public void remove(){
+	public void remove() {
 		throw new UnsupportedOperationException();
 	}
 }

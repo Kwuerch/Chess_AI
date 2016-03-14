@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
  * @author Kyle Wuerch, Sean Wallace
  * @version Program 7
  */
-public class NormalIterator extends BoardIterator<ChessPiece>{
+public class NormalIterator extends BoardIterator<ChessPiece> {
 	private int index;
 	private int min = 21;
 	private int max = 98;
@@ -18,7 +18,7 @@ public class NormalIterator extends BoardIterator<ChessPiece>{
 	/**
 	 * Constructor for NormalIterator
 	 */
-	public NormalIterator(ChessPiece[] board){
+	public NormalIterator(ChessPiece[] board) {
 		index = min;
 		this.board = board;
 	}
@@ -27,8 +27,8 @@ public class NormalIterator extends BoardIterator<ChessPiece>{
 	 * Determines whether there is another spot in the direction specified
 	 * @return boolean true if there is a next element
 	 */
-	public boolean hasNext(){
-		if (index <= max){
+	public boolean hasNext() {
+		if (index <= max) {
 			return true;
 		}	
 		return false;
@@ -38,14 +38,14 @@ public class NormalIterator extends BoardIterator<ChessPiece>{
 	 * Gets the next chesspiece in the iterator and adds to iterator index
 	 * @return the current ChessPiece
 	 */
-	public ChessPiece next(){
-		if (!hasNext()){
+	public ChessPiece next() {
+		if (!hasNext()) {
 			throw new NoSuchElementException();
 		}
-		if (index%10 == 8){
+		if (index%10 == 8) {
 			index += 3;
 			return board[index - 3];
-		}else{
+		} else {
 			return board[index++];
 		}
 	}
@@ -54,14 +54,14 @@ public class NormalIterator extends BoardIterator<ChessPiece>{
 	 * Removes and item from the iterator
 	 * @throws UnsupportedOperationException
 	 */
-	public void remove(){
+	public void remove() {
 		throw new UnsupportedOperationException();
 	}
 	/**
 	 * getIndex
 	 * @return the current index of the iterator
 	 */
-	public int index(){
+	public int index() {
 		return index;
 	}
 }

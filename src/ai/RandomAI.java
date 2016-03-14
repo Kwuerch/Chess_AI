@@ -26,15 +26,6 @@ public class RandomAI extends AI{
       board.move(determineMove(board));
    }
 
-	/**
-	 * Inefficient random movement generation methodology.
-	 * 1. Get List of possible moves
-	 * 		Default Iterator, next to a random location until !null
-	 * 2. Pick a random corresponding iterator
-	 * 		Dependant on piece found, pick random directional iterator
-	 * 3. If the iterator !hasNext(), reset to step 1
-	 * 4. Make the move (iterator hasNext())
-	 */
    /**
     * determineMove
     *
