@@ -48,7 +48,6 @@ public class RandomAI extends AI{
          guess = (int)(Math.random() * moves.size());
          if(super.isCheck(board, moves.get(guess))){
             moves.remove(guess);
-            System.out.println("Invalid Guess");
          }else{
             return moves.get(guess);
          }

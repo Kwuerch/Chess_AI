@@ -16,7 +16,6 @@ public class Move{
    public static int CASTLE = 4; 
    public static int PROMOTION = 5;
 
-   private ChessPiece cp;
    private int start;
    private int end;
    private int moveType;
@@ -43,6 +42,15 @@ public class Move{
     */
    public int getStart(){
       return start;
+   }
+
+   /**
+    * getMoveType
+    *
+    * @return the moveType
+    */
+   public int getMoveType(){
+      return moveType;
    }
 
 

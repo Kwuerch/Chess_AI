@@ -64,7 +64,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
                Queen q = (Queen)oldBoardArr[i];
                board[i] = new Queen(this, q.isWhite());
             }else{ // Piece is King
-               System.out.println(type);
                King k = (King)oldBoardArr[i];
                board[i] = new King(this, k.isWhite());
             }
@@ -167,12 +166,19 @@ public class Board extends BoardValue implements Iterable<ChessPiece>{
     */
    public void move(Move move){
       ChessPiece p = board[move.getStart()];
-      board[move.getEnd()] = p;
 
-      if(p.toString().equals("P")){ // If piece is a pawn
+      if(p.getClass().toString().equals("class pieces.Pawn")){
          ((Pawn)p).madeMove();
       }
 
+      // Auto Promotion of Pawn to Queen
+      if(move.getMoveType() == Move.PROMOTION){
+         p = new Queen(this, p.isWhite());
+         System.out.println("YAY PROMOTION");
+      }
+
+
+      board[move.getEnd()] = p;
       board[move.getStart()] = null;
    }
 
