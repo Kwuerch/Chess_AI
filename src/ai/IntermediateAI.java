@@ -45,7 +45,7 @@ public class IntermediateAI extends AI {
 		if (isCheck(board, isWhite())) {
 			for (Move m: moves) {
 				if (!isCheck(board, m, isWhite())) {
-					double val = getMoveValue(board, m, isWhite(), 1);
+					double val = getMoveValue(board, m, isWhite(), 0);
 					System.out.println(val);
 					if (val > max) {
 					maxMove = m;
@@ -58,7 +58,7 @@ public class IntermediateAI extends AI {
 				if (isCheck(board, m, isWhite())) {
 					continue;
 				} else {
-					double val = getMoveValue(board, m, isWhite(), 1);
+					double val = getMoveValue(board, m, isWhite(), 0);
 					System.out.println(val);
 					if (val > max) {
 						maxMove = m;
