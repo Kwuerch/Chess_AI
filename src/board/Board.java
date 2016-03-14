@@ -255,7 +255,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
      * @return the total number of pieces on the board
      */
     public int getNumPieces(){
-       int size;
+       int size = 0;
 
        BoardIterator<ChessPiece> it = iterator();
        while(it.hasNext()){

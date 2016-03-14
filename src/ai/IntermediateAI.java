@@ -69,10 +69,12 @@ public class IntermediateAI extends AI {
 			}
 		}
 
-      if(maxMove == null && isCheck(board, isWhite())){
-         return new Move(Move.CHECKMATE);
-      }else{
-         return new Move(Move.STALEMATE);
+      if(maxMove == null){
+         if(isCheck(board, isWhite())){
+            return new Move(Move.CHECKMATE);
+         }else{
+            return new Move(Move.STALEMATE);
+         }
       }
 
 		return maxMove;	

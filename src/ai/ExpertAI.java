@@ -19,8 +19,8 @@ public class ExpertAI extends AI {
     *
     * make a well thought out move on the board
     */
-   public void makeMove(Board board) {
-
+   public Move makeMove(Board board) {
+      return null;
    }
 
 	/**
