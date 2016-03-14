@@ -41,6 +41,7 @@ public class Play {
                endGame(m);
                break;
             }else{
+               board.move(m);
                System.out.println(board);
                whiteTurn = !whiteTurn;
             }
@@ -56,6 +57,7 @@ public class Play {
                endGame(m);
                break;
             }else{
+               board.move(m);
                System.out.println(board);
                whiteTurn = !whiteTurn;
             }
