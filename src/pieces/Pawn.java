@@ -100,8 +100,14 @@ public class Pawn extends ChessPiece {
             if (p != null && p.isWhite() != isWhite()) {
                // Check if can take piece diagonally, and possibly promote diagonally
                if (!it.hasNext()) {
-                  BoardIterator<ChessPiece> straigtIt = board.boardIterator(Board.UP, index);
-                  if (straigtIt.hasNext()) {
+                  BoardIterator<ChessPiece> straigtIt;
+                  if(isWhite()){
+                     straigtIt = board.boardIterator(Board.UP, index);
+                  }else{
+                     straigtIt = board.boardIterator(Board.DOWN, index);
+                  }
+
+                  if (!straigtIt.hasNext()) {
                      moves.add(new Move(index, it.index(), Move.PROMOTION));
                   } else {
                      moves.add(new Move(index, it.index(), Move.ATTACK));

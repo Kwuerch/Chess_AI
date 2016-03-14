@@ -19,8 +19,8 @@ public class Play {
    public static void main(String[] args) {
       Board board = new Board();
 
-      AI playerW = new IntermediateAI("Shrek", true);
-		//AI playerW = new RandomAI("Shrek", true);
+      //AI playerW = new IntermediateAI("Shrek", true);
+		AI playerW = new RandomAI("Shrek", true);
       AI playerB = new RandomAI("Fiona", false);
 
       playGame(playerW, playerB, board);
