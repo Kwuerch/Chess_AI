@@ -22,8 +22,8 @@ public class RandomAI extends AI {
     *
     * Makes a random move on the board
     */
-   public void makeMove(Board board) {
-      board.move(determineMove(board));
+   public Move makeMove(Board board) {
+      return determineMove(board);
    }
 
    /**
@@ -44,6 +44,10 @@ public class RandomAI extends AI {
          }
       }
 
-      return null; //Should return checkmate or stalemate
+      if(isCheck(board, isWhite())){
+         return new Move(Move.CHECKMATE);
+      }else{
+         return new Move(Move.STALEMATE);
+      }
    }
 }

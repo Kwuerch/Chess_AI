@@ -15,6 +15,8 @@ public class Move {
    public static int ATTACK = 3;
    public static int CASTLE = 4; 
    public static int PROMOTION = 5;
+   public static int CHECKMATE = 6;
+   public static int STALEMATE = 7;
 
    private int start;
    private int end;
@@ -31,6 +33,17 @@ public class Move {
    }
 
    /**
+    * Move Constructor
+    *
+    * Creates a move that ends the game
+    */
+   public Move(int endGame){
+      start = -1;
+      end = -1;
+      moveType = endGame;
+   }
+
+   /**
     * @return the index for the piece to go
     */
    public int getEnd() {
@@ -42,6 +55,32 @@ public class Move {
     */
    public int getStart() {
       return start;
+   }
+
+   
+   /**
+    * isCheckmate
+    *
+    * @return if the game has ended in stalemate
+    */
+   public boolean isCheckmate(){
+      if(moveType == CHECKMATE){
+         return true;
+      }
+      return false;
+   }
+
+   
+   /**
+    * isStalemate
+    *
+    * @return if the game has ended in stalemate
+    */
+   public boolean isStalemate(){
+      if(moveType == STALEMATE){
+         return true;
+      }
+      return false;
    }
 
    /**

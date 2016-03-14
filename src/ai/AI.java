@@ -30,7 +30,7 @@ public abstract class AI {
     *
     * @return the move the ai has decided to make
     */
-   public abstract void makeMove(Board board);
+   public abstract Move makeMove(Board board);
 
    /**
     * inCheck
