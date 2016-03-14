@@ -142,7 +142,7 @@ public class Pawn extends ChessPiece {
     * getValue
     * @return the value of the piece
     */
-   public int getValue() {
+   public double getValue() {
       return 1;
    }
 

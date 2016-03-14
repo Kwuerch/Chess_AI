@@ -60,8 +60,8 @@ public class Bishop extends ChessPiece {
     * getValue
     * @return the value of the piece
     */
-   public int getValue() {
-      return 3;
+   public double getValue() {
+      return 3.5;
    }
 
    /**

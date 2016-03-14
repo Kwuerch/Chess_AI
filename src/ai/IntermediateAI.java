@@ -33,7 +33,7 @@ public class IntermediateAI extends AI {
 	 */
 	public Move determineMove(Board board) {
 		Move goodMove = bestMove(board);
-		
+			
 		return goodMove;
 	}
 
@@ -41,15 +41,30 @@ public class IntermediateAI extends AI {
 		double max = 0;
 		Move maxMove = null; // Possible Danger
 		List<Move> moves = board.getMoves(isWhite());
-		for (Move m: moves) {
-			if (isCheck(board, m, isWhite())) {
-				continue;
-			} else {
-				double val = getMoveValue(board, m, isWhite(), 1);
-				System.out.println(val);
-				if (val > max) {
+
+		// If Currently in Check
+		if (isCheck(board, isWhite())) {
+			for (Move m: moves) {
+				if (!isCheck(board, m, isWhite())) {
+					double val = getMoveValue(board, m, isWhite(), 1);
+					System.out.println(val);
+					if (val > max) {
 					maxMove = m;
-					max = val;
+					max = val;	
+					}
+				}
+			}
+		} else {
+			for (Move m: moves) {
+				if (isCheck(board, m, isWhite())) {
+					continue;
+				} else {
+					double val = getMoveValue(board, m, isWhite(), 1);
+					System.out.println(val);
+					if (val > max) {
+						maxMove = m;
+						max = val;
+					}
 				}
 			}
 		}
@@ -77,7 +92,7 @@ public class IntermediateAI extends AI {
 		// Continue Going Deeper
 		List<Move> opMoves = newBoard.getMoves(!turnWhite);
 		double sum = 0;
-		int size = 0;
+		double size = 0;
 		for (Move m: opMoves) { // Black Turn
 			if (isCheck(newBoard, m, !turnWhite)) {
 				continue;
@@ -94,6 +109,10 @@ public class IntermediateAI extends AI {
 				}	
 			}
 		}	
+		if (size == 0) {
+			System.out.print("Move puts me in check: ");
+			return 0.0;
+		}
 		return sum / (size);
 	}
 

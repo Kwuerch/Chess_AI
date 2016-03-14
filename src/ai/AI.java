@@ -32,6 +32,43 @@ public abstract class AI {
     */
    public abstract Move makeMove(Board board);
 
+	/**
+    * isCheck 
+	 * @param Board
+	 * @param boolean
+    *
+	 * @return whether or not the king is already in check
+    */
+   public boolean isCheck(Board board, boolean isWhite) {
+		// Possible Moves for other color
+
+      // There should always be a king
+      BoardIterator<ChessPiece> it = board.iterator();
+      ChessPiece p;
+      int index = -1;
+
+      // Find the index of the king
+      while(it.hasNext()) {
+         index = it.index();
+         p = it.next();      
+         if(p != null && p.getClass().toString().equals("class pieces.King") && 
+         		p.isWhite() == isWhite) {
+            break;
+         }
+      }
+
+		// return true if a move of the opponent is set to end on the king
+      List<Move> moves = board.getMoves(!isWhite);
+
+      for(Move m: moves) {
+         if(m.getEnd() == index) {
+            return true;
+         }
+      }
+      return false;
+	}
+
+
    /**
     * inCheck
     *

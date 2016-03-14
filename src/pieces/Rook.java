@@ -57,8 +57,8 @@ public class Rook extends ChessPiece {
     * getValue
     * @return the value of the piece
     */
-   public int getValue() {
-      return 5;
+   public double getValue() {
+      return 4;
    }
 
    /**
