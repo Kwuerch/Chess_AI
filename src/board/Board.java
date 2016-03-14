@@ -249,6 +249,25 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
        return false;
     }
 
+    /**
+     * getNumPieces
+     *
+     * @return the total number of pieces on the board
+     */
+    public int getNumPieces(){
+       int size = 0;
+
+       BoardIterator<ChessPiece> it = iterator();
+       while(it.hasNext()){
+          if(it.next() != null){
+             size ++;
+          }
+       }
+
+       return size;
+    }
+
+
    /**
     * @param int the desired direction of iteration
     * @return a board iterator that iterates through the direction specified

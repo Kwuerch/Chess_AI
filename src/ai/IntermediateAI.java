@@ -21,8 +21,8 @@ public class IntermediateAI extends AI {
     *
     * makes a decently educated move on the board
     */
-   public void makeMove(Board board) {
-		board.move(determineMove(board));
+   public Move makeMove(Board board) {
+		return determineMove(board);
    }
 
 	/**
@@ -36,6 +36,7 @@ public class IntermediateAI extends AI {
 			
 		return goodMove;
 	}
+
    public Move bestMove(Board board) {
 		double max = 0;
 		Move maxMove = null; // Possible Danger
@@ -67,6 +68,14 @@ public class IntermediateAI extends AI {
 				}
 			}
 		}
+
+      if(maxMove == null){
+         if(isCheck(board, isWhite())){
+            return new Move(Move.CHECKMATE);
+         }else{
+            return new Move(Move.STALEMATE);
+         }
+      }
 
 		return maxMove;	
    }

@@ -30,14 +30,44 @@ public class Play {
       boolean whiteTurn = true;
       while (true) {
          if (whiteTurn) {
-            playerW.makeMove(board);
-            System.out.println(board);
-            whiteTurn = !whiteTurn;
+            Move m;
+            if(board.getNumPieces() == 2){
+               m = new Move(Move.STALEMATE);
+            }else{
+               m = playerW.makeMove(board);
+            }
+
+            if(m.isCheckmate() || m.isStalemate()){
+               endGame(m);
+               break;
+            }else{
+               System.out.println(board);
+               whiteTurn = !whiteTurn;
+            }
          } else {
-            playerB.makeMove(board);
-            System.out.println(board);
-            whiteTurn = !whiteTurn;
+            Move m;
+            if(board.getNumPieces() == 2){
+               m = new Move(Move.STALEMATE);
+            }else{
+               m = playerB.makeMove(board);
+            }
+
+            if(m.isCheckmate() || m.isStalemate()){
+               endGame(m);
+               break;
+            }else{
+               System.out.println(board);
+               whiteTurn = !whiteTurn;
+            }
          }
+      }
+   }
+
+   private static void endGame(Move m){
+      if(m.isCheckmate()){
+         System.out.println("Checkmate");
+      }else{
+         System.out.println("Stalemate");
       }
    }
 }
