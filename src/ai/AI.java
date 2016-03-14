@@ -42,7 +42,7 @@ public abstract class AI {
 		// Possible Moves for other color
 
       // There should always be a king
-      BoardIterator<ChessPiece> it = newBoard.iterator();
+      BoardIterator<ChessPiece> it = board.iterator();
       ChessPiece p;
       int index = -1;
 
