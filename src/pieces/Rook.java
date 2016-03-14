@@ -67,7 +67,7 @@ public class Rook extends ChessPiece {
     */
    @Override
    public String toString() {
-      if (isWhite()) {
+      if (!isWhite()) {
          return "♖";
       } else {
          return "♜";

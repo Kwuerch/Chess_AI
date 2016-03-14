@@ -103,38 +103,38 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
 			board[i] = new Invalid();
 		}
 
-      // White 
-      board[91] = new Rook(this, true);
-      board[98] = new Rook(this, true);
+      // Black
+      board[91] = new Rook(this, false);
+      board[98] = new Rook(this, false);
 
-      board[92] = new Knight(this, true);
-      board[97] = new Knight(this, true);
+      board[92] = new Knight(this, false);
+      board[97] = new Knight(this, false);
 
-      board[93] = new Bishop(this, true);
-      board[96] = new Bishop(this, true);
+      board[93] = new Bishop(this, false);
+      board[96] = new Bishop(this, false);
 
-      board[94] = new Queen(this, true);
-      board[95] = new King(this, true);
+      board[94] = new Queen(this, false);
+      board[95] = new King(this, false);
 
       for (int i = 81; i < 89; i++) {
-         board[i] = new Pawn(this, true);
+         board[i] = new Pawn(this, false);
       }
 
       // White
-      board[21] = new Rook(this, false);
-      board[28] = new Rook(this, false);
+      board[21] = new Rook(this, true);
+      board[28] = new Rook(this, true);
 
-      board[22] = new Knight(this, false);
-      board[27] = new Knight(this, false);
+      board[22] = new Knight(this, true);
+      board[27] = new Knight(this, true);
 
-      board[23] = new Bishop(this, false);
-      board[26] = new Bishop(this, false);
+      board[23] = new Bishop(this, true);
+      board[26] = new Bishop(this, true);
 
-      board[24] = new Queen(this, false);
-      board[25] = new King(this, false);
+      board[24] = new Queen(this, true);
+      board[25] = new King(this, true);
 
       for (int i = 31; i < 39; i++) {
-         board[i] = new Pawn(this, false);
+         board[i] = new Pawn(this, true);
       }
    }
 

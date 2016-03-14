@@ -170,7 +170,7 @@ public class Pawn extends ChessPiece {
     */
    @Override
    public String toString() {
-      if (isWhite()) {
+      if (!isWhite()) {
          return "♙";
       } else {
          return "♟";
