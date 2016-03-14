@@ -43,6 +43,7 @@ public class RandomAI extends AI {
             return moves.get(guess);
          }
       }
+
       return null; //Should return checkmate or stalemate
    }
 }

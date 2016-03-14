@@ -172,7 +172,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
       // Auto Promotion of Pawn to Queen
       if(move.getMoveType() == Move.PROMOTION){
          p = new Queen(this, p.isWhite());
-         System.out.println("YAY PROMOTION");
       }
 
 

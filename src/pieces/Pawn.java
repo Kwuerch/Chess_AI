@@ -58,7 +58,7 @@ public class Pawn extends ChessPiece {
       moves.clear();
 
       // If white moves go upward
-      if (!isWhite()) {
+      if (isWhite()) {
          BoardIterator<ChessPiece> it = board.boardIterator(Board.UP_LEFT, index); 
          movesGen(it, index, true);
 

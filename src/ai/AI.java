@@ -39,6 +39,7 @@ public abstract class AI {
     */
    public boolean isCheck(Board board, Move move) {
       Board newBoard = new Board(board);
+      newBoard.move(move);
 
       // There should always be a king
       BoardIterator<ChessPiece> it = newBoard.iterator();
@@ -55,11 +56,8 @@ public abstract class AI {
          }
       }
 
-      System.out.println("isWhite: " + isWhite + "King is at index: " + index);
-
       // return true if a move of the opponent is set to end on the king
       List<Move> moves = newBoard.getMoves(!isWhite);
-
       for(Move m: moves){
          if(m.getEnd() == index){
             return true;
