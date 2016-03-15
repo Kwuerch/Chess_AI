@@ -40,8 +40,6 @@ public abstract class AI {
 	 * @return whether or not the king is already in check
     */
    public boolean isCheck(Board board, boolean isWhite) {
-		// Possible Moves for other color
-
       // There should always be a king
       BoardIterator<ChessPiece> it = board.iterator();
       ChessPiece p;
@@ -112,6 +110,7 @@ public abstract class AI {
     */
    public boolean isCheck(Board board, Move move, boolean isWhite) {
       Board newBoard = new Board(board);
+      newBoard.move(move);
 
       // There should always be a king
       BoardIterator<ChessPiece> it = newBoard.iterator();

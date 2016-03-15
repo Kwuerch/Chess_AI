@@ -20,8 +20,8 @@ public class Play {
       Board board = new Board();
 
       //AI playerW = new IntermediateAI("Shrek", true);
-		AI playerW = new RandomAI("Shrek", true);
-      AI playerB = new RandomAI("Fiona", false);
+		AI playerW = new RandomAI("Shrek", false);
+      AI playerB = new IntermediateAI("Fiona", true);
 
       playGame(playerW, playerB, board);
    }
@@ -42,7 +42,6 @@ public class Play {
                break;
             }else{
                board.move(m);
-               System.out.println(board);
                whiteTurn = !whiteTurn;
             }
          } else {
