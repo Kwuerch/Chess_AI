@@ -208,7 +208,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
          }
 		}
 
-      // Add 3 for opponent king in check
 		List<Move> moves = getMoves(isWhite);
       for(Move m: moves){
          ChessPiece p = board[m.getEnd()];

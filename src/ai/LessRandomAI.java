@@ -4,12 +4,11 @@ import board.Board;
 import board.Move;
 
 import java.util.List;
-import java.util.ArrayList;
 
 /**
- * **LessRandomAI Class*
+ * **RandomAI Class*
  *
- * A class that determines moves as an AI less randomly
+ * A class that determines moves as an AI randomly
  * @author Kyle Wuerch, Sean Wallace
  * @version Program 7
  */
@@ -33,91 +32,91 @@ public class LessRandomAI extends AI {
     * @return a random move to be played
     */
    private Move determineMove(Board board) {
-      int guess;
-		int index = 0;
-		double previousMaxScore = 0;
-		double maxScore = 0;
-		Move moveToMake = null;
+      List<Move> moves1 = board.getMoves(super.isWhite());
+		List<Move> moves2 = board.getMoves(super.isWhite());
+		List<Move> moves3 = board.getMoves(super.isWhite());
 
-		List<Move> moves = board.getMoves(super.isWhite());
-		ArrayList<Board> boards = new ArrayList<Board>();
-		ArrayList<Double> scores = new ArrayList<Double>();
-		for (Move m: moves) {
-			Board branchOne = new Board(board);
-			branchOne.move(m);
-			boards.add(branchOne);
-			scores.add(branchOne.getValue(isWhite()));	
-			List<Move> blackMoves = board.getMoves(!isWhite());	
+      int guess1;
+		int guess2;
+		int guess3;
+      
+		Move move1 = null;
+		Move move2 = null;
+		Move move3 = null;
 
-			double max = 0;
-			for (int i = 0; i < scores.size(); i++) {
-				if (scores.get(i) > max) {
-					max = scores.get(i);
-					index = i;
-				}
-			}
-		}
-		return moves.get(index);
-	}
-	
+		Board board1 = new Board(board);
+		Board board2 = new Board(board);
+		Board board3 = new Board(board);
 
-
-
-		/*
-		List<Move> moves = board.getMoves(super.isWhite());
-		for (Move m: moves) {
-			maxScore = 0;
-			Board branchOne = new Board(board);
-			branchOne.move(m);
-			List<Move> branchOneMoves = branchOne.getMoves(!isWhite());
-			maxScore += branchOne.getValue(true);
-			for (Move m2: branchOneMoves) {
-				Board branchTwo = new Board(branchOne);
-				branchTwo.move(m2);
-				List<Move> branchTwoMoves = branchTwo.getMoves(isWhite());
-				maxScore -= branchTwo.getValue(false);	
-				if (moves.size() == 0) {
-					return m;
-				}
-				if (maxScore < previousMaxScore) {
-				}
-				previousMaxScore = maxScore;
-
-				/*
-				for (Move m3: branchTwoMoves) {
-					Board branchThree = new Board(branchTwo);
-					branchThree.move(m3);
-					List<Move> branchThreeMoves = branchThree.getMoves(!isWhite());
-					maxScore += branchThree.getValue(true);
-					for (Move m4: branchThreeMoves) {
-						Board branchFour = new Board (branchThree);
-						branchFour.move(m4);
-						maxScore -= branchFour.getValue(false);
-						if (maxScore < previousMaxScore) {
-							moves.remove(m);
-						}
-						previousMaxScore = maxScore;
-					}
-					
-				}*/
-			//}
-/*
-		}
-
-      while (moves.size() > 0) {
-         guess = (int)(Math.random() * moves.size());
-         if (super.isCheck(board, moves.get(guess))) {
-            moves.remove(guess);
+      while (move1 == null) {
+         guess1 = (int)(Math.random() * moves1.size());
+         if (super.isCheck(board1, moves1.get(guess1))) {
+            moves1.remove(guess1);
          } else {
-            return moves.get(guess);
+         	move1 = moves1.get(guess1);
          }
       }
+		while (move2 == null) {
+         guess2 = (int)(Math.random() * moves2.size());
+         if (super.isCheck(board2, moves2.get(guess2))) {
+            moves2.remove(guess2);
+         } else {
+         	move2 = moves2.get(guess2);
+         }
+      }
+		while (move3 == null) {
+         guess3 = (int)(Math.random() * moves3.size());
+         if (super.isCheck(board3, moves3.get(guess3))) {
+            moves3.remove(guess3);
+         } else {
+         	move3 = moves3.get(guess3);
+         }
+      }
+		if (move1 != null) {
+			System.out.println("Virtually Made move 1");
+			board1.move(move1);
+			}
+		if (move2 != null) {
+			board2.move(move2);
+			System.out.println("Virtually Made move 2");
+		}
+		if (move3 != null) {
+			board3.move(move3);
+			System.out.println("Virtually Made move 3");
+		}
+		System.out.println(move1);
+		System.out.println(move2);
+		System.out.println(move3);
+		// Find board with max value
+		if (board1.getValue(isWhite()) > board2.getValue(isWhite())) {
+			if (board1.getValue(isWhite()) > board3.getValue(isWhite())) {
+				System.out.println("Move 1 biggest");
+				return move1;
+			}
 
-      if (isCheck(board, isWhite())) {
+		} else {
+			if (board2.getValue(isWhite()) > board3.getValue(isWhite())) {
+				System.out.println("Move 2 biggest");
+				return move2;
+			}
+			System.out.println("Move 3 biggest");
+			return move3;
+		}
+
+		if (move1 != null ) {
+			return move1;
+		}
+		if (move2 != null) {
+			return move2;
+		}
+		if (move3 != null) {
+			return move3;
+		}
+
+      if (isCheck(board, isWhite())){
          return new Move(Move.CHECKMATE);
       } else {
          return new Move(Move.STALEMATE);
       }
-	*/
-   //}
+	}
 }

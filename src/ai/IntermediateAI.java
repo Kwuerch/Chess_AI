@@ -39,9 +39,9 @@ public class IntermediateAI extends AI {
 	 * @return a calculated move to be played
 	 */
 	public Move determineMove(Board board) {
-		Move goodMove = bestMove(board);
+		Move bestMove = bestMove(board);
 			
-		return goodMove;
+		return bestMove;
 	}
 
    public Move bestMove(Board board) {
