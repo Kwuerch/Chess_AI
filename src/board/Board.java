@@ -266,6 +266,22 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
 
        return size;
     }
+	
+	/**
+	 * @param boolean whether or not to count white pieces
+	 * @return number of pieces of color specified
+	 */
+	public int getNumPiecesOfColor(boolean isWhite) {
+		int size = 0;
+		BoardIterator<ChessPiece> it = iterator();
+		while (it.hasNext()) {
+			ChessPiece p = it.next();
+			if (p != null && p.isWhite() == isWhite) {
+				size ++;
+			}
+		}
+		return size;
+	}
 
 
    /**

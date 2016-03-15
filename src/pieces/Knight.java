@@ -49,6 +49,18 @@ public class Knight extends ChessPiece {
 
       it = board.knightIterator(Board.DOWN_LEFT, index);
       super.movesGen(moves, it, index, false);
+
+		it = board.knightIterator(Board.UP, index); 
+      super.movesGen(moves, it, index, false);
+
+      it = board.knightIterator(Board.DOWN, index);
+      super.movesGen(moves, it, index, false);
+
+      it = board.knightIterator(Board.LEFT, index);
+      super.movesGen(moves, it, index, false);
+
+      it = board.knightIterator(Board.RIGHT, index);
+      super.movesGen(moves, it, index, false);
    }
 
    /**

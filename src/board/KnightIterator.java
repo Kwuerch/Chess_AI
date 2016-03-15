@@ -35,6 +35,18 @@ public class KnightIterator extends BoardIterator<ChessPiece> {
 			case Board.DOWN_RIGHT:
 				buffer = -19;
 				break;
+			case Board.UP:
+				buffer = -8;
+				break;
+			case Board.LEFT:
+				buffer = 8;
+				break;
+			case Board.RIGHT:
+				buffer = 12;
+				break;
+			case Board.DOWN:
+				buffer = -12;
+				break;
 		}
 		this.index = index;
 		this.board = board;
