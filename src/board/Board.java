@@ -201,15 +201,16 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
 			ChessPiece p = it.next();
          if (p != null && !p.getClass().toString().equals("class pieces.King")) {
             if (p.isWhite() == isWhite) {
-               currentValue += p.getValue();
+               currentValue += 2 * p.getValue();
             } else {
 					currentValue -= p.getValue();
 				}
          }
 		}
+
 		List<Move> moves = getMoves(isWhite);
 		List<Move> opMoves = getMoves(!isWhite);
-      return currentValue + moves.size();
+      return currentValue + moves.size() - opMoves.size();
     }
 
    /**
