@@ -45,7 +45,7 @@ public class IntermediateAI extends AI {
 	}
 
    public Move bestMove(Board board) {
-		double max = 0;
+		double max = -100000;
 		Move maxMove = null;
 		List<Move> moves = board.getMoves(isWhite());
 

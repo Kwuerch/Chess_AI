@@ -20,7 +20,7 @@ public class Play {
    public static void main(String[] args) {
       Board board = new Board();
 
-		AI playerW = new IntermediateAI("Shrek", false, 2);
+		AI playerW = new RandomAI("Shrek", false);
       AI playerB = new IntermediateAI("Fiona", true);
       playGame(playerW, playerB, board);
    }
