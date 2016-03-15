@@ -89,8 +89,6 @@ public class Pawn extends ChessPiece {
    public void movesGen(BoardIterator<ChessPiece> it, int index, boolean diag){
       boolean hitPiece;
       ChessPiece p;
-
-      //TODO Add Diagonal Promotion
       
       if (it.hasNext()) {
          p = it.next();
@@ -102,9 +100,9 @@ public class Pawn extends ChessPiece {
                if (!it.hasNext()) {
                   BoardIterator<ChessPiece> straigtIt;
                   if(isWhite()){
-                     straigtIt = board.boardIterator(Board.UP, index);
+                     straigtIt = board.boardIterator(Board.UP, it.index());
                   }else{
-                     straigtIt = board.boardIterator(Board.DOWN, index);
+                     straigtIt = board.boardIterator(Board.DOWN, it.index());
                   }
 
                   if (!straigtIt.hasNext()) {
