@@ -45,7 +45,11 @@ public class RandomAI extends AI {
       }
 
       if(isCheck(board, isWhite())){
-         return new Move(Move.CHECKMATE);
+         if(isWhite()){
+            return new Move(Move.CHECKMATE, true);
+         }else{
+            return new Move(Move.CHECKMATE, false);
+         }
       }else{
          return new Move(Move.STALEMATE);
       }

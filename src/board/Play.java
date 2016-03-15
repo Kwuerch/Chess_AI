@@ -18,12 +18,15 @@ import java.util.List;
  * @version Program 7
  */
 public class Play {
+   private static int moves = 0;
+   private static final int MAX_MOVES = 500;
+
    public static void main(String[] args) {
       Board board = new Board();
 
-		AI playerW = new ExpertAI("Shrek", true);
+		AI playerW = new IntermediateAI("Shrek", true);
       //AI playerB = new IntermediateAI("Fiona", true);
-		AI playerB = new IntermediateAI("Fiona", false);
+		AI playerB = new RandomAI("Fiona", false);
       playGame(playerW, playerB, board);
    }
 
@@ -32,7 +35,7 @@ public class Play {
       while (true) {
          if (whiteTurn) {
             Move m;
-            if(board.getNumPieces() == 2){
+            if(moves++ > MAX_MOVES || board.getNumPieces() == 2){
                m = new Move(Move.STALEMATE);
             }else{
                m = playerW.makeMove(board);
@@ -48,7 +51,7 @@ public class Play {
             }
          } else {
             Move m;
-            if(board.getNumPieces() == 2){
+            if(moves++ > MAX_MOVES || board.getNumPieces() == 2){
                m = new Move(Move.STALEMATE);
             }else{
                m = playerB.makeMove(board);
@@ -68,9 +71,13 @@ public class Play {
 
    private static void endGame(Move m){
       if(m.isCheckmate()){
-         System.out.println("Checkmate");
+         if(m.getStart() == 0){
+            System.out.println("Checkmate: White Won!");
+         }else{
+            System.out.println("Checkmate: Black Won!");
+         }
       }else{
-         System.out.println("Stalemate");
+         System.out.println("Stalemate: It's a Tie :(");
       }
    }
 }

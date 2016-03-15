@@ -44,6 +44,25 @@ public class Move {
    }
 
    /**
+    * Move Constructor
+    *
+    * Creates a move that ends the game that denotes 
+    * the loser:
+    * start == 1 means white lost
+    * start == 0 means black lost
+    */
+   public Move(int endGame, boolean isWhite){
+      if (isWhite) {
+         start = 1;
+         end = 1;
+      }else{
+         start = 0;
+         end = 0;
+      }
+      moveType = endGame;
+   }
+
+   /**
     * @return the index for the piece to go
     */
    public int getEnd() {

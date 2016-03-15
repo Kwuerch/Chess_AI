@@ -12,8 +12,9 @@ import java.util.List;
  * @version Program 7
  */
 public class ExpertAI extends AI {
-   private static int PERCENT = 1;
-   private static int RAND_MULT = 100/PERCENT;
+   private static double PERCENT = 1;
+   private static int RAND_MULT = (int)(100/PERCENT);
+   private static int MAX_DEPTH = 2;
    /**
     * ExpertAI Constructor
     *
@@ -21,6 +22,7 @@ public class ExpertAI extends AI {
     */
    public ExpertAI(String name, boolean color) {
       super(name, color);
+      System.out.println(RAND_MULT);
    }
 
    /**
@@ -54,7 +56,7 @@ public class ExpertAI extends AI {
 				if (isCheck(board, m, isWhite())) {
 					continue;
 				} else {
-					double val = getMoveValue(board, m, isWhite(), 1);
+					double val = getMoveValue(board, m, isWhite(), 1, 0);
 					if (val > max) {
 						maxMove = m;
 						max = val;
@@ -64,7 +66,11 @@ public class ExpertAI extends AI {
 
       if(maxMove == null){
          if(isCheck(board, isWhite())){
-            return new Move(Move.CHECKMATE);
+            if(isWhite()){
+               return new Move(Move.CHECKMATE, true);
+            }else{
+               return new Move(Move.CHECKMATE, false);
+            }
          }else{
             return new Move(Move.STALEMATE);
          }
@@ -77,14 +83,14 @@ public class ExpertAI extends AI {
     *
     * A recursive method that makes theoretical moves and determines the average value for a move
     */
-	public double getMoveValue(Board board, Move move, boolean turnWhite, int branchCount) {
+	public double getMoveValue(Board board, Move move, boolean turnWhite, int branchCount, int depth) {
 		Board newBoard = new Board(board);
       newBoard.move(move);
 
 		// Check Base Case
 		if (newBoard.isCheckmate(!turnWhite)) {
 			return 100.0;
-		} else if (branchCount == 0) {
+		} else if (branchCount == 0 || depth >= MAX_DEPTH) {
 			return newBoard.getValue(turnWhite);
 		}
 
@@ -101,9 +107,9 @@ public class ExpertAI extends AI {
                   int chance  = (int)(Math.random() * RAND_MULT);
                   // PERCENT chance of going another branch
                   if(chance == 0){
-                     sum += getMoveValue(opBoard, ourMove, turnWhite, branchCount);
+                     sum += getMoveValue(opBoard, ourMove, turnWhite, branchCount, depth + 1);
                   }else{
-                     sum += getMoveValue(opBoard, ourMove, turnWhite, branchCount -1);
+                     sum += getMoveValue(opBoard, ourMove, turnWhite, branchCount -1, depth + 1);
                   }
 						size ++;
 					}	
