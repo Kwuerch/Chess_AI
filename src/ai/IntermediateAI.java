@@ -46,35 +46,20 @@ public class IntermediateAI extends AI {
 
    public Move bestMove(Board board) {
 		double max = 0;
-		Move maxMove = null; // Possible Danger
+		Move maxMove = null;
 		List<Move> moves = board.getMoves(isWhite());
 
-		// If Currently in Check
-		if (isCheck(board, isWhite())) {
-			for (Move m: moves) {
-				if (!isCheck(board, m, isWhite())) {
-					double val = getMoveValue(board, m, isWhite(), branchCount);
-					System.out.println(val);
-					if (val > max) {
-					maxMove = m;
-					max = val;	
-					}
-				}
-			}
-		} else {
 			for (Move m: moves) {
 				if (isCheck(board, m, isWhite())) {
 					continue;
 				} else {
 					double val = getMoveValue(board, m, isWhite(), branchCount);
-					System.out.println(val);
 					if (val > max) {
 						maxMove = m;
 						max = val;
 					}
 				}
 			}
-		}
 
       if(maxMove == null){
          if(isCheck(board, isWhite())){
@@ -89,40 +74,36 @@ public class IntermediateAI extends AI {
 
 	public double getMoveValue(Board board, Move move, boolean turnWhite, int branchCount) {
 		Board newBoard = new Board(board);
-		if (!isCheck(newBoard, move, turnWhite)) {	
-			newBoard.move(move);
-		}
+      newBoard.move(move);
+
 		// Check Base Case
 		if (newBoard.isCheckmate(!turnWhite)) {
 			return 100.0;
 		} else if (branchCount == 0) {
 			return newBoard.getValue(turnWhite);
 		}
+
 		// Continue Going Deeper
 		List<Move> opMoves = newBoard.getMoves(!turnWhite);
 		double sum = 0;
 		double size = 0;
-		for (Move m: opMoves) { // Black Turn
-			//if (isCheck(newBoard, m, !turnWhite)) {
-				//continue;
-			//} else {
+		for (Move opMove: opMoves) { // Opponent Turn
+			if (!isCheck(newBoard, opMove, !turnWhite)) {
 				Board opBoard = new Board(newBoard);
-				List<Move> moves = opBoard.getMoves(turnWhite);
-				for (Move m2: moves) {
-					if (isCheck(opBoard, m2, turnWhite)) {
-						System.out.print("Put in check: " + m2.toString() + "\n");
-						continue;
-					} else {
-						sum += getMoveValue(opBoard, m2, turnWhite, branchCount -1);
+				List<Move> ourMoves = opBoard.getMoves(turnWhite);
+				for (Move ourMove: ourMoves) {
+					if (!isCheck(opBoard, ourMove, turnWhite)) {
+						sum += getMoveValue(opBoard, ourMove, turnWhite, branchCount -1);
 						size ++;
 					}	
-				//}	
+				}
 			}
 		}	
+
 		if (size == 0) {
-			System.out.print("Move puts me in check: ");
 			return 0.0;
 		}
+
 		return sum / (size);
 	}
 
