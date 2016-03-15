@@ -41,6 +41,7 @@ public class Play {
                break;
             }else{
                board.move(m);
+               System.out.println(board);
                whiteTurn = !whiteTurn;
             }
          } else {
