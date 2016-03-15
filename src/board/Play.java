@@ -3,6 +3,7 @@ package board;
 import pieces.ChessPiece;
 import ai.RandomAI;
 import ai.IntermediateAI;
+import ai.LessRandomAI;
 import ai.AI;
 
 import java.util.List;
@@ -19,9 +20,9 @@ public class Play {
    public static void main(String[] args) {
       Board board = new Board();
 
-      AI playerW = new IntermediateAI("Shrek", true);
+      AI playerW = new RandomAI("Shrek", true);
 		//AI playerW = new RandomAI("Shrek", true);
-      AI playerB = new RandomAI("Fiona", false);
+      AI playerB = new LessRandomAI("Fiona", false);
 
       playGame(playerW, playerB, board);
    }

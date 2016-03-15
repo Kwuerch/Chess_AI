@@ -12,9 +12,16 @@ import java.util.List;
  * @version Program 7
  */
 public class IntermediateAI extends AI {
+	private int branchCount;
    public IntermediateAI(String name, boolean color) {
       super(name, color);
+		branchCount = 1;	
    }
+	public IntermediateAI(String name, boolean color, int branchCount) {
+		this(name, color);
+		this.branchCount = branchCount;
+	
+	}
 
    /**
     * makeMove
@@ -46,7 +53,7 @@ public class IntermediateAI extends AI {
 		if (isCheck(board, isWhite())) {
 			for (Move m: moves) {
 				if (!isCheck(board, m, isWhite())) {
-					double val = getMoveValue(board, m, isWhite(), 0);
+					double val = getMoveValue(board, m, isWhite(), branchCount);
 					System.out.println(val);
 					if (val > max) {
 					maxMove = m;
@@ -59,7 +66,7 @@ public class IntermediateAI extends AI {
 				if (isCheck(board, m, isWhite())) {
 					continue;
 				} else {
-					double val = getMoveValue(board, m, isWhite(), 0);
+					double val = getMoveValue(board, m, isWhite(), branchCount);
 					System.out.println(val);
 					if (val > max) {
 						maxMove = m;
@@ -96,19 +103,20 @@ public class IntermediateAI extends AI {
 		double sum = 0;
 		double size = 0;
 		for (Move m: opMoves) { // Black Turn
-			if (isCheck(newBoard, m, !turnWhite)) {
-				continue;
-			} else {
+			//if (isCheck(newBoard, m, !turnWhite)) {
+				//continue;
+			//} else {
 				Board opBoard = new Board(newBoard);
 				List<Move> moves = opBoard.getMoves(turnWhite);
 				for (Move m2: moves) {
 					if (isCheck(opBoard, m2, turnWhite)) {
+						System.out.print("Put in check: " + m2.toString() + "\n");
 						continue;
 					} else {
 						sum += getMoveValue(opBoard, m2, turnWhite, branchCount -1);
 						size ++;
 					}	
-				}	
+				//}	
 			}
 		}	
 		if (size == 0) {
