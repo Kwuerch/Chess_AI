@@ -218,13 +218,16 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
       }
 
 		List<Move> opMoves = getMoves(!isWhite);
-      for(Move m: moves){
+      /**
+       * Works better without this
+      for(Move m: opMoves){
          ChessPiece p = board[m.getEnd()];
          if(p != null && isWhite == p.isWhite()){
             currentValue -= 8;
          }
       
       }
+      */
 
       return currentValue + moves.size() - 10 * opMoves.size();
     }

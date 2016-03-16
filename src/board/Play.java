@@ -72,9 +72,9 @@ public class Play {
    private static void endGame(Move m){
       if(m.isCheckmate()){
          if(m.getStart() == 0){
-            System.out.println("Checkmate: White Won!");
+            System.out.println("Checkmate: Black Got Shrekt!");
          }else{
-            System.out.println("Checkmate: Black Won!");
+            System.out.println("Checkmate: White Got Shrekt!");
          }
       }else{
          System.out.println("Stalemate: It's a Tie :(");
