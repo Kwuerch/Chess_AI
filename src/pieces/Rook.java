@@ -8,15 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Rook Class
+ * ** Rook Class **
  * 
- * @author Kyle Wuerch
+ * @author Kyle Wuerch and Sean Wallace
  * @version Program 7
  */
 public class Rook extends ChessPiece {
-   Board board;
-   List<Move> moves;
+   private Board board;
+   private List<Move> moves;
 
+   /**
+    * Rook Constructor
+    *
+    * Calls the super constructor and initializes the list of Moves
+    */
 	public Rook(Board board, boolean white) {
 		super(white);
       this.board = board;
@@ -26,6 +31,7 @@ public class Rook extends ChessPiece {
 
    /**
     * getMoves
+    *
     * @return the boolean representation of possible moves
     */
    public List<Move> getMoves() {
@@ -34,6 +40,7 @@ public class Rook extends ChessPiece {
 
    /**
     * determineMoves
+    *
     * Add the possible moves to the List of Moves
     */
    public void determineMoves(int index) {
@@ -55,6 +62,7 @@ public class Rook extends ChessPiece {
 
    /**
     * getValue
+    *
     * @return the value of the piece
     */
    public double getValue() {
@@ -63,6 +71,7 @@ public class Rook extends ChessPiece {
 
    /**
     * toString
+    *
     * @return a String representation of the piece
     */
    @Override

@@ -38,6 +38,8 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
 
    /**
     * Constructor for new Board from previous board
+    *
+    * Creates deep copy of the board and all objects in it
     */
    public Board(Board oldBoard) {
       board = new ChessPiece[120];
@@ -75,6 +77,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
 
    /**
     * setupBoard
+    *
     * Add the correct pieces to the board
     */
    private void setupBoard() {
@@ -139,7 +142,8 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
 
    /**
     * findMoves
-    * Adds the moves of all pieces of the current board 
+    *
+    * Adds the moves of all pieces of the current board for the specified color
     */
    private void findMoves(boolean isWhite) {
       moves.clear();
@@ -181,6 +185,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
 
    /**
     * getValue
+    *
     * @return the value of the white player's pieces
     */
    public double getValue() {
@@ -189,9 +194,10 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
 
    /**
     * getValue
+    *
     * @param : Which Player to Calculate for 
+    *
     * @return the value of all the pieces of a certain color 
-    * TODO: Improve and Test
     */
     public double getValue(boolean isWhite) {
       double currentValue = 0;
@@ -218,8 +224,8 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
       }
 
 		List<Move> opMoves = getMoves(!isWhite);
+
       /**
-       * Works better without this
       for(Move m: opMoves){
          ChessPiece p = board[m.getEnd()];
          if(p != null && isWhite == p.isWhite()){
@@ -234,6 +240,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
 
    /**
     * getMoves
+    *
     * @return all the possible moves for the current board
     */
     public List<Move> getMoves(boolean isWhite) {
@@ -242,8 +249,11 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
     }
 
    /**
+    * isCheckmate
+    *
     * @return if the player with a specific color is in checkmate
-    * TODO: Improve and test
+    * TODO: Will work when move generation does not include 
+    * putting king in check
     */
     public boolean isCheckmate(boolean isWhite) {
        // If Current Player King has moves: Not Checkmate
@@ -272,7 +282,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
     /**
      * getNumPieces
      *
-     * @return the total number of pieces on the board
+     * @return the total number of pieces on the board excluding Invalids
      */
     public int getNumPieces(){
        int size = 0;
@@ -288,6 +298,8 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
     }
 	
 	/**
+    * getNumPiecesOfColor
+    *
 	 * @param boolean whether or not to count white pieces
 	 * @return number of pieces of color specified
 	 */
@@ -305,6 +317,8 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
 
 
    /**
+    * boarIterator
+    *
     * @param int the desired direction of iteration
     * @return a board iterator that iterates through the direction specified
     */
@@ -313,8 +327,9 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
    }
 
    /**
-    * iterator
-    * @return a default iterator to go through each space
+    * knightIterator
+    *
+    * @return a knightIterator to go through each space
     */
    public BoardIterator<ChessPiece> knightIterator(int direction, int index) {
       return new KnightIterator(board, direction, index);
@@ -322,6 +337,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
    
    /**
     * iterator
+    *
     * @return a default iterator to go through each space
     */
    public BoardIterator<ChessPiece> iterator() {
@@ -340,6 +356,7 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
 
    /**
     * toString
+    *
     * @return a String representation of the Board
     */
    public String toString() {

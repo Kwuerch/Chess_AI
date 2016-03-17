@@ -19,7 +19,12 @@ import java.util.List;
 public abstract class AI {
    private boolean isWhite;
    private String name;
-
+   
+   /**
+    * AI Constuctor
+    *
+    * Sets the name and color for the AI
+    */
    public AI(String name, boolean isWhite) {
       this.isWhite = isWhite;
       this.name = name;
@@ -34,6 +39,7 @@ public abstract class AI {
 
 	/**
     * isCheck 
+    *
 	 * @param Board
 	 * @param boolean
     *
@@ -68,7 +74,10 @@ public abstract class AI {
 
 
    /**
-    * inCheck
+    * isCheck
+    *
+    * @param Board
+    * @param Move
     *
     * @return whether or not a specific move puts or leaves the king in check of the current AI
     */
@@ -104,7 +113,11 @@ public abstract class AI {
 	}
 
   	/**
-    * inCheck
+    * isCheck
+    *
+    * @param Board
+    * @param Move
+    * @param boolean
     *
     * @return whether or not a specific move puts or leaves the king in check of the current AI
     */

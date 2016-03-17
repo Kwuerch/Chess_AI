@@ -6,13 +6,19 @@ import board.Move;
 import java.util.List;
 
 /**
- * **RandomAI Class*
+ * ** RandomAI Class **
  *
  * A class that determines moves as an AI randomly
+ *
  * @author Kyle Wuerch, Sean Wallace
  * @version Program 7
  */
 public class RandomAI extends AI {
+   /**
+    * RandomAI constructor
+    *
+    * calls the super constructor
+    */
    public RandomAI(String name, boolean color) {
       super(name, color);
    }

@@ -12,49 +12,41 @@ import java.util.NoSuchElementException;
  * @version Program 7 
  */
 public class DirectionalIterator extends BoardIterator<ChessPiece> {
-	public static final int UP_LEFT = 0;
-   public static final int UP = 1;
-   public static final int UP_RIGHT = 2;
-   public static final int RIGHT = 3;
-   public static final int DOWN_RIGHT = 4;
-   public static final int DOWN = 5;
-   public static final int DOWN_LEFT = 6;
-   public static final int LEFT = 7;
-
 	private int buffer;
 	private int index;
 	private ChessPiece[] board;
 
 	/**
 	 * Constructor of Directional taking parameters for board, direction and index
+    *
 	 * @param ChessPiece[] the current board to iterate over
 	 * @param int the desired direction of iteration
 	 * @param int the desired starting index of the iterator
 	 */
 	public DirectionalIterator(ChessPiece[] board, int direction, int index) {
 		switch (direction) {
-			case UP_LEFT:
+			case Board.UP_LEFT:
 				buffer = 9;
 				break;
-			case UP:
+			case Board.UP:
 				buffer = 10;
 				break;
-			case UP_RIGHT:
+			case Board.UP_RIGHT:
 				buffer = 11;
 				break;
-			case RIGHT:
+			case Board.RIGHT:
 				buffer = 1;
 				break;
-			case DOWN_RIGHT:
+			case Board.DOWN_RIGHT:
 				buffer = -9;
 				break;
-			case DOWN:
+			case Board.DOWN:
 				buffer = -10;
 				break;
-			case DOWN_LEFT:
+			case Board.DOWN_LEFT:
 				buffer = -11;
 				break;
-			case LEFT:
+			case Board.LEFT:
 				buffer = -1;
 				break;
 		}
@@ -64,6 +56,7 @@ public class DirectionalIterator extends BoardIterator<ChessPiece> {
 
 	/**
 	 * Determines whether there is another spot in the direction specified
+    *
 	 * @return boolean true if there is a next element
 	 */
 	public boolean hasNext() {
@@ -79,6 +72,7 @@ public class DirectionalIterator extends BoardIterator<ChessPiece> {
 
 	/**
 	 * Gets the next chesspiece in the iterator and adds to iterator index
+    *
 	 * @return the next ChessPiece
 	 */
 	public ChessPiece next() {
@@ -92,6 +86,7 @@ public class DirectionalIterator extends BoardIterator<ChessPiece> {
 
 	/**
 	 * getIndex
+    *
 	 * @return the current index of the iterator
 	 */
 	public int index() {
@@ -100,6 +95,7 @@ public class DirectionalIterator extends BoardIterator<ChessPiece> {
 	
 	/**
 	 * Removes and item from the iterator
+    *
 	 * @throws UnsupportedOperationException
 	 */
 	public void remove() {

@@ -17,6 +17,7 @@ public class KnightIterator extends BoardIterator<ChessPiece> {
 
 	/**
 	 * Constructor of KnightIterator taking parameters for board, direction, and index
+    *
 	 * @param ChessPiece[] the current board to iterate over
 	 * @param int the desired direction of iteration
 	 * @param int the desired starting index of the iterator
@@ -54,6 +55,7 @@ public class KnightIterator extends BoardIterator<ChessPiece> {
 	
 	/**
  	 * Determines whether there is another spot in the direction specified
+    *
 	 * @return boolean true if there is a next element
  	 */
 	public boolean hasNext() {
@@ -67,6 +69,7 @@ public class KnightIterator extends BoardIterator<ChessPiece> {
 
 	/**
 	 * Gets the next chesspiece in the iterator and adds to the iterator index
+    *
 	 * @return the next ChessPiece
  	 */
 	public ChessPiece next() {
@@ -79,6 +82,7 @@ public class KnightIterator extends BoardIterator<ChessPiece> {
 	
 	/**
 	 * Gets the current index
+    *
 	 * @return the current integer index of the iterator
  	 */
 	public int index() {
@@ -87,6 +91,7 @@ public class KnightIterator extends BoardIterator<ChessPiece> {
 
 	/**
 	 * This (remove) method is not supported and throws an exception
+    *
 	 * @throws UnsupportedOperationException
  	 */
 	public void remove() {

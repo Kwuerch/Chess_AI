@@ -3,7 +3,7 @@ package board;
 import pieces.ChessPiece;
 
 /**
- * Move Class
+ * ** Move Class **
  *
  * @author Kyle Wuerch, Sean Wallace
  * @version Program 7
@@ -63,6 +63,8 @@ public class Move {
    }
 
    /**
+    * getEnd
+    *
     * @return the index for the piece to go
     */
    public int getEnd() {
@@ -70,6 +72,8 @@ public class Move {
    }
 
    /**
+    * getStart
+    *
     * @return the index of the piece to move
     */
    public int getStart() {
@@ -114,6 +118,7 @@ public class Move {
 
    /**
     * toString
+    *
     * @return a String representation of the object
     */
    @Override

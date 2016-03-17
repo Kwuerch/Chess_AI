@@ -8,14 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Knight Class
- * @author Kyle Wuerch
+ * ** Knight Class **
+ *
+ * @author Kyle Wuerch and Sean Wallace
  * @version Program 7
  */
 public class Knight extends ChessPiece {
-   Board board;
-   List<Move> moves;
+   private Board board;
+   private List<Move> moves;
 
+   /**
+    * Knight Constructor
+    *
+    * Calls the super constructor and initializes the list of Moves
+    */
 	public Knight(Board board, boolean white) {
 		super(white);
       this.board = board;
@@ -24,6 +30,7 @@ public class Knight extends ChessPiece {
 
    /**
     * getMoves
+    *
     * @return the boolean representation of possible moves
     */
    public List<Move> getMoves() {
@@ -32,6 +39,7 @@ public class Knight extends ChessPiece {
 
    /**
     * determineMoves
+    *
     * Add the possible moves to the List of Moves
     */
    public void determineMoves(int index) {
@@ -65,6 +73,7 @@ public class Knight extends ChessPiece {
 
    /**
     * getValue
+    *
     * @return the value of the piece
     */
    public double getValue() {
@@ -73,6 +82,7 @@ public class Knight extends ChessPiece {
 
    /**
     * toString
+    *
     * @return a String representation of the piece
     */
    @Override

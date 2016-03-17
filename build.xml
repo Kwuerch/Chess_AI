@@ -36,4 +36,17 @@
     <delete dir="${dist}"/>
   </target>
 
+  <target name= "generate-javadoc">
+    <javadoc sourcepath="${src}" destdir = "doc" version = "true"
+      windowtitle = "Chess">
+
+      <group title = "board package" packages = "board.*"/>
+      <group title = "ai package" packages = "ai.*"/>
+      <group title = "pieces package" packages = "pieces.*"/>
+    </javadoc>
+
+    <echo message = "Javadoc has been generated"/>
+  </target>
+
 </project>
+

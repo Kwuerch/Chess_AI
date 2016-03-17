@@ -5,18 +5,29 @@ import board.Move;
 
 import java.util.List;
 /**
- * ** IntermediateAI Class*
- * Beats a RandomAI
+ * ** IntermediateAI Class **
  *
  * @author Kyle Wuerch, Sean Wallace
  * @version Program 7
  */
 public class IntermediateAI extends AI {
 	private int branchCount;
+
+   /**
+    * IntermediateAI constructor
+    *
+    * Calls the AI super and sets the branch count to 1
+    */
    public IntermediateAI(String name, boolean color) {
       super(name, color);
 		branchCount = 1;	
    }
+
+   /**
+    * IntermediateAI constructor
+    *
+    * Calls the AI super and sets the branch count to the argument branchCount 
+    */
 	public IntermediateAI(String name, boolean color, int branchCount) {
 		this(name, color);
 		this.branchCount = branchCount;
@@ -44,6 +55,12 @@ public class IntermediateAI extends AI {
 		return bestMove;
 	}
 
+
+   /**
+    * bestMove
+    *
+    * @return the best Move given the number of branches to look at
+    */
    public Move bestMove(Board board) {
 		double max = -100000;
 		Move maxMove = null;
@@ -76,6 +93,11 @@ public class IntermediateAI extends AI {
 		return maxMove;	
    }
 
+   /**
+    * getMoveValue
+    *
+    * A recursive method that makes theoretical moves and determines the average value for a move
+    */
 	public double getMoveValue(Board board, Move move, boolean turnWhite, int branchCount) {
 		Board newBoard = new Board(board);
       newBoard.move(move);
@@ -109,37 +131,5 @@ public class IntermediateAI extends AI {
 		}
 
 		return sum / (size);
-	}
-
-	/**
-	 * findMax
-	 *
-	 * Finds the maximum score in an array.
-	 * @return int value of the max score in an array
-	 */
-	private int findMax(int[] scores) {
-		int max = scores[0];
-		for (int i = 0; i < scores.length; i++) {
-			if (scores[i] >= max) {
-				max = scores[i];
-			}
-		}
-		return max;
-	}
-
-	/**
-	 * findMin
-	 *
-	 * Finds the minimum score in an array
-	 * @return int value of the minimum score in an array
-	 */
-	private int findMin(int[] scores) {
-		int min = scores[0];
-		for (int i = 0; i < scores.length; i++) {
-			if (scores[i] <= min) {
-				min = scores[i];
-			}
-		}
-		return min;
 	}
 }

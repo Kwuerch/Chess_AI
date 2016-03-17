@@ -8,16 +8,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * King Class
+ * ** King Class **
  * 
- * @author Kyle Wuerch
+ * @author Kyle Wuerch and Sean Wallace
  * @version Program 7
  */
 
 public class King extends ChessPiece {
-   Board board; 
-   List<Move> moves;
+   private Board board; 
+   private List<Move> moves;
 
+   /**
+    * King Constructor
+    * 
+    * Calls the super constructor and initializes List of Moves
+    */
 	public King(Board board, boolean white) {
 		super(white);
       this.board = board;
@@ -27,6 +32,7 @@ public class King extends ChessPiece {
 
    /**
     * getMoves
+    *
     * @return the boolean representation of the possible moves
     */
    public List<Move> getMoves() {
@@ -35,6 +41,7 @@ public class King extends ChessPiece {
 
    /**
     * determineMoves
+    *
     * Add the possible moves to the List of Moves
     */
    public void determineMoves(int index) {
@@ -68,6 +75,7 @@ public class King extends ChessPiece {
 
    /**
     * getValue
+    *
     * @return the value of the piece
     */
    public double getValue() {
@@ -76,6 +84,7 @@ public class King extends ChessPiece {
 
    /**
     * toString
+    *
     * @return a String representation of the piece
     */
    @Override

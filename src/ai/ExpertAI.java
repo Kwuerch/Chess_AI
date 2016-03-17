@@ -6,7 +6,7 @@ import board.Move;
 import java.util.List;
 
 /**
- * ExpertAI Class
+ * ** ExpertAI Class **
  *
  * @author Kyle Wuerch, Sean Wallace
  * @version Program 7
@@ -15,6 +15,7 @@ public class ExpertAI extends AI {
    private static double PERCENT = 1;
    private static int RAND_MULT = (int)(100/PERCENT);
    private static int MAX_DEPTH = 2;
+
    /**
     * ExpertAI Constructor
     *
@@ -78,6 +79,7 @@ public class ExpertAI extends AI {
 
 		return maxMove;	
    }
+
    /**
     * getMoveValue
     *

@@ -9,7 +9,6 @@ package ai;
  *  @version Program 7
  */
 public interface Value {
-
    /**
     * getValue
     *

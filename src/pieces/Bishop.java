@@ -7,16 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Bishop Class
+ * ** Bishop Class **
  * 
  * @author Kyle Wuerch
  * @version Program 7
  */
 public class Bishop extends ChessPiece {
-   Board board;
-   List<Move> moves;
+   private Board board;
+   private List<Move> moves;
    /**
     * Constructor
+    *
     * Initialize moves and setup reference to board
     */
 	public Bishop(Board board, boolean white) {
@@ -28,6 +29,7 @@ public class Bishop extends ChessPiece {
 
    /**
     * getMoves
+    * 
     * @return the boolean representation of possible moves 
     */
    public List<Move> getMoves() {
@@ -36,8 +38,10 @@ public class Bishop extends ChessPiece {
 
    /**
     * determineMoves
+    *
     * Go through the board and determine the possible moves
-    * @param : The current index of the piece
+    *
+    * @param int The current index of the piece
     */
    public void determineMoves(int index) {
       // Remove all moves
@@ -58,6 +62,7 @@ public class Bishop extends ChessPiece {
 
    /**
     * getValue
+    *
     * @return the value of the piece
     */
    public double getValue() {
@@ -66,6 +71,7 @@ public class Bishop extends ChessPiece {
 
    /**
     * toString
+    *
     * @return string representation of Bishop
     */
    @Override

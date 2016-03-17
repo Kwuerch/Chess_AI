@@ -6,7 +6,7 @@ import board.Move;
 import java.util.List;
 
 /**
- * ChessPiece Class
+ * ** ChessPiece Abstract Class **
  * 
  * @author Kyle Wuerch
  * @version Program 7
@@ -14,13 +14,20 @@ import java.util.List;
 
 public abstract class ChessPiece extends PieceValue {
 	private boolean white;
-	
+
+   /**
+    * ChessPiece Constructor
+    *
+    * Sets white to true if the piece is white
+    * false otherwise
+    */
 	public ChessPiece(boolean white) {
 		this.white = white;
 	}
 
    /**
     * movesGen
+    *
     * Add moves to a piece's move List after receiving a reference to such list
     * Will only add one move for non multi moves
     * ** Multi is defined to mean a moves that goes more than one space
@@ -61,49 +68,34 @@ public abstract class ChessPiece extends PieceValue {
       }
    }
 
+   /**
+    * getMoves
+    *
+    * @return a List of Moves that a piece can make
+    */
    public abstract List<Move> getMoves();
 
+   /**
+    * determineMoves
+    *
+    * a void method that makes the pieces calculate all of
+    * its possible moves
+    */
    public abstract void determineMoves(int index);
 
+   /**
+    * getValue
+    *
+    * @return the Value of a piece
+    */
    public abstract double getValue();
 
+   /**
+    * isWhite
+    *
+    * @return true if the piece is white, false if black
+    */
    public boolean isWhite() {
       return white;
    }
-
-   public abstract String toString();
-
-   /*
-   public String debugString(){
-      String result = "Moves " + getClass().getName();
-		for(int r = 0; r < moves.length; r ++) {
-			for(int c = 0; c < moves[0].length; c++) {
-				if(moves[r][c]) {
-					result += " X ";				
-				}else {
-					result += " O ";
-				}
-			 
-			}
-         result += "\n";
-		}
-      result += "\n";
-		
-      result += "AoE " + getClass().getName();
-		for(int r = 0; r < AoE.length; r ++) {
-			for(int c = 0; c < AoE[0].length; c++) {
-				if(AoE[r][c]) {
-               result += " X ";
-				}else {
-               result += " O ";
-				}
-			 
-			}
-         result += "\n";
-		}
-      result += "\n";
-
-      return result;
-   }
-   */
 }

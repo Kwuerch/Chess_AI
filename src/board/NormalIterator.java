@@ -3,7 +3,7 @@ import pieces.*;
 import java.lang.UnsupportedOperationException;
 import java.util.NoSuchElementException;
 /**
- * ** Class NormalIterator **
+ * ** NormalIterator Class **
  * Iterates normally through the entire chess board and finds Chesspieces
  * 
  * @author Kyle Wuerch, Sean Wallace
@@ -24,7 +24,10 @@ public class NormalIterator extends BoardIterator<ChessPiece> {
 	}
 
 	/**
+    * hasNext
+    *
 	 * Determines whether there is another spot in the direction specified
+    *
 	 * @return boolean true if there is a next element
 	 */
 	public boolean hasNext() {
@@ -35,7 +38,10 @@ public class NormalIterator extends BoardIterator<ChessPiece> {
 	}
 
 	/**
+    * next
+    *
 	 * Gets the next chesspiece in the iterator and adds to iterator index
+    *
 	 * @return the current ChessPiece
 	 */
 	public ChessPiece next() {
@@ -51,7 +57,10 @@ public class NormalIterator extends BoardIterator<ChessPiece> {
 	}
 
 	/**
+    * remove
+    *
 	 * Removes and item from the iterator
+    *
 	 * @throws UnsupportedOperationException
 	 */
 	public void remove() {
@@ -59,6 +68,7 @@ public class NormalIterator extends BoardIterator<ChessPiece> {
 	}
 	/**
 	 * getIndex
+    *
 	 * @return the current index of the iterator
 	 */
 	public int index() {

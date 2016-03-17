@@ -14,12 +14,15 @@ import java.util.List;
  */
 
 public class Pawn extends ChessPiece {
-	boolean madeMove;
-   List<Move> moves;
-   Board board;
+	private boolean madeMove;
+   private List<Move> moves;
+   private Board board;
 
    /**
+    * Pawn Constructor
+    *
     * Constructor to take in if move has been made
+    * Calls Super constructor and initializes the list of Moves
     */
 	public Pawn(Board board, boolean white, boolean madeMove) {
 		super(white);
@@ -30,7 +33,10 @@ public class Pawn extends ChessPiece {
 	}
   
    /**
+    * Pawn Constructor
+    *
     * Constructor to assume no move has been made
+    * Calls Super constructor and initializes the list of Moves
     */
 	public Pawn(Board board, boolean white) {
 		super(white);
@@ -43,6 +49,7 @@ public class Pawn extends ChessPiece {
 
    /**
     * getMoves
+    *
     * @return the boolean representation of possible moves
     */
    public List<Move> getMoves() {
@@ -51,6 +58,7 @@ public class Pawn extends ChessPiece {
 
    /**
     * determineMoves
+    *
     * Add the possible moves to the List of Moves
     */
    public void determineMoves(int index) {
@@ -82,6 +90,7 @@ public class Pawn extends ChessPiece {
 
    /**
     * movesGen
+    *
     * Add moves to a piece's move List after receiving a reference to such list
     * Will only add one move for non multi moves
     * ** Multi is defined to mean a moves that goes more than one space
@@ -142,8 +151,10 @@ public class Pawn extends ChessPiece {
 
       }
    }
+
    /**
     * getValue
+    *
     * @return the value of the piece
     */
    public double getValue() {
@@ -152,6 +163,7 @@ public class Pawn extends ChessPiece {
 
    /**
     * madeMove
+    *
     * Call when piece is moved
     */
    public void madeMove() {
@@ -170,6 +182,7 @@ public class Pawn extends ChessPiece {
 
    /**
     * toString
+    *
     * @return a String representation of the piece
     */
    @Override

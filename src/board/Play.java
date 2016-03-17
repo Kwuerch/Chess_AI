@@ -4,13 +4,12 @@ import pieces.ChessPiece;
 import ai.RandomAI;
 import ai.IntermediateAI;
 import ai.ExpertAI;
-import ai.LessRandomAI;
 import ai.AI;
 
 import java.util.List;
 
 /**
- * Play
+ * ** Play Class **
  *
  * Play Class runs a game until end
  *
@@ -21,6 +20,12 @@ public class Play {
    private static int moves = 0;
    private static final int MAX_MOVES = 500;
 
+   /**
+    * Main Method
+    *
+    * Runs the game until checkmate, stalemate, or max number of
+    * moves mad
+    */
    public static void main(String[] args) {
       Board board = new Board();
 
@@ -30,6 +35,11 @@ public class Play {
       playGame(playerW, playerB, board);
    }
 
+   /**
+    * playGame
+    *
+    * Begins the game
+    */
    private static void playGame(AI playerW, AI playerB, Board board) {
       boolean whiteTurn = true;
       while (true) {
@@ -69,6 +79,11 @@ public class Play {
       }
    }
 
+   /**
+    * endGame
+    *
+    * ends the game
+    */
    private static void endGame(Move m){
       if(m.isCheckmate()){
          if(m.getStart() == 0){

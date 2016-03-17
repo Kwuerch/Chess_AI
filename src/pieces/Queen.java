@@ -7,15 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Queen Class
+ * ** Queen Class **
  * 
- * @author Kyle Wuerch
+ * @author Kyle Wuerch and Sean Wallace
  * @version Program 7
  */
 public class Queen extends ChessPiece {
-   List<Move> moves;
-   Board board;
+   private List<Move> moves;
+   private Board board;
 
+   /**
+    * Queen constructor
+    *
+    * calls the super constructor and initializes the list of Moves
+    */
 	public Queen(Board board, boolean white) {
 		super(white);
       this.board = board;
@@ -25,6 +30,7 @@ public class Queen extends ChessPiece {
 
    /**
     * getMoves
+    *
     * @return the boolean representation of possible moves
     */
    public List<Move> getMoves() {
@@ -33,6 +39,7 @@ public class Queen extends ChessPiece {
 
    /**
     * determineMoves
+    *
     * Add the possible moves to the List of Moves
     */
    public void determineMoves(int index) {
@@ -66,6 +73,7 @@ public class Queen extends ChessPiece {
    
    /**
     * getValue
+    *
     * @return the value of the piece
     */
    public double getValue() {
@@ -74,6 +82,7 @@ public class Queen extends ChessPiece {
 
    /**
     * toString
+    *
     * @return a String representation of the piece
     */
    @Override

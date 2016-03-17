@@ -3,9 +3,9 @@ package pieces;
 import ai.Value;
 
 /**
- *  ** PieceValue Class ** 
+ *  ** PieceValue Abstract Class ** 
  *
- *  An class that represents the value of a piece  
+ *  An abstract class that represents the value of a piece  
  *
  *  @author Kyle Wuerch and Sean Wallace
  *  @version Program 7
