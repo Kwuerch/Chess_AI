@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ** Queen Class **
+ * Queen Class
  * 
  * @author Kyle Wuerch and Sean Wallace
  * @version Program 7

@@ -3,7 +3,7 @@ package board;
 import java.util.Iterator;
 
 /**
- * ** BoardIterator Interface **
+ * BoardIterator Interface
  *
  * An interface representing adding specific implementation to Iterator 
  *

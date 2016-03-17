@@ -9,7 +9,7 @@ import ai.AI;
 import java.util.List;
 
 /**
- * ** Play Class **
+ * Play Class
  *
  * Play Class runs a game until end
  *

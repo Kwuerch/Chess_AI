@@ -6,7 +6,7 @@ import board.Move;
 import java.util.List;
 
 /**
- * ** RandomAI Class **
+ * RandomAI Class
  *
  * A class that determines moves as an AI randomly
  *

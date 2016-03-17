@@ -3,7 +3,7 @@ import pieces.*;
 import java.lang.UnsupportedOperationException;
 import java.util.NoSuchElementException;
 /**
- * ** NormalIterator Class **
+ * NormalIterator Class
  * Iterates normally through the entire chess board and finds Chesspieces
  * 
  * @author Kyle Wuerch, Sean Wallace

@@ -3,7 +3,7 @@ package board;
 import ai.Value;
 
 /**
- *  ** BoardValue Abstract Class ** 
+ *  BoardValue Abstract Class
  *
  *  An class that represents the value of a board
  *

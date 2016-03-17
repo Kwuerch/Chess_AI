@@ -5,7 +5,7 @@ import board.Move;
 
 import java.util.List;
 /**
- * ** IntermediateAI Class **
+ * IntermediateAI Class
  *
  * @author Kyle Wuerch, Sean Wallace
  * @version Program 7

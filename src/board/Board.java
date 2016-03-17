@@ -7,7 +7,7 @@ import java.lang.Iterable;
 import java.util.Iterator;
 
 /**
- * ** Board Class **
+ * Board Class
  * Represents the chess board, implements iterator and finds ChessPieces.
  * Note: White is always the bottom starting at index 11.
  *

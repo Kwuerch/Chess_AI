@@ -3,7 +3,7 @@ package pieces;
 import ai.Value;
 
 /**
- *  ** PieceValue Abstract Class ** 
+ *  PieceValue Abstract Class
  *
  *  An abstract class that represents the value of a piece  
  *

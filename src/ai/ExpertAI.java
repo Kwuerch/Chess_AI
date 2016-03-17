@@ -6,7 +6,7 @@ import board.Move;
 import java.util.List;
 
 /**
- * ** ExpertAI Class **
+ * ExpertAI Class
  *
  * @author Kyle Wuerch, Sean Wallace
  * @version Program 7

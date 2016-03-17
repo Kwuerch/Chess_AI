@@ -3,7 +3,7 @@ package board;
 import pieces.ChessPiece;
 
 /**
- * ** Move Class **
+ * Move Class
  *
  * @author Kyle Wuerch, Sean Wallace
  * @version Program 7

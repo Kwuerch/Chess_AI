@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ** Bishop Class **
+ * Bishop Class
  * 
  * @author Kyle Wuerch
  * @version Program 7

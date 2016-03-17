@@ -6,7 +6,7 @@ import board.Move;
 import java.util.List;
 
 /**
- * ** ChessPiece Abstract Class **
+ * ChessPiece Abstract Class
  * 
  * @author Kyle Wuerch
  * @version Program 7

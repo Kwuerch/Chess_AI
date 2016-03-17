@@ -5,7 +5,7 @@ import board.Move;
 import java.util.List;
 
 /**
- * ** Invalid Class **
+ * Invalid Class
  *
  * An object to placed around the board to make determining edges easier
  *

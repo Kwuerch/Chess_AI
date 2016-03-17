@@ -5,7 +5,7 @@ import java.lang.UnsupportedOperationException;
 import java.util.NoSuchElementException;
 
 /**
- * ** KnightIterator Class **
+ * KnightIterator Class
  *
  * @author Kyle Wuerch, Sean Wallace
  * @version Program 7

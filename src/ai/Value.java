@@ -1,7 +1,7 @@
 package ai;
 
 /**
- *  ** Value Interface ** 
+ *  Value Interface
  *
  *  An interface that describes value  
  *

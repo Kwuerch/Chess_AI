@@ -5,7 +5,7 @@ import java.lang.UnsupportedOperationException;
 import java.util.NoSuchElementException;
 
 /**
- * ** DirectionalIterator Class **
+ * DirectionalIterator Class
  * Iterates through board in direction specified and finds ChessPieces
  *
  * @author Kyle Wuerch, Sean Wallace

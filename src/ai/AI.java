@@ -9,7 +9,7 @@ import pieces.ChessPiece;
 import java.util.List;
 
 /**
- *  ** AI Class **
+ *  AI Class
  *
  *  Determines what moves to make and makes them
  *

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ** King Class **
+ * King Class
  * 
  * @author Kyle Wuerch and Sean Wallace
  * @version Program 7
