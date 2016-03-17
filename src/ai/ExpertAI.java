@@ -65,14 +65,14 @@ public class ExpertAI extends AI {
 				}
 			}
 
-      if(maxMove == null){
-         if(isCheck(board, isWhite())){
-            if(isWhite()){
+      if (maxMove == null) {
+         if (isCheck(board, isWhite())) {
+            if (isWhite()) {
                return new Move(Move.CHECKMATE, true);
-            }else{
+            } else {
                return new Move(Move.CHECKMATE, false);
             }
-         }else{
+         } else {
             return new Move(Move.STALEMATE);
          }
       }
@@ -108,9 +108,9 @@ public class ExpertAI extends AI {
 					if (!isCheck(opBoard, ourMove, turnWhite)) {
                   int chance  = (int)(Math.random() * RAND_MULT);
                   // PERCENT chance of going another branch
-                  if(chance == 0){
+                  if (chance == 0) {
                      sum += getMoveValue(opBoard, ourMove, turnWhite, branchCount, depth + 1);
-                  }else{
+                  } else {
                      sum += getMoveValue(opBoard, ourMove, turnWhite, branchCount -1, depth + 1);
                   }
 						size ++;

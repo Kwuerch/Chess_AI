@@ -95,7 +95,7 @@ public class Pawn extends ChessPiece {
     * Will only add one move for non multi moves
     * ** Multi is defined to mean a moves that goes more than one space
     */
-   public void movesGen(BoardIterator<ChessPiece> it, int index, boolean diag){
+   public void movesGen(BoardIterator<ChessPiece> it, int index, boolean diag) {
       boolean hitPiece;
       ChessPiece p;
       

@@ -27,6 +27,7 @@ public class RandomAI extends AI {
     * makeMove
     *
     * Makes a random move on the board
+	 * @return a random Move determined by determineMove
     */
    public Move makeMove(Board board) {
       return determineMove(board);
@@ -35,6 +36,7 @@ public class RandomAI extends AI {
    /**
     * determineMove
     *
+	 * Determines a non-check move to make randomly 
     * @return a random move to be played
     */
    private Move determineMove(Board board) {
@@ -45,18 +47,18 @@ public class RandomAI extends AI {
          guess = (int)(Math.random() * moves.size());
          if (super.isCheck(board, moves.get(guess))) {
             moves.remove(guess);
-         }else{
+         } else {
             return moves.get(guess);
          }
       }
 
-      if(isCheck(board, isWhite())){
-         if(isWhite()){
+      if (isCheck(board, isWhite())) {
+         if (isWhite()) {
             return new Move(Move.CHECKMATE, true);
-         }else{
+         } else {
             return new Move(Move.CHECKMATE, false);
          }
-      }else{
+      } else {
          return new Move(Move.STALEMATE);
       }
    }

@@ -55,7 +55,6 @@ public class IntermediateAI extends AI {
 		return bestMove;
 	}
 
-
    /**
     * bestMove
     *
@@ -78,18 +77,17 @@ public class IntermediateAI extends AI {
 				}
 			}
 
-      if(maxMove == null){
-         if(isCheck(board, isWhite())){
-            if(isWhite()){
+      if (maxMove == null) {
+         if (isCheck(board, isWhite())) {
+            if (isWhite()) {
                return new Move(Move.CHECKMATE, true);
-            }else{
+            } else {
                return new Move(Move.CHECKMATE, false);
             }
-         }else{
+         } else {
             return new Move(Move.STALEMATE);
          }
       }
-
 		return maxMove;	
    }
 
@@ -97,6 +95,7 @@ public class IntermediateAI extends AI {
     * getMoveValue
     *
     * A recursive method that makes theoretical moves and determines the average value for a move
+	 * @return double number representing the value of a board after making a move
     */
 	public double getMoveValue(Board board, Move move, boolean turnWhite, int branchCount) {
 		Board newBoard = new Board(board);
