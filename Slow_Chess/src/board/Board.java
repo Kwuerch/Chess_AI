@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.ArrayList;
 import java.lang.Iterable;
 import java.util.Iterator;
+import java.io.File;
+import java.io.PrintStream;
+import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
 
 /**
  * Board Class
@@ -30,10 +34,13 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
   /**
     * Constructor for Board
     */
-   public Board() {
+   public Board() throws FileNotFoundException{
       board = new ChessPiece[120];
       moves = new ArrayList<Move>();
       setupBoard();
+		// System Err PrintStream To File
+		PrintStream out = new PrintStream(new FileOutputStream("boardValues.txt"));
+		System.setErr(out);
    }
 
    /**
@@ -234,8 +241,10 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
       
       }
       */
-
-      return currentValue + moves.size() - 10 * opMoves.size();
+		double value = currentValue + moves.size() - 10 * opMoves.size();
+      //return currentValue + moves.size() - 10 * opMoves.size();
+		//System.err.println(value);
+		return value;
     }
 
    /**
@@ -399,9 +408,9 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
          result += "\n";
          min -= 8;
       }
-		System.out.println("Black Pieces: " + getNumPieces(false));	
-		System.out.println("White Pieces: " + getNumPieces(true));
-		System.out.println("Total Pieces: " + getNumPieces());
+		//System.out.println("Black Pieces: " + getNumPieces(false));	
+		//System.out.println("White Pieces: " + getNumPieces(true));
+		//System.out.println("Total Pieces: " + getNumPieces());
       return result;   
    }
 }
