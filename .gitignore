@@ -1,5 +1,7 @@
 *.class
-build
-dist
-play.txt
-boardValues.txt
+Slow_Chess/build
+Fast_Chess/build
+Slow_Chess/dist
+Fast_Chess/dist
+Slow_Chess/play.txt
+Slow_Chess/boardValues.txt
