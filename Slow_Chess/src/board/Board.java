@@ -305,23 +305,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
 
        return size;
     }
-
-	public int getNumPieces(boolean isWhite) {
-		int size = 0;
-		BoardIterator<ChessPiece> it = iterator();
-		while(it.hasNext()){
-			ChessPiece p = it.next();
-			if(p != null){
-			// ChessPiece is inferred (iterator does not return Invalid piece)
-				if (isWhite == p.isWhite()) { // Check for piece color equality
-					size ++;
-				}	
-		 	}
-       }
-       return size;
-
-			
-		}
 	
 	/**
     * getNumPiecesOfColor
@@ -408,9 +391,12 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
          result += "\n";
          min -= 8;
       }
+<<<<<<< HEAD:Slow_Chess/src/board/Board.java
 		//System.out.println("Black Pieces: " + getNumPieces(false));	
 		//System.out.println("White Pieces: " + getNumPieces(true));
 		//System.out.println("Total Pieces: " + getNumPieces());
+=======
+>>>>>>> parent of 281ad51... Add piece count in Board.java:src/board/Board.java
       return result;   
    }
 }
