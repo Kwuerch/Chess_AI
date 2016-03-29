@@ -40,9 +40,6 @@ public class IntermediateAI extends AI {
     * makes a decently educated move on the board
     */
    public Move makeMove(Board board) {
-		//Move move = determineMove(board);
-		//System.err.println(move);
-		//return move;
 		return determineMove(board);
    }
 
@@ -70,13 +67,10 @@ public class IntermediateAI extends AI {
 
 			for (Move m: moves) {
 				if (isCheck(board, m, isWhite())) {
-					System.err.println("Move is trash: Move puts king in check");
 					continue;
 				} else {
 					double val = getMoveValue(board, m, isWhite(), branchCount);
 					if (val > max) {
-						//System.err.println(m.toString());
-						System.err.println("\nDiscovered New Max!");
 						maxMove = m;
 						max = val;
 					}
@@ -135,12 +129,6 @@ public class IntermediateAI extends AI {
 			return 0.0;
 		}
 		double value = sum / (size);
-		System.err.println("\n");
-		System.err.println("");
-		System.err.println("");
-		System.err.println(newBoard);
-		System.err.print("Move value: " + value);
 		return value;
-		//return sum / (size);
 	}
 }

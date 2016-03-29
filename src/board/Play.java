@@ -16,6 +16,7 @@ import java.util.List;
  * @author Kyle Wuerch and Sean Wallace
  * @version Program 7
  */
+
 public class Play {
    private static int moves = 0;
    private static final int MAX_MOVES = 500;

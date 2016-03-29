@@ -34,13 +34,10 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
   /**
     * Constructor for Board
     */
-   public Board() throws FileNotFoundException{
+   public Board(){
       board = new ChessPiece[120];
       moves = new ArrayList<Move>();
       setupBoard();
-		// System Err PrintStream To File
-		PrintStream out = new PrintStream(new FileOutputStream("boardValues.txt"));
-		System.setErr(out);
    }
 
    /**
@@ -242,8 +239,6 @@ public class Board extends BoardValue implements Iterable<ChessPiece> {
       }
       */
 		double value = currentValue + moves.size() - 10 * opMoves.size();
-      //return currentValue + moves.size() - 10 * opMoves.size();
-		//System.err.println(value);
 		return value;
     }
 
